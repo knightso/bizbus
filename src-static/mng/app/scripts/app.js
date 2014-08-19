@@ -29,3 +29,19 @@ angular
         redirectTo: '/'
       });
   });
+
+// for mock
+(function() {
+  if (location.hostname !== 'mockhost') {
+    return;
+  }
+
+  var importMockJs = function(jsfile) {
+    /*jslint evil: true */
+    document.write('<script type="text/javascript" src="' + jsfile + '"></script>');
+  };
+
+  importMockJs('bower_components/angular-mocks/angular-mocks.js');
+  importMockJs('scripts/mocktangle.js');
+  importMockJs('scripts/app-mock.js');
+})();
