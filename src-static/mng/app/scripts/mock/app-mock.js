@@ -3,7 +3,7 @@
 
 (function () {
 
-  mocktangle.mock('mngApp', '/scripts/testdata.json').run(['$httpBackend', 'mockDB', function($httpBackend, mockDB) {
+  mocktangle.mock('mngApp', '/scripts/mock/testdata.json').run(['$httpBackend', 'mockDB', function($httpBackend, mockDB) {
 
     var agencies = mockDB.select('agency');
 

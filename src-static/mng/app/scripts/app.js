@@ -41,7 +41,8 @@ angular
     document.write('<script type="text/javascript" src="' + jsfile + '"></script>');
   };
 
-  importMockJs('bower_components/angular-mocks/angular-mocks.js');
-  importMockJs('scripts/mocktangle.js');
-  importMockJs('scripts/app-mock.js');
+  //importMockJs('bower_components/angular-mocks/angular-mocks.js');
+  importMockJs('scripts/mock/angular-mocks.js');
+  importMockJs('scripts/mock/mocktangle.js');
+  importMockJs('scripts/mock/app-mock.js');
 })();
