@@ -12,19 +12,14 @@ mocktangle.mock = function (appName, dbURL) {
 
   if (dbURL) {
     mock.factory('mockDB', function() {
-      return new mocktangle.JsonDatabase(dbURL);
+      return new mocktangle.JsonDatabase(mocktangle._fetch(dbURL));
     });
   }
 
   return mock;
 };
 
-mocktangle.JsonDatabase = function(url) {
-  this.database = JSON.parse(this._fetch(url))['tables'];
-  this.table_name;
-}
-
-mocktangle.JsonDatabase.prototype._fetch = function(url) {
+mocktangle._fetch = function(url) {
   var xhr = new XMLHttpRequest();
   var method = 'GET';
   var is_async = false;
@@ -40,21 +35,21 @@ mocktangle.JsonDatabase.prototype._fetch = function(url) {
   return json_string;
 };
 
-mocktangle.JsonDatabase.prototype.selectTable = function(table_name) {
-  if(table_name in this.database) {
-    this.table_name = table_name;
-    return true;
-  }else {
-    return false;
-  }
+mocktangle.JsonDatabase = function(json) {
+  var jsonTables = JSON.parse(json)['tables'];
+  var tables = {};
+  angular.forEach(jsonTables, function(jsonTable, name) {
+    tables[name] = new mocktangle.JsonTable(jsonTable);
+  });
+  this.tables = tables;
 };
 
-mocktangle.JsonDatabase.prototype.getTable = function(table_name) {
-  if(table_name in this.database) {
-    return this.database[table_name];
-  }else {
-    return null;
-  }
+mocktangle.JsonDatabase.prototype.select = function(table_name) {
+  return this.tables[table_name];
+};
+
+mocktangle.JsonTable = function(table) {
+  this.table = table;
 };
 
 /**
@@ -62,9 +57,9 @@ mocktangle.JsonDatabase.prototype.getTable = function(table_name) {
  * @param  {number|string|Object|Array} key_values 複合主キーは{field_name: key_value, ...}で指定します。
  * @return {Array} 一致したレコードを返します。
  */
-mocktangle.JsonDatabase.prototype.get = function(key_values) {
-  var records = this.database[this.table_name]['records'];
-  var primarykey_field = this.database[this.table_name]['primary_key'];
+mocktangle.JsonTable.prototype.get = function(key_values) {
+  var records = this.table['records'];
+  var primarykey_field = this.table['pk'];
   var is_compound_key_table = false;
   var selected_records = [];
   var same_property_value = function(key, record) {
@@ -102,7 +97,7 @@ mocktangle.JsonDatabase.prototype.get = function(key_values) {
     }
   }
 
-  return selected_records;
+  return selected_records.length > 0 ? selected_records[0] : null;
 };
 
 /**
@@ -111,7 +106,7 @@ mocktangle.JsonDatabase.prototype.get = function(key_values) {
  * @param  {Object}  ext_record 既存のレコード。
  * @return {Boolean}
  */
-mocktangle.JsonDatabase.prototype._is_record_match = function(new_record, ext_record) {
+mocktangle.JsonTable.prototype._is_record_match = function(new_record, ext_record) {
   for(var field in new_record) {
     if(!ext_record[field]){
       console.log('Error: フィールドが一致しません。');
@@ -126,9 +121,9 @@ mocktangle.JsonDatabase.prototype._is_record_match = function(new_record, ext_re
  * @param  {object} record 追加するテーブルのレコード。
  * @return {Boolean}
  */
-mocktangle.JsonDatabase.prototype.insert = function(record) {
-  var records = this.database[this.table_name]['records'];
-  var primarykey_field = this.database[this.table_name]['primary_key'];
+mocktangle.JsonTable.prototype.insert = function(record) {
+  var records = this.table['records'];
+  var primarykey_field = this.table['pk'];
 
   if(!this._is_record_match(record, records[0])) {
     return false;
@@ -152,9 +147,9 @@ mocktangle.JsonDatabase.prototype.insert = function(record) {
  * @param  {Object} record 
  * @return {Boolean}
  */
-mocktangle.JsonDatabase.prototype.update = function(record) {
-  var records = this.database[this.table_name]['records'];
-  var primarykey_field = this.database[this.table_name]['primary_key'];
+mocktangle.JsonTable.prototype.update = function(record) {
+  var records = this.table['records'];
+  var primarykey_field = this.table['pk'];
 
   if(!this._is_record_match(record, records[0])) {
     return false;
@@ -178,9 +173,9 @@ mocktangle.JsonDatabase.prototype.update = function(record) {
  * @param  {Object} record
  * @return {Boolean}
  */
-mocktangle.JsonDatabase.prototype.remove = function(record) {
-  var records = this.database[this.table_name]['records'];
-  var primarykey_field = this.database[this.table_name]['primary_key'];
+mocktangle.JsonTable.prototype.delete = function(record) {
+  var records = this.table['records'];
+  var primarykey_field = this.table['pk'];
 
   if(!this._is_record_match(record, records[0])) {
     return false;

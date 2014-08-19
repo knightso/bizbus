@@ -3,11 +3,13 @@
 
 (function () {
 
-  mocktangle.mock('mngApp', '/scripts/testdata.json').run(['$httpBackend', function($httpBackend) {
+  mocktangle.mock('mngApp', '/scripts/testdata.json').run(['$httpBackend', 'mockDB', function($httpBackend, mockDB) {
+
+    var agencies = mockDB.select('agency');
 
     $httpBackend.whenGET(/^\/api\/agencies\/[^\/]+$/).respond(function(method, url) {
-      var ringId = url.substring(url.lastIndexOf('/')+1);
-      return [200, {ringId: ringId}];
+      var id = url.substring(url.lastIndexOf('/')+1);
+      return [200, agencies.get(id)];
     });
 
     // htmlファイルの取得等はそのままスルー
