@@ -13,6 +13,7 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
+    'ui.bootstrap',
     'ngRoute'
   ])
   .config(function ($routeProvider) {
@@ -28,6 +29,16 @@ angular
       .when('/agencies', {
         templateUrl: 'views/agencies.html',
         controller: 'AgenciesCtrl'
+      })
+      .when('/postAgency', {
+        templateUrl: 'views/putagency.html',
+        controller: 'PutagencyCtrl',
+        resolve: {method: function(){return 'POST';}}
+      })
+      .when('/putAgency/:id', {
+        templateUrl: 'views/putagency.html',
+        controller: 'PutagencyCtrl',
+        resolve: {method: function(){return 'PUT';}}
       })
       .otherwise({
         redirectTo: '/'
