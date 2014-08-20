@@ -12,6 +12,8 @@
       return [200, agencies.get(id)];
     });
 
+    $httpBackend.whenGET(/^\/api\/agencies+$/).respond(agencies.table.records);
+
     // htmlファイルの取得等はそのままスルー
     $httpBackend.whenGET(/.*/).passThrough();
 
