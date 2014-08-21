@@ -15,5 +15,5 @@ angular.module('mngApp')
       'Karma'
     ];
 
-    $scope.agency = Agencies.get({id: '1'});
+    $scope.agency = Agencies.get({id: 'DTA'});
   });
