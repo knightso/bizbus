@@ -4,6 +4,8 @@ describe('Service: Agencies', function () {
 
   // load the service's module
   beforeEach(module('mngApp'));
+  beforeEach(module('ngResource'));
+  beforeEach(module('ui.bootstrap'));
 
   // instantiate service
   var Agencies;
