@@ -13,10 +13,12 @@ angular.module('mngApp')
     $scope.method = method;
     $scope.agency = {};
     
+    $scope.ifRegister = true;
     if (method === 'PUT') {
       $scope.agency = Agencies.get({
         id : $routeParams.id
       });
+    $scope.ifRegister = false;
     }
 
     var validate = function(telnum) {
@@ -61,7 +63,7 @@ angular.module('mngApp')
 
       var telnum = $scope.agency.phone;
       if (validate(telnum)) {
-        if ($scope.agency.id === undefined) {
+        if ($scope.ifRegister) {
           doSave(Agencies.register);
         } else {
           doSave(Agencies.update);
