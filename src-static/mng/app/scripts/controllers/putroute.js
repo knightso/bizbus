@@ -16,29 +16,21 @@ angular.module('mngApp')
     $scope.agency = Agencies.get({
       id : $routeParams.agencyId
     });
-   
+
+    $scope.ifRegister = true;  
     if (method === 'PUT') {
       $scope.route = Routes.get({
-        id : $routeParams.id
+        agencyId : $routeParams.agencyId,
+        id : $routeParams.routeId
       });
+      $scope.ifRegister = false;  
+    } else {
+      $scope.route.agencyId = $routeParams.agencyId;
     }
-
-   /* var validate = function(telnum) {
-      if (telnum === undefined) {
-        telnum = '';
-      }
-      if (telnum.match(/^[0-9-]*$/) !== null) {
-        return true;
-      } else {
-        $scope.error.telerror = true;
-      }
-      return false;
-    };*/
 
     $scope.submit = function() {
 
       $scope.alerts = [];
-      $scope.error = {};
       if (!$scope.routeForm.$valid) {
         $scope.alerts.push({type: 'danger', msg: '入力に不備がある為保存に失敗しました。\n各項目を見直して下さい。'});
         return;
@@ -63,8 +55,7 @@ angular.module('mngApp')
         ); 
       };
 
-      //var telnum = $scope.agency.phone;
-      if ($scope.route.id === undefined) {
+      if ($scope.ifRegister) {
         doSave(Routes.register);
       } else {
         doSave(Routes.update);
