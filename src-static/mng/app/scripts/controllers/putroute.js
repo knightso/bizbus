@@ -2,24 +2,28 @@
 
 /**
  * @ngdoc function
- * @name mngApp.controller:PutagencyCtrl
+ * @name mngApp.controller:PutrouteCtrl
  * @description
- * # PutagencyCtrl
+ * # PutrouteCtrl
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('PutagencyCtrl', function ($scope, Agencies, $routeParams, $timeout, method) {
+  .controller('PutrouteCtrl', function ($scope, Agencies, Routes, $routeParams, $timeout, method) {
     
     $scope.method = method;
-    $scope.agency = {};
-    
+    $scope.route = {};
+
+    $scope.agency = Agencies.get({
+      id : $routeParams.agencyId
+    });
+   
     if (method === 'PUT') {
-      $scope.agency = Agencies.get({
+      $scope.route = Routes.get({
         id : $routeParams.id
       });
     }
 
-    var validate = function(telnum) {
+   /* var validate = function(telnum) {
       if (telnum === undefined) {
         telnum = '';
       }
@@ -29,13 +33,13 @@ angular.module('mngApp')
         $scope.error.telerror = true;
       }
       return false;
-    };
+    };*/
 
     $scope.submit = function() {
 
       $scope.alerts = [];
       $scope.error = {};
-      if (!$scope.agencyForm.$valid) {
+      if (!$scope.routeForm.$valid) {
         $scope.alerts.push({type: 'danger', msg: '入力に不備がある為保存に失敗しました。\n各項目を見直して下さい。'});
         return;
       }
@@ -43,7 +47,7 @@ angular.module('mngApp')
       var start = +new Date();
       var tout = 100;
       var doSave = function(actualF) {
-        actualF($scope.agency,
+        actualF($scope.route,
           function() {
             var tat = +new Date() - start;
               $timeout(function() {
@@ -59,13 +63,11 @@ angular.module('mngApp')
         ); 
       };
 
-      var telnum = $scope.agency.phone;
-      if (validate(telnum)) {
-        if ($scope.agency.id === undefined) {
-          doSave(Agencies.register);
-        } else {
-          doSave(Agencies.update);
-        }
+      //var telnum = $scope.agency.phone;
+      if ($scope.route.id === undefined) {
+        doSave(Routes.register);
+      } else {
+        doSave(Routes.update);
       }
     };
 

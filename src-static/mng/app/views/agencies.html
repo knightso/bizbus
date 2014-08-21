@@ -12,6 +12,7 @@
       <th><input type="text" size="20" ng-model="criteria.phone" class="form-control" placeholder="Phone"></th>
       <th><input type="text" size="5" ng-model="criteria.lang" class="form-control" placeholder="Lang"></th>
       <th></th>
+      <th></th>
       <th><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-remove-sign" ng-click="criteria={}"></button></th>
     </thead>
     <thead style="background-color: #ddd">
@@ -23,6 +24,7 @@
       <th>Lang</th>
       <th>編集</th>
       <th>削除</th>
+      <th>rList</th>
     </thead>
     <tbody>
       <tr ng-repeat="agency in agencies | filter:(filtering ? criteria : {})">
@@ -34,7 +36,8 @@
         <td>{{agency.lang}}</td>
         <td><a ng-href="#/putAgency/{{agency.id}}"><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-pencil"></button></a></td>
         <td><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-remove" ng-click=""></button></td>
-      </tr>
+        <td><a ng-href="#/routes/{{agency.id}}"><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-list"></button></a></td>
+    </tr>
     </tbody>
   </table>
 </div>

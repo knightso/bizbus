@@ -23,6 +23,23 @@
     $httpBackend.whenPOST(/^\/api\/agencies+$/).respond({});
     $httpBackend.whenPUT(/^\/api\/agencies\/[^\/]+$/).respond({});
 
+    var routes = mockDB.select('route');
+    $httpBackend.whenGET(/^\/api\/routes\/[^\/]+$/).respond(routes.table.records);
+
+    $httpBackend.whenGET(/^\/api\/routes\/[^\/]+$/).respond(function(method, url) {
+      var id = url.substring(url.lastIndexOf('/')+1);
+      var route;
+      for (var i = 0; i < routes.table.records.length; i++) {
+        if (routes.table.records[i].id === id) {
+          route = routes.table.records[i];
+        }
+      }
+      return [200, route];
+    });
+
+    //$httpBackend.whenPOST(/^\/api\/routes+$/).respond({});
+    //$httpBackend.whenPUT(/^\/api\/routes\/[^\/]+$/).respond({});
+
     // htmlファイルの取得等はそのままスルー
     $httpBackend.whenGET(/.*/).passThrough();
 

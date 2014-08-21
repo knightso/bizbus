@@ -40,6 +40,20 @@ angular
         controller: 'PutagencyCtrl',
         resolve: {method: function(){return 'PUT';}}
       })
+      .when('/routes/:agencyId', {
+        templateUrl: 'views/routes.html',
+        controller: 'RoutesCtrl'
+      })
+      .when('/postRoute/:agencyId', {
+        templateUrl: 'views/putroute.html',
+        controller: 'PutrouteCtrl',
+        resolve: {method: function(){return 'POST';}}
+      })
+      .when('/putRoute/:agencyId/:routeId', {
+        templateUrl: 'views/putroute.html',
+        controller: 'PutrouteCtrl',
+        resolve: {method: function(){return 'PUT';}}
+      })
       .otherwise({
         redirectTo: '/'
       });
