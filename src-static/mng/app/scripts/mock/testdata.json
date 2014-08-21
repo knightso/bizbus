@@ -1,47 +1,130 @@
 {
   "title": "testdata",
   "tables": {
-    "agency": {
+    "tripgroups": {
       "records": [
         {
-          "id": "DTA",
-          "name": "Demo Transit Authority",
-          "url": "http://google.com",
-          "timezone": "America/Los_Angeles",
-          "phone": "123-456-789",
-          "lang": "en",
-          "routes": [
-            "AB",
-            "BFC",
-            "STBA",
-            "CITY",
-            "AAMV"
-          ]
+          "id": "1",
+          "routeId": "JRount1",
+          "desc": "東山線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "東山行き"
         },
         {
-          "id": "JR",
-          "name": "Japan Railway",
-          "url": "http:/japan.co.jp",
-          "timezone": "Japan/Tokyo",
-          "phone": "028-1098-7720",
-          "lang": "ja",
-          "routes": [
-            "JRount1",
-            "JRount2",
-            "JRount3"
-          ]
+          "id": "2",
+          "routeId": "JRount1",
+          "desc": "東山線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き"
         },
         {
-          "id": "GT",
-          "name": "Gao Tie",
-          "url": "http://china.com.cn",
-          "timezone": "China/Beijing",
-          "phone": "168-999-890",
-          "lang": "zh",
-          "routes": [
-            "GTRount1",
-            "GTRount2"
-          ]
+          "id": "3",
+          "routeId": "JRount1",
+          "desc": "粟本線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "粟本行き"
+        },
+        {
+          "id": "4",
+          "routeId": "JRount2",
+          "desc": "粟本線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き"
+        },
+        {
+          "id": "5",
+          "routeId": "JRount2",
+          "desc": "居尻線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "東山行き"
+        },
+        {
+          "id": "6",
+          "routeId": "JRount3",
+          "desc": "居尻線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き"
+        },
+        {
+          "id": "7",
+          "routeId": "JRount3",
+          "desc": "倉真線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "粟本行き"
+        },
+        {
+          "id": "8",
+          "routeId": "JRount3",
+          "desc": "倉真線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "stops": {
+      "records": [
+        {
+          "id": "FUR_CREEK_RES",
+          "name": "Furnace Creek Resort (Demo)",
+          "desc": "The stop is located at the southwest corner of the intersection.",
+          "lat": 36.425288,
+          "lon": -117.133162
+        },
+        {
+          "id": "BEATTY_AIRPORT",
+          "name": "Nye County Airport (Demo)",
+          "desc": "The stop is located 20 feet south of Mission St.",
+          "lat": 36.868446,
+          "lon": -116.784582
+        },
+        {
+          "id": "BULLFROG",
+          "name": "Bullfrog (Demo)",
+          "desc": "The stop is located at the southwest corner of the intersection.",
+          "lat": 36.88108,
+          "lon": -116.81797
+        },
+        {
+          "id": "STAGECOACH",
+          "name": "Stagecoach Hotel & Casino (Demo)",
+          "desc": "The stop is located at the northwest corner of the intersection.",
+          "lat": 36.915682,
+          "lon": -116.751677
+        },
+        {
+          "id": "NADAV",
+          "name": "North Ave / D Ave N (Demo)",
+          "desc": "The stop is located 25 feet west of 18th St.",
+          "lat": 36.914893,
+          "lon": -116.76821
+        },
+        {
+          "id": "NANAA",
+          "name": "North Ave / N A Ave (Demo)",
+          "desc": "The stop is located 10 feet north of Mission St.",
+          "lat": 36.914944,
+          "lon": -116.761472
+        },
+        {
+          "id": "DADAN",
+          "name": "Doing Ave / D Ave N (Demo)",
+          "lat": 36.909489,
+          "lon": -116.768242
+        },
+        {
+          "id": "EMSI",
+          "name": "E Main St / S Irving St (Demo)",
+          "lat": 36.905697,
+          "lon": -116.76218
+        },
+        {
+          "id": "AMV",
+          "name": "Amargosa Valley (Demo)",
+          "lat": 36.641496,
+          "lon": -116.40094
         }
       ],
       "primary_key": [
@@ -133,73 +216,6 @@
         "id"
       ]
     },
-    "stops": {
-      "records": [
-        {
-          "id": "FUR_CREEK_RES",
-          "name": "Furnace Creek Resort (Demo)",
-          "desc": "The stop is located at the southwest corner of the intersection.",
-          "lat": 36.425288,
-          "lon": -117.133162
-        },
-        {
-          "id": "BEATTY_AIRPORT",
-          "name": "Nye County Airport (Demo)",
-          "desc": "The stop is located 20 feet south of Mission St.",
-          "lat": 36.868446,
-          "lon": -116.784582
-        },
-        {
-          "id": "BULLFROG",
-          "name": "Bullfrog (Demo)",
-          "desc": "The stop is located at the southwest corner of the intersection.",
-          "lat": 36.88108,
-          "lon": -116.81797
-        },
-        {
-          "id": "STAGECOACH",
-          "name": "Stagecoach Hotel & Casino (Demo)",
-          "desc": "The stop is located at the northwest corner of the intersection.",
-          "lat": 36.915682,
-          "lon": -116.751677
-        },
-        {
-          "id": "NADAV",
-          "name": "North Ave / D Ave N (Demo)",
-          "desc": "The stop is located 25 feet west of 18th St.",
-          "lat": 36.914893,
-          "lon": -116.76821
-        },
-        {
-          "id": "NANAA",
-          "name": "North Ave / N A Ave (Demo)",
-          "desc": "The stop is located 10 feet north of Mission St.",
-          "lat": 36.914944,
-          "lon": -116.761472
-        },
-        {
-          "id": "DADAN",
-          "name": "Doing Ave / D Ave N (Demo)",
-          "lat": 36.909489,
-          "lon": -116.768242
-        },
-        {
-          "id": "EMSI",
-          "name": "E Main St / S Irving St (Demo)",
-          "lat": 36.905697,
-          "lon": -116.76218
-        },
-        {
-          "id": "AMV",
-          "name": "Amargosa Valley (Demo)",
-          "lat": 36.641496,
-          "lon": -116.40094
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
     "route": {
       "records": [
         {
@@ -275,6 +291,140 @@
           "shortName": "g2",
           "longName": "Hongkong - Guangzhou",
           "type": 2
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "agency": {
+      "records": [
+        {
+          "id": "DTA",
+          "name": "Demo Transit Authority",
+          "url": "http://google.com",
+          "timezone": "America/Los_Angeles",
+          "phone": "123-456-789",
+          "lang": "en",
+          "routes": [
+            "AB",
+            "BFC",
+            "STBA",
+            "CITY",
+            "AAMV"
+          ]
+        },
+        {
+          "id": "JR",
+          "name": "Japan Railway",
+          "url": "http:/japan.co.jp",
+          "timezone": "Japan/Tokyo",
+          "phone": "028-1098-7720",
+          "lang": "ja",
+          "routes": [
+            "JRount1",
+            "JRount2",
+            "JRount3"
+          ]
+        },
+        {
+          "id": "GT",
+          "name": "Gao Tie",
+          "url": "http://china.com.cn",
+          "timezone": "China/Beijing",
+          "phone": "168-999-890",
+          "lang": "zh",
+          "routes": [
+            "GTRount1",
+            "GTRount2"
+          ]
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "calendar_dates": {
+      "records": [
+        {
+          "serviceId": "FULLW",
+          "date": "20070604",
+          "exceptionType": 2
+        }
+      ],
+      "primary_key": [
+        "serviceId"
+      ]
+    },
+    "calendar": {
+      "records": [
+        {
+          "serviceId": "FULLW",
+          "monday": 1,
+          "tuesday": 1,
+          "wednesday": 1,
+          "thursday": 1,
+          "friday": 1,
+          "saturday": 1,
+          "sunday": 1,
+          "startDate": "20070101",
+          "endDate": "20101231"
+        },
+        {
+          "serviceId": "WE",
+          "monday": 0,
+          "tuesday": 0,
+          "wednesday": 0,
+          "thursday": 0,
+          "friday": 0,
+          "saturday": 1,
+          "sunday": 1,
+          "startDate": "20070101",
+          "endDate": "20101231"
+        }
+      ],
+      "primary_key": [
+        "serviceId"
+      ]
+    },
+    "fare_attributes": {
+      "records": [
+        {
+          "id": "p",
+          "price": "1.25",
+          "currencyType": "USD",
+          "paymentMethod": 0,
+          "transfers": 0
+        },
+        {
+          "id": "a",
+          "price": "5.25",
+          "currencyType": "USD",
+          "paymentMethod": 0,
+          "transfers": 0
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "fare_rules": {
+      "records": [
+        {
+          "id": "p",
+          "routeId": "AB"
+        },
+        {
+          "id": "p",
+          "routeId": "STBA"
+        },
+        {
+          "id": "p",
+          "routeId": "BFC"
+        },
+        {
+          "id": "a",
+          "routeId": "AAMV"
         }
       ],
       "primary_key": [
@@ -478,93 +628,6 @@
           "arrivalTime": "16:00:00",
           "departureTime": "16:00:00",
           "sequence": 2
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "calendar": {
-      "records": [
-        {
-          "serviceId": "FULLW",
-          "monday": 1,
-          "tuesday": 1,
-          "wednesday": 1,
-          "thursday": 1,
-          "friday": 1,
-          "saturday": 1,
-          "sunday": 1,
-          "startDate": "20070101",
-          "endDate": "20101231"
-        },
-        {
-          "serviceId": "WE",
-          "monday": 0,
-          "tuesday": 0,
-          "wednesday": 0,
-          "thursday": 0,
-          "friday": 0,
-          "saturday": 1,
-          "sunday": 1,
-          "startDate": "20070101",
-          "endDate": "20101231"
-        }
-      ],
-      "primary_key": [
-        "serviceId"
-      ]
-    },
-    "calendar_dates": {
-      "records": [
-        {
-          "serviceId": "FULLW",
-          "date": "20070604",
-          "exceptionType": 2
-        }
-      ],
-      "primary_key": [
-        "serviceId"
-      ]
-    },
-    "fare_rules": {
-      "records": [
-        {
-          "id": "p",
-          "routeId": "AB"
-        },
-        {
-          "id": "p",
-          "routeId": "STBA"
-        },
-        {
-          "id": "p",
-          "routeId": "BFC"
-        },
-        {
-          "id": "a",
-          "routeId": "AAMV"
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "fare_attributes": {
-      "records": [
-        {
-          "id": "p",
-          "price": "1.25",
-          "currencyType": "USD",
-          "paymentMethod": 0,
-          "transfers": 0
-        },
-        {
-          "id": "a",
-          "price": "5.25",
-          "currencyType": "USD",
-          "paymentMethod": 0,
-          "transfers": 0
         }
       ],
       "primary_key": [
