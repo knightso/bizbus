@@ -50,6 +50,33 @@
     $httpBackend.whenPOST(/^\/api\/routes\/[^\/]+\/[^\/]+$/).respond({});
     $httpBackend.whenPUT(/^\/api\/routes\/[^\/]+\/[^\/]+$/).respond({});
 
+    var tripgroups = mockDB.select('tripgroups');
+
+    $httpBackend.whenGET(/^\/api\/tripgroups\/[^\/]+$/).respond(function(method, url) {
+      var routeId = url.substring(url.lastIndexOf('/')+1);
+      var tgList = new Array();
+      for (var i = 0; i < tripgroups.table.records.length; i++) {
+        if (tripgroups.table.records[i].routeId === routeId) {
+          tgList.push(tripgroups.table.records[i]);
+        }
+      }
+     return [200, tgList];
+    });
+
+   $httpBackend.whenGET(/^\/api\/tripgroups\/[^\/]+\/[^\/]+$/).respond(function(method, url) {
+      var tgId = url.substring(url.lastIndexOf('/')+1);
+      var tg;
+      for (var i = 0; i < tripgroups.table.records.length; i++) {
+        if (tripgroups.table.records[i].id === tgId) {
+          tg = tripgroups.table.records[i];
+        }
+      }
+      return [200, tg];
+    });
+
+    $httpBackend.whenPOST(/^\/api\/tripgroups\/[^\/]+\/[^\/]+$/).respond({});
+    $httpBackend.whenPUT(/^\/api\/tripgroups\/[^\/]+\/[^\/]+$/).respond({});
+
     // htmlファイルの取得等はそのままスルー
     $httpBackend.whenGET(/.*/).passThrough();
 

@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Route: [{{routeId}}]
+  </div>
+  <div class="panel-body">
+    <a href="#/postTripgroup/{{routeId}}"><button type="button" class="btn btn-default btn-md glyphicon glyphicon-plus">追加</button></a>
+    <button type="button" class="btn btn-default btn-md glyphicon glyphicon-search" ng-click="filtering=!filtering">フィルタ</button>
+  </div>
+  <table class="table">
+    <thead ng-show="filtering">
+      <th><input type="text" size="10" ng-model="criteria.id" class="form-control" placeholder="TgID"></th>
+      <th><input type="text" size="10" ng-model="criteria.routeId" class="form-control" placeholder="RouteId"></th>
+      <th><input type="text" size="20" ng-model="criteria.desc" class="form-control" placeholder="Desc"></th>
+      <th>
+        <select name="directionId" ng-model="criteria.directionId" class="form-control" 
+          ng-options="dType.id as dType.name for dType in directionTypes" 
+          ng-change="criteria.directionId = criteria.directionId ? criteria.directionId : undefined">
+          <option value="">------</option>
+        </select>
+      </th>
+      <th><input type="text" size="20" ng-model="criteria.defaultHeadsign" class="form-control" placeholder="DefaultHeadsign"></th>
+      <th></th>
+      <th><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-remove-sign" ng-click="criteria={}"></button></th>
+    </thead>
+    <thead style="background-color: #ddd">
+      <th>TgID</th>
+      <th>RouteID</th>
+      <th>Desc</th>
+      <th>Direction</th>
+      <th>DefaultHeadsign</th>
+      <th>編集</th>
+      <th>削除</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="tg in tripgroups | filter:(filtering ? criteria : {})">
+        <td>{{tg.id}}</td>
+        <td>{{tg.routeId}}</td>
+        <td>{{tg.desc | limitTo:charLimit}}<span ng-show="tg.desc.length > charLimit">...</span></td>
+        <td>{{tg.directionId | directionType}}</td>
+        <td>{{tg.defaultHeadsign}}</td>
+        <td><a ng-href="#/putTripgroup/{{routeId}}/{{tg.id}}"><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-pencil"></button></a></td>
+        <td><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-remove" ng-click=""></button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<a href="#/postTripgroup/{{routeId}}"><button type="button" class="btn btn-default btn-md glyphicon glyphicon-plus">追加</button></a><br/><br/>

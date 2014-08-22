@@ -54,6 +54,20 @@ angular
         controller: 'PutrouteCtrl',
         resolve: {method: function(){return 'PUT';}}
       })
+      .when('/tripgroups/:routeId', {
+        templateUrl: 'views/tripgroups.html',
+        controller: 'TripgroupsCtrl'
+      })
+      .when('/postTripgroup/:routeId', {
+        templateUrl: 'views/puttripgroup.html',
+        controller: 'PuttripgroupCtrl',
+        resolve: {method: function(){return 'POST';}}
+      })
+      .when('/putTripgroup/:routeId/:tripgroupId', {
+        templateUrl: 'views/puttripgroup.html',
+        controller: 'PuttripgroupCtrl',
+        resolve: {method: function(){return 'PUT';}}
+      })
       .otherwise({
         redirectTo: '/'
       });
