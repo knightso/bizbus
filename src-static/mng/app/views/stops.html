@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div ng-repeat="station in stations">
+    {{station.name}}
+      <div ng-repeat="stop in station.stops">
+        &nbsp;&nbsp;+ {{stop.name}}
+      </div>
+    </div>
+  </div>
+</div>

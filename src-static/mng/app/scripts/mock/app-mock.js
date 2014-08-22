@@ -77,6 +77,29 @@
     $httpBackend.whenPOST(/^\/api\/tripgroups\/[^\/]+\/[^\/]+$/).respond({});
     $httpBackend.whenPUT(/^\/api\/tripgroups\/[^\/]+\/[^\/]+$/).respond({});
 
+    var stops = mockDB.select('stops');
+
+    $httpBackend.whenGET(/^\/api\/stations+$/).respond(function() {
+      for (var i = 0; i < stops.table.records.length; i++) {
+        var stIndex = i+1;
+        var stopList = new Array();
+        for (var j = 1; j < 4; j++) {
+          var stop = new Object();
+          stop.id = 'stop' + stIndex + j;
+          stop.name = 'stop_name_' + stIndex + '_' + j;
+          stop.desc = 'stop_desc_' + stIndex + ':' + stops.table.records[i].id + '_' + j;
+          stop.lat = 31.098723+j;
+          stop.lon = 136.823912+j;
+          stop.locationType = 0;
+          stop.parentStation = stops.table.records[i].id;
+          stopList.push(stop);
+        }
+        stops.table.records[i].locationType = 1;
+        stops.table.records[i].stops = stopList;
+      }
+     return [200, stops.table.records];
+    });
+
     // htmlファイルの取得等はそのままスルー
     $httpBackend.whenGET(/.*/).passThrough();
 

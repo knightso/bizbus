@@ -68,6 +68,10 @@ angular
         controller: 'PuttripgroupCtrl',
         resolve: {method: function(){return 'PUT';}}
       })
+      .when('/stops', {
+        templateUrl: 'views/stops.html',
+        controller: 'StopsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
