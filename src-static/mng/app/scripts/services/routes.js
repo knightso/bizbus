@@ -9,11 +9,11 @@
  */
 angular.module('mngApp')
   .service('Routes', function Routes($resource) {
-    return $resource('/api/routes/:agencyId/:id', {
+    return $resource('/api/agencies/:agencyId/routes/:id', {
         agencyId: '@agencyId',
         id: '@id'
       }, {
-        query: {method:'GET', url:'/api/routes/:agencyId', isArray:true},
+        query: {method:'GET', url:'/api/agencies/:agencyId/routes', isArray:true},
         update: {method:'PUT'},
         register: {method:'POST'},
         delete: {method:'DELETE'}

@@ -25,8 +25,14 @@
 
     var routes = mockDB.select('route');
 
-    $httpBackend.whenGET(/^\/api\/routes\/[^\/]+$/).respond(function(method, url) {
-      var agencyId = url.substring(url.lastIndexOf('/')+1);
+    $httpBackend.whenGET(/^\/api\/agencies\/[^\/]+\/routes$/).respond(function(method, url) {
+      var strings = url.split('/');
+      var agencyId;
+      for (var i = 0; i < strings.length; i++) {
+        if (i === 3) {
+          agencyId = strings[i];
+        }
+      }
       var routeList = new Array();
       for (var i = 0; i < routes.table.records.length; i++) {
         if (routes.table.records[i].agencyId === agencyId) {
@@ -35,8 +41,8 @@
       }
      return [200, routeList];
     });
-
-    $httpBackend.whenGET(/^\/api\/routes\/[^\/]+\/[^\/]+$/).respond(function(method, url) {
+ 
+    $httpBackend.whenGET(/^\/api\/agencies\/[^\/]+\/routes+\/[^\/]+$/).respond(function(method, url) {
       var routeId = url.substring(url.lastIndexOf('/')+1);
       var route;
       for (var i = 0; i < routes.table.records.length; i++) {
@@ -47,8 +53,8 @@
       return [200, route];
     });
 
-    $httpBackend.whenPOST(/^\/api\/routes\/[^\/]+\/[^\/]+$/).respond({});
-    $httpBackend.whenPUT(/^\/api\/routes\/[^\/]+\/[^\/]+$/).respond({});
+    $httpBackend.whenPOST(/^\/api\/agencies\/[^\/]+\/routes+\/[^\/]+$/).respond({});
+    $httpBackend.whenPUT(/^\/api\/agencies\/[^\/]+\/routes+\/[^\/]+$/).respond({});
 
     var tripgroups = mockDB.select('tripgroups');
 
