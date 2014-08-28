@@ -1,6 +1,219 @@
 {
   "title": "testdata",
   "tables": {
+    "route": {
+      "records": [
+        {
+          "id": "AB",
+          "agencyId": "DTA",
+          "shortName": "10",
+          "longName": "Airport - Bullfrog",
+          "desc": "the 10 route travels from Airport to Bullfrog",
+          "type": 3
+        },
+        {
+          "id": "BFC",
+          "agencyId": "DTA",
+          "shortName": "20",
+          "longName": "Bullfrog - Furnace Creek Resort",
+          "desc": "the 20 route travels from Bullfrog to Furnace Creek Resort",
+          "type": 3
+        },
+        {
+          "id": "STBA",
+          "agencyId": "DTA",
+          "shortName": "30",
+          "longName": "Stagecoach - Airport Shuttle",
+          "desc": "the 30 route travels from Stagecoach to Airport Shuttle",
+          "type": 3
+        },
+        {
+          "id": "CITY",
+          "agencyId": "DTA",
+          "shortName": "40",
+          "longName": "City",
+          "type": 3
+        },
+        {
+          "id": "AAMV",
+          "agencyId": "DTA",
+          "shortName": "50",
+          "longName": "Airport - Amargosa Valley",
+          "desc": "the 50 route travels from Airport to Amargosa Valley",
+          "type": 3
+        },
+        {
+          "id": "JRount1",
+          "agencyId": "JR",
+          "shortName": "j1",
+          "longName": "area1 - area2",
+          "type": 2
+        },
+        {
+          "id": "JRount2",
+          "agencyId": "JR",
+          "shortName": "j2",
+          "longName": "area2 - area3",
+          "type": 3
+        },
+        {
+          "id": "JRount3",
+          "agencyId": "JR",
+          "shortName": "j3",
+          "longName": "area3 - area4",
+          "type": 4
+        },
+        {
+          "id": "GTRount1",
+          "agencyId": "GT",
+          "shortName": "g1",
+          "longName": "Beijing - Shanghai",
+          "type": 1
+        },
+        {
+          "id": "GTRount2",
+          "agencyId": "GT",
+          "shortName": "g2",
+          "longName": "Hongkong - Guangzhou",
+          "type": 2
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "trips": {
+      "records": [
+        {
+          "id": "AB1",
+          "routeId": "AB",
+          "serviceId": "FULLW",
+          "headsign": "to Bullfrog",
+          "directionId": 0,
+          "blockId": 1
+        },
+        {
+          "id": "AB2",
+          "routeId": "AB",
+          "serviceId": "FULLW",
+          "headsign": "to Airport",
+          "directionId": 1,
+          "blockId": 2
+        },
+        {
+          "id": "STBA",
+          "routeId": "STBA",
+          "serviceId": "FULLW",
+          "headsign": "Shuttle"
+        },
+        {
+          "id": "CITY1",
+          "routeId": "CITY",
+          "serviceId": "FULLW",
+          "directionId": 0
+        },
+        {
+          "id": "CITY2",
+          "routeId": "CITY",
+          "serviceId": "FULLW",
+          "directionId": 1
+        },
+        {
+          "id": "BFC1",
+          "routeId": "BFC",
+          "serviceId": "FULLW",
+          "headsign": "to Furnace Creek Resort",
+          "directionId": 0,
+          "blockId": 1
+        },
+        {
+          "id": "BFC2",
+          "routeId": "BFC",
+          "serviceId": "FULLW",
+          "headsign": "to Bullfrog",
+          "directionId": 1,
+          "blockId": 2
+        },
+        {
+          "id": "AAMV1",
+          "routeId": "AAMV",
+          "serviceId": "WE",
+          "headsign": "to Amargosa Valley",
+          "directionId": 0
+        },
+        {
+          "id": "AAMV2",
+          "routeId": "AAMV",
+          "serviceId": "WE",
+          "headsign": "to Airport",
+          "directionId": 1
+        },
+        {
+          "id": "AAMV3",
+          "routeId": "AAMV",
+          "serviceId": "WE",
+          "headsign": "to Amargosa Valley",
+          "directionId": 0
+        },
+        {
+          "id": "AAMV4",
+          "routeId": "AAMV",
+          "serviceId": "WE",
+          "headsign": "to Airport",
+          "directionId": 1
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "agency": {
+      "records": [
+        {
+          "id": "DTA",
+          "name": "Demo Transit Authority",
+          "url": "http://google.com",
+          "timezone": "America/Los_Angeles",
+          "phone": "123-456-789",
+          "lang": "en",
+          "routes": [
+            "AB",
+            "BFC",
+            "STBA",
+            "CITY",
+            "AAMV"
+          ]
+        },
+        {
+          "id": "JR",
+          "name": "Japan Railway",
+          "url": "http:/japan.co.jp",
+          "timezone": "Japan/Tokyo",
+          "phone": "028-1098-7720",
+          "lang": "ja",
+          "routes": [
+            "JRount1",
+            "JRount2",
+            "JRount3"
+          ]
+        },
+        {
+          "id": "GT",
+          "name": "Gao Tie",
+          "url": "http://china.com.cn",
+          "timezone": "China/Beijing",
+          "phone": "168-999-890",
+          "lang": "zh",
+          "routes": [
+            "GTRount1",
+            "GTRount2"
+          ]
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
     "tripgroups": {
       "records": [
         {
@@ -131,256 +344,12 @@
         "id"
       ]
     },
-    "trips": {
-      "records": [
-        {
-          "id": "AB1",
-          "routeId": "AB",
-          "serviceId": "FULLW",
-          "headsign": "to Bullfrog",
-          "directionId": 0,
-          "blockId": 1
-        },
-        {
-          "id": "AB2",
-          "routeId": "AB",
-          "serviceId": "FULLW",
-          "headsign": "to Airport",
-          "directionId": 1,
-          "blockId": 2
-        },
-        {
-          "id": "STBA",
-          "routeId": "STBA",
-          "serviceId": "FULLW",
-          "headsign": "Shuttle"
-        },
-        {
-          "id": "CITY1",
-          "routeId": "CITY",
-          "serviceId": "FULLW",
-          "directionId": 0
-        },
-        {
-          "id": "CITY2",
-          "routeId": "CITY",
-          "serviceId": "FULLW",
-          "directionId": 1
-        },
-        {
-          "id": "BFC1",
-          "routeId": "BFC",
-          "serviceId": "FULLW",
-          "headsign": "to Furnace Creek Resort",
-          "directionId": 0,
-          "blockId": 1
-        },
-        {
-          "id": "BFC2",
-          "routeId": "BFC",
-          "serviceId": "FULLW",
-          "headsign": "to Bullfrog",
-          "directionId": 1,
-          "blockId": 2
-        },
-        {
-          "id": "AAMV1",
-          "routeId": "AAMV",
-          "serviceId": "WE",
-          "headsign": "to Amargosa Valley",
-          "directionId": 0
-        },
-        {
-          "id": "AAMV2",
-          "routeId": "AAMV",
-          "serviceId": "WE",
-          "headsign": "to Airport",
-          "directionId": 1
-        },
-        {
-          "id": "AAMV3",
-          "routeId": "AAMV",
-          "serviceId": "WE",
-          "headsign": "to Amargosa Valley",
-          "directionId": 0
-        },
-        {
-          "id": "AAMV4",
-          "routeId": "AAMV",
-          "serviceId": "WE",
-          "headsign": "to Airport",
-          "directionId": 1
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "route": {
-      "records": [
-        {
-          "id": "AB",
-          "agencyId": "DTA",
-          "shortName": "10",
-          "longName": "Airport - Bullfrog",
-          "desc": "the 10 route travels from Airport to Bullfrog",
-          "type": 3
-        },
-        {
-          "id": "BFC",
-          "agencyId": "DTA",
-          "shortName": "20",
-          "longName": "Bullfrog - Furnace Creek Resort",
-          "desc": "the 20 route travels from Bullfrog to Furnace Creek Resort",
-          "type": 3
-        },
-        {
-          "id": "STBA",
-          "agencyId": "DTA",
-          "shortName": "30",
-          "longName": "Stagecoach - Airport Shuttle",
-          "desc": "the 30 route travels from Stagecoach to Airport Shuttle",
-          "type": 3
-        },
-        {
-          "id": "CITY",
-          "agencyId": "DTA",
-          "shortName": "40",
-          "longName": "City",
-          "type": 3
-        },
-        {
-          "id": "AAMV",
-          "agencyId": "DTA",
-          "shortName": "50",
-          "longName": "Airport - Amargosa Valley",
-          "desc": "the 50 route travels from Airport to Amargosa Valley",
-          "type": 3
-        },
-        {
-          "id": "JRount1",
-          "agencyId": "JR",
-          "shortName": "j1",
-          "longName": "area1 - area2",
-          "type": 2
-        },
-        {
-          "id": "JRount2",
-          "agencyId": "JR",
-          "shortName": "j2",
-          "longName": "area2 - area3",
-          "type": 3
-        },
-        {
-          "id": "JRount3",
-          "agencyId": "JR",
-          "shortName": "j3",
-          "longName": "area3 - area4",
-          "type": 4
-        },
-        {
-          "id": "GTRount1",
-          "agencyId": "GT",
-          "shortName": "g1",
-          "longName": "Beijing - Shanghai",
-          "type": 1
-        },
-        {
-          "id": "GTRount2",
-          "agencyId": "GT",
-          "shortName": "g2",
-          "longName": "Hongkong - Guangzhou",
-          "type": 2
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "agency": {
-      "records": [
-        {
-          "id": "DTA",
-          "name": "Demo Transit Authority",
-          "url": "http://google.com",
-          "timezone": "America/Los_Angeles",
-          "phone": "123-456-789",
-          "lang": "en",
-          "routes": [
-            "AB",
-            "BFC",
-            "STBA",
-            "CITY",
-            "AAMV"
-          ]
-        },
-        {
-          "id": "JR",
-          "name": "Japan Railway",
-          "url": "http:/japan.co.jp",
-          "timezone": "Japan/Tokyo",
-          "phone": "028-1098-7720",
-          "lang": "ja",
-          "routes": [
-            "JRount1",
-            "JRount2",
-            "JRount3"
-          ]
-        },
-        {
-          "id": "GT",
-          "name": "Gao Tie",
-          "url": "http://china.com.cn",
-          "timezone": "China/Beijing",
-          "phone": "168-999-890",
-          "lang": "zh",
-          "routes": [
-            "GTRount1",
-            "GTRount2"
-          ]
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
     "calendar_dates": {
       "records": [
         {
           "serviceId": "FULLW",
           "date": "20070604",
           "exceptionType": 2
-        }
-      ],
-      "primary_key": [
-        "serviceId"
-      ]
-    },
-    "calendar": {
-      "records": [
-        {
-          "serviceId": "FULLW",
-          "monday": 1,
-          "tuesday": 1,
-          "wednesday": 1,
-          "thursday": 1,
-          "friday": 1,
-          "saturday": 1,
-          "sunday": 1,
-          "startDate": "20070101",
-          "endDate": "20101231"
-        },
-        {
-          "serviceId": "WE",
-          "monday": 0,
-          "tuesday": 0,
-          "wednesday": 0,
-          "thursday": 0,
-          "friday": 0,
-          "saturday": 1,
-          "sunday": 1,
-          "startDate": "20070101",
-          "endDate": "20101231"
         }
       ],
       "primary_key": [
@@ -429,6 +398,37 @@
       ],
       "primary_key": [
         "id"
+      ]
+    },
+    "calendar": {
+      "records": [
+        {
+          "serviceId": "FULLW",
+          "monday": 1,
+          "tuesday": 1,
+          "wednesday": 1,
+          "thursday": 1,
+          "friday": 1,
+          "saturday": 1,
+          "sunday": 1,
+          "startDate": "20070101",
+          "endDate": "20101231"
+        },
+        {
+          "serviceId": "WE",
+          "monday": 0,
+          "tuesday": 0,
+          "wednesday": 0,
+          "thursday": 0,
+          "friday": 0,
+          "saturday": 1,
+          "sunday": 1,
+          "startDate": "20070101",
+          "endDate": "20101231"
+        }
+      ],
+      "primary_key": [
+        "serviceId"
       ]
     },
     "stop_times": {
@@ -704,6 +704,97 @@
         }
       ],
       "primary_key": []
+    },
+    "terminal": {
+      "records": [
+        {
+          "id": "1",
+          "active": true,
+          "counter_id": 1,
+          "desc": "test device 001",
+          "device_id": 1,
+          "number": "20",
+          "owner": "jack",
+          "status": 1,
+          "total_days": 30,
+          "total_report": 29,
+          "total_trip": 25,
+          "version": 3
+        },
+        {
+          "id": "2",
+          "active": true,
+          "counter_id": 1,
+          "desc": "test device 002",
+          "device_id": 2,
+          "number": "30",
+          "owner": "mike",
+          "status": 1,
+          "total_days": 92,
+          "total_report": 85,
+          "total_trip": 30,
+          "version": 1
+        },
+        {
+          "id": "3",
+          "active": false,
+          "counter_id": 2,
+          "desc": "test device 003",
+          "device_id": 3,
+          "number": "28",
+          "owner": "tome",
+          "status": 0,
+          "total_days": 35,
+          "total_report": 27,
+          "total_trip": 32,
+          "version": 6
+        },
+        {
+          "id": "4",
+          "active": true,
+          "counter_id": 2,
+          "desc": "test device 004",
+          "device_id": 3,
+          "number": "39",
+          "owner": "jerry",
+          "status": 0,
+          "total_days": 88,
+          "total_report": 82,
+          "total_trip": 19,
+          "version": 5
+        },
+        {
+          "id": "5",
+          "active": false,
+          "counter_id": 3,
+          "desc": "test device 005",
+          "device_id": 2,
+          "number": "22",
+          "owner": "tony",
+          "status": 1,
+          "total_days": 76,
+          "total_report": 70,
+          "total_trip": 27,
+          "version": 3
+        },
+        {
+          "id": "6",
+          "active": false,
+          "counter_id": 3,
+          "desc": "test device 006",
+          "device_id": 1,
+          "number": "19",
+          "owner": "alex",
+          "status": 0,
+          "total_days": 50,
+          "total_report": 49,
+          "total_trip": 31,
+          "version": 2
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
     }
   }
 }
