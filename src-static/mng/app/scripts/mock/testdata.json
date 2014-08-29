@@ -1,7 +1,117 @@
 {
   "title": "testdata",
   "tables": {
-    "route": {
+    "agencies": {
+      "records": [
+        {
+          "id": "DTA",
+          "name": "Demo Transit Authority",
+          "url": "http://google.com",
+          "timezone": "America/Los_Angeles",
+          "phone": "123-456-789",
+          "lang": "en",
+          "routes": [
+            "AB",
+            "BFC",
+            "STBA",
+            "CITY",
+            "AAMV"
+          ]
+        },
+        {
+          "id": "JR",
+          "name": "Japan Railway",
+          "url": "http:/japan.co.jp",
+          "timezone": "Japan/Tokyo",
+          "phone": "028-1098-7720",
+          "lang": "ja",
+          "routes": [
+            "JRount1",
+            "JRount2",
+            "JRount3"
+          ]
+        },
+        {
+          "id": "GT",
+          "name": "Gao Tie",
+          "url": "http://china.com.cn",
+          "timezone": "China/Beijing",
+          "phone": "168-999-890",
+          "lang": "zh",
+          "routes": [
+            "GTRount1",
+            "GTRount2"
+          ]
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "tripgroups": {
+      "records": [
+        {
+          "id": "1",
+          "routeId": "JRount1",
+          "desc": "東山線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "東山行き"
+        },
+        {
+          "id": "2",
+          "routeId": "JRount1",
+          "desc": "東山線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き"
+        },
+        {
+          "id": "3",
+          "routeId": "JRount1",
+          "desc": "粟本線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "粟本行き"
+        },
+        {
+          "id": "4",
+          "routeId": "JRount2",
+          "desc": "粟本線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き"
+        },
+        {
+          "id": "5",
+          "routeId": "JRount2",
+          "desc": "居尻線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "東山行き"
+        },
+        {
+          "id": "6",
+          "routeId": "JRount3",
+          "desc": "居尻線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き"
+        },
+        {
+          "id": "7",
+          "routeId": "JRount3",
+          "desc": "倉真線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "粟本行き"
+        },
+        {
+          "id": "8",
+          "routeId": "JRount3",
+          "desc": "倉真線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "routes": {
       "records": [
         {
           "id": "AB",
@@ -167,116 +277,6 @@
         "id"
       ]
     },
-    "agency": {
-      "records": [
-        {
-          "id": "DTA",
-          "name": "Demo Transit Authority",
-          "url": "http://google.com",
-          "timezone": "America/Los_Angeles",
-          "phone": "123-456-789",
-          "lang": "en",
-          "routes": [
-            "AB",
-            "BFC",
-            "STBA",
-            "CITY",
-            "AAMV"
-          ]
-        },
-        {
-          "id": "JR",
-          "name": "Japan Railway",
-          "url": "http:/japan.co.jp",
-          "timezone": "Japan/Tokyo",
-          "phone": "028-1098-7720",
-          "lang": "ja",
-          "routes": [
-            "JRount1",
-            "JRount2",
-            "JRount3"
-          ]
-        },
-        {
-          "id": "GT",
-          "name": "Gao Tie",
-          "url": "http://china.com.cn",
-          "timezone": "China/Beijing",
-          "phone": "168-999-890",
-          "lang": "zh",
-          "routes": [
-            "GTRount1",
-            "GTRount2"
-          ]
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "tripgroups": {
-      "records": [
-        {
-          "id": "1",
-          "routeId": "JRount1",
-          "desc": "東山線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "東山行き"
-        },
-        {
-          "id": "2",
-          "routeId": "JRount1",
-          "desc": "東山線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き"
-        },
-        {
-          "id": "3",
-          "routeId": "JRount1",
-          "desc": "粟本線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "粟本行き"
-        },
-        {
-          "id": "4",
-          "routeId": "JRount2",
-          "desc": "粟本線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き"
-        },
-        {
-          "id": "5",
-          "routeId": "JRount2",
-          "desc": "居尻線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "東山行き"
-        },
-        {
-          "id": "6",
-          "routeId": "JRount3",
-          "desc": "居尻線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き"
-        },
-        {
-          "id": "7",
-          "routeId": "JRount3",
-          "desc": "倉真線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "粟本行き"
-        },
-        {
-          "id": "8",
-          "routeId": "JRount3",
-          "desc": "倉真線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き"
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
     "stops": {
       "records": [
         {
@@ -344,37 +344,35 @@
         "id"
       ]
     },
-    "calendar_dates": {
+    "calendars": {
       "records": [
         {
           "serviceId": "FULLW",
-          "date": "20070604",
-          "exceptionType": 2
+          "monday": 1,
+          "tuesday": 1,
+          "wednesday": 1,
+          "thursday": 1,
+          "friday": 1,
+          "saturday": 1,
+          "sunday": 1,
+          "startDate": "20070101",
+          "endDate": "20101231"
+        },
+        {
+          "serviceId": "WE",
+          "monday": 0,
+          "tuesday": 0,
+          "wednesday": 0,
+          "thursday": 0,
+          "friday": 0,
+          "saturday": 1,
+          "sunday": 1,
+          "startDate": "20070101",
+          "endDate": "20101231"
         }
       ],
       "primary_key": [
         "serviceId"
-      ]
-    },
-    "fare_attributes": {
-      "records": [
-        {
-          "id": "p",
-          "price": "1.25",
-          "currencyType": "USD",
-          "paymentMethod": 0,
-          "transfers": 0
-        },
-        {
-          "id": "a",
-          "price": "5.25",
-          "currencyType": "USD",
-          "paymentMethod": 0,
-          "transfers": 0
-        }
-      ],
-      "primary_key": [
-        "id"
       ]
     },
     "fare_rules": {
@@ -400,31 +398,12 @@
         "id"
       ]
     },
-    "calendar": {
+    "calendar_dates": {
       "records": [
         {
           "serviceId": "FULLW",
-          "monday": 1,
-          "tuesday": 1,
-          "wednesday": 1,
-          "thursday": 1,
-          "friday": 1,
-          "saturday": 1,
-          "sunday": 1,
-          "startDate": "20070101",
-          "endDate": "20101231"
-        },
-        {
-          "serviceId": "WE",
-          "monday": 0,
-          "tuesday": 0,
-          "wednesday": 0,
-          "thursday": 0,
-          "friday": 0,
-          "saturday": 1,
-          "sunday": 1,
-          "startDate": "20070101",
-          "endDate": "20101231"
+          "date": "20070604",
+          "exceptionType": 2
         }
       ],
       "primary_key": [
@@ -634,6 +613,27 @@
         "id"
       ]
     },
+    "fare_attributes": {
+      "records": [
+        {
+          "id": "p",
+          "price": "1.25",
+          "currencyType": "USD",
+          "paymentMethod": 0,
+          "transfers": 0
+        },
+        {
+          "id": "a",
+          "price": "5.25",
+          "currencyType": "USD",
+          "paymentMethod": 0,
+          "transfers": 0
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
     "frequencies": {
       "records": [
         {
@@ -705,90 +705,90 @@
       ],
       "primary_key": []
     },
-    "terminal": {
+    "terminals": {
       "records": [
         {
           "id": "1",
           "active": true,
-          "counter_id": 1,
+          "counterId": 1,
           "desc": "test device 001",
-          "device_id": 1,
+          "deviceId": 1,
           "number": "20",
           "owner": "jack",
           "status": 1,
-          "total_days": 30,
-          "total_report": 29,
-          "total_trip": 25,
+          "totalDays": 30,
+          "totalReport": 29,
+          "totalTrip": 25,
           "version": 3
         },
         {
           "id": "2",
           "active": true,
-          "counter_id": 1,
+          "counterId": 1,
           "desc": "test device 002",
-          "device_id": 2,
+          "deviceId": 2,
           "number": "30",
           "owner": "mike",
           "status": 1,
-          "total_days": 92,
-          "total_report": 85,
-          "total_trip": 30,
+          "totalDays": 92,
+          "totalReport": 85,
+          "totalTrip": 30,
           "version": 1
         },
         {
           "id": "3",
           "active": false,
-          "counter_id": 2,
+          "counterId": 2,
           "desc": "test device 003",
-          "device_id": 3,
+          "deviceId": 3,
           "number": "28",
           "owner": "tome",
           "status": 0,
-          "total_days": 35,
-          "total_report": 27,
-          "total_trip": 32,
+          "totalDays": 35,
+          "totalReport": 27,
+          "totalTrip": 32,
           "version": 6
         },
         {
           "id": "4",
           "active": true,
-          "counter_id": 2,
+          "counterId": 2,
           "desc": "test device 004",
-          "device_id": 3,
+          "deviceId": 3,
           "number": "39",
           "owner": "jerry",
           "status": 0,
-          "total_days": 88,
-          "total_report": 82,
-          "total_trip": 19,
+          "totalDays": 88,
+          "totalReport": 82,
+          "totalTrip": 19,
           "version": 5
         },
         {
           "id": "5",
           "active": false,
-          "counter_id": 3,
+          "counterId": 3,
           "desc": "test device 005",
-          "device_id": 2,
+          "deviceId": 2,
           "number": "22",
           "owner": "tony",
           "status": 1,
-          "total_days": 76,
-          "total_report": 70,
-          "total_trip": 27,
+          "totalDays": 76,
+          "totalReport": 70,
+          "totalTrip": 27,
           "version": 3
         },
         {
           "id": "6",
           "active": false,
-          "counter_id": 3,
+          "counterId": 3,
           "desc": "test device 006",
-          "device_id": 1,
+          "deviceId": 1,
           "number": "19",
           "owner": "alex",
           "status": 0,
-          "total_days": 50,
-          "total_report": 49,
-          "total_trip": 31,
+          "totalDays": 50,
+          "totalReport": 49,
+          "totalTrip": 31,
           "version": 2
         }
       ],
