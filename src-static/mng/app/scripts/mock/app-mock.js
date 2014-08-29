@@ -5,7 +5,7 @@
 
   mocktangle.mock('mngApp', '/scripts/mock/testdata.json').run(['$httpBackend', 'mockDB', function($httpBackend, mockDB) {
 
-    var agencies = mockDB.select('agency');
+    var agencies = mockDB.select('agencies');
 
     $httpBackend.whenGET(/^\/api\/agencies\/[^\/]+$/).respond(function(method, url) {
       var id = url.substring(url.lastIndexOf('/')+1);
@@ -23,7 +23,7 @@
     $httpBackend.whenPOST(/^\/api\/agencies\/[^\/]+$/).respond({});
     $httpBackend.whenPUT(/^\/api\/agencies\/[^\/]+$/).respond({});
 
-    var routes = mockDB.select('route');
+    var routes = mockDB.select('routes');
 
     $httpBackend.whenGET(/^\/api\/agencies\/[^\/]+\/routes$/).respond(function(method, url) {
       var strings = url.split('/');
@@ -105,6 +105,24 @@
       }
      return [200, stops.table.records];
     });
+
+    var terminals = mockDB.select('terminals');
+
+    $httpBackend.whenGET(/^\/api\/terminals+$/).respond(terminals.table.records);
+
+    $httpBackend.whenGET(/^\/api\/terminals\/[^\/]+$/).respond(function(method, url) {
+      var id = url.substring(url.lastIndexOf('/')+1);
+      var terminal;
+      for (var i = 0; i < terminals.table.records.length; i++) {
+        if (terminals.table.records[i].id === id) {
+          terminal = terminals.table.records[i];
+        }
+      }
+      return [200, terminal];
+    });
+
+    $httpBackend.whenPOST(/^\/api\/terminals\/[^\/]+$/).respond({});
+    $httpBackend.whenPUT(/^\/api\/terminals\/[^\/]+$/).respond({});
 
     // htmlファイルの取得等はそのままスルー
     $httpBackend.whenGET(/.*/).passThrough();

@@ -72,6 +72,20 @@ angular
         templateUrl: 'views/stops.html',
         controller: 'StopsCtrl'
       })
+      .when('/terminals', {
+        templateUrl: 'views/terminals.html',
+        controller: 'TerminalsCtrl'
+      })
+      .when('/postTerminal', {
+        templateUrl: 'views/putterminal.html',
+        controller: 'PutterminalCtrl',
+        resolve: {method: function(){return 'POST';}}
+      })
+      .when('/putTerminal/:id', {
+        templateUrl: 'views/putterminal.html',
+        controller: 'PutterminalCtrl',
+        resolve: {method: function(){return 'PUT';}}
+      })
       .otherwise({
         redirectTo: '/'
       });
