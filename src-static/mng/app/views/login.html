@@ -1,0 +1,24 @@
+<h2>ログイン</h2>
+
+<form name="terminalForm" class="form-horizontal" role="form">
+  <div class="form-group">
+    <label for="inputTerminalId" class="col-sm-2 control-label">ユーザーID</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputTerminalId" ng-model="terminal.id" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputCounterId" class="col-sm-2 control-label">パスワード</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputCounterId" ng-model="terminal.counterId" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary btn-lg glyphicon glyphicon-save" ng-click="login()">ログイン</button>
+    </div>
+    <div class="col-sm-offset-2 col-sm-10">
+      <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+  </div>
+</form>

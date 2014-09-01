@@ -86,6 +86,10 @@ angular
         controller: 'PutterminalCtrl',
         resolve: {method: function(){return 'PUT';}}
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

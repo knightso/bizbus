@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    Agency: [{{agency.id}} - {{agency.name}}]
+    Routes of the Agency[{{agency.id}} - {{agency.name}}]
   </div>
   <div class="panel-body">
     <a href="#/postRoute/{{agency.id}}"><button type="button" class="btn btn-default btn-md glyphicon glyphicon-plus">追加</button></a>
@@ -25,7 +25,7 @@
       <th>Type</th>
       <th>編集</th>
       <th>削除</th>
-      <th>tgList</th>
+      <th>TripGroups</th>
     </thead>
     <tbody>
       <tr ng-repeat="route in routes | filter:(filtering ? criteria : {})">
