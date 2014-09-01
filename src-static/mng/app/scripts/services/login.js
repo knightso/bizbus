@@ -10,6 +10,6 @@
 angular.module('mngApp')
   .service('login', function login() {
     this.getLoginUser = function() {
-      return "hoge";
+      return 'hoge';
     };
   });

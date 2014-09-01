@@ -1,13 +1,19 @@
 <h2>Trip Group{{method=='POST' && '登録' || '編集'}}</h2>
 
 <div class="panel-body">
-   <a href="#/tripgroups/{{routeId}}"><button type="button" class="btn btn-default btn-md glyphicon glyphicon-arrow-left">戻る</button></a>
+   <a href="#/tripgroups/{{tg.agencyId}}/{{tg.routeId}}"><button type="button" class="btn btn-default btn-md glyphicon glyphicon-arrow-left">戻る</button></a>
 </div>
 <form name="tgForm" class="form-horizontal" role="form">
   <div class="form-group">
+    <label for="inputAgencyId" class="col-sm-2 control-label">Agency ID</label>
+    <div class="col-sm-10">
+      <label>{{tg.agencyId}}</label>
+    </div>
+  </div>
+  <div class="form-group">
     <label for="inputRouteId" class="col-sm-2 control-label">Route ID</label>
     <div class="col-sm-10">
-      <label>{{routeId}}</label>
+      <label>{{tg.routeId}}</label>
     </div>
   </div>
   <div class="form-group">
@@ -47,5 +53,5 @@
   </div>
 </form>
 <div class="panel-body">
-   <a href="#/tripgroups/{{routeId}}"><button type="button" class="btn btn-default btn-md glyphicon glyphicon-arrow-left">戻る</button></a>
+   <a href="#/tripgroups/{{tg.agencyId}}/{{tg.routeId}}"><button type="button" class="btn btn-default btn-md glyphicon glyphicon-arrow-left">戻る</button></a>
 </div>

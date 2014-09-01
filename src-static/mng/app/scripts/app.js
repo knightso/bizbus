@@ -54,16 +54,16 @@ angular
         controller: 'PutrouteCtrl',
         resolve: {method: function(){return 'PUT';}}
       })
-      .when('/tripgroups/:routeId', {
+      .when('/tripgroups/:agencyId/:routeId', {
         templateUrl: 'views/tripgroups.html',
         controller: 'TripgroupsCtrl'
       })
-      .when('/postTripgroup/:routeId', {
+      .when('/postTripgroup/:agencyId/:routeId', {
         templateUrl: 'views/puttripgroup.html',
         controller: 'PuttripgroupCtrl',
         resolve: {method: function(){return 'POST';}}
       })
-      .when('/putTripgroup/:routeId/:tripgroupId', {
+      .when('/putTripgroup/:agencyId/:routeId/:tripgroupId', {
         templateUrl: 'views/puttripgroup.html',
         controller: 'PuttripgroupCtrl',
         resolve: {method: function(){return 'PUT';}}

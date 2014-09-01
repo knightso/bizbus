@@ -12,17 +12,22 @@ angular.module('mngApp')
     
     $scope.method = method;
     $scope.tg = {};
-    $scope.routeId = $routeParams.routeId;
     $scope.directionTypes = Enums.directionTypes;
 
     $scope.ifRegister = true;  
     if (method === 'PUT') {
       $scope.tg = Tripgroups.get({
+        agencyId : $routeParams.agencyId,
         routeId : $routeParams.routeId,
         id : $routeParams.tripgroupId
       });
-      $scope.ifRegister = false;  
+      $scope.tg.$promise.then(function() {
+        $scope.tg.agencyId = $routeParams.agencyId;
+        $scope.tg.routeId = $routeParams.routeId;
+      });
+      $scope.ifRegister = false;
     } else {
+      $scope.tg.agencyId = $routeParams.agencyId;
       $scope.tg.routeId = $routeParams.routeId;
     }
 
