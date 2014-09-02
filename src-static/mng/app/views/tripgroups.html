@@ -19,7 +19,6 @@
         </select>
       </th>
       <th><input type="text" size="20" ng-model="criteria.defaultHeadsign" class="form-control" placeholder="DefaultHeadsign"></th>
-      <th></th>
       <th><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-remove-sign" ng-click="criteria={}"></button></th>
     </thead>
     <thead style="background-color: #ddd">
@@ -28,18 +27,16 @@
       <th>Desc</th>
       <th>Direction</th>
       <th>DefaultHeadsign</th>
-      <th>編集</th>
-      <th>削除</th>
+      <th></th>
     </thead>
     <tbody>
-      <tr ng-repeat="tg in tripgroups | filter:(filtering ? criteria : {})">
+      <tr ng-repeat="tg in tripgroups | filter:(filtering ? criteria : {})" ng-click="detail(agencyId, routeId, tg.id)">
         <td>{{tg.id}}</td>
         <td>{{tg.routeId}}</td>
         <td>{{tg.desc | limitTo:charLimit}}<span ng-show="tg.desc.length > charLimit">...</span></td>
         <td>{{tg.directionId | directionType}}</td>
         <td>{{tg.defaultHeadsign}}</td>
-        <td><a ng-href="#/putTripgroup/{{agencyId}}/{{routeId}}/{{tg.id}}"><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-pencil"></button></a></td>
-        <td><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-remove" ng-click=""></button></td>
+        <td></td>
     </tr>
     </tbody>
   </table>

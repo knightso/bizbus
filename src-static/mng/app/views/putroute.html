@@ -13,36 +13,60 @@
   <div class="form-group">
     <label for="inputRouteId" class="col-sm-2 control-label">Route ID</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputRouteId" placeholder="（例）ROUTE ID" ng-model="route.id" required>
+      <div ng-show="detailMode">{{route.id}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputRouteId" placeholder="（例）ROUTE ID" ng-model="route.id" required>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="inputShortName" class="col-sm-2 control-label">Route ShortName</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputShortName" placeholder="（例）ROUTE ShortName" ng-model="route.shortName" required>
+      <div ng-show="detailMode">{{route.shortName}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputShortName" placeholder="（例）ROUTE ShortName" ng-model="route.shortName" required>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="inputLongName" class="col-sm-2 control-label">Route LongName</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputLongName" placeholder="（例）ROUTE LongName" ng-model="route.longName" required>
+      <div ng-show="detailMode">{{route.longName}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputLongName" placeholder="（例）ROUTE LongName" ng-model="route.longName" required>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="inputDesc" class="col-sm-2 control-label">Desc</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputDesc" placeholder="（例）ROUTE Desc in here" ng-model="route.desc" required>
+      <div ng-show="detailMode">{{route.desc}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputDesc" placeholder="（例）ROUTE Desc in here" ng-model="route.desc" required>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="inputLang" class="col-sm-2 control-label">type</label>
     <div class="col-sm-10">
-      <input type="number" class="form-control" id="inputLang" placeholder="0" min="0" max="20" ng-model="route.type" required>
+      <div ng-show="detailMode">{{route.type}}</div>
+      <div ng-hide="detailMode">
+        <input type="number" class="form-control" id="inputLang" placeholder="0" min="0" max="20" ng-model="route.type" required>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default btn-lg glyphicon glyphicon-save" ng-click="submit()">保存</button>
+      <div ng-show="detailMode">
+        <button type="button" class="btn btn-default btn-lg glyphicon glyphicon-pencil" ng-click="detailMode=!detailMode">編集</button>
+        <button type="button" class="btn btn-default btn-lg glyphicon glyphicon-remove" ng-click="">削除</button>
+      </div>
+      <div ng-show="detailMode == false">
+        <button type="submit" class="btn btn-default btn-lg glyphicon glyphicon-save" ng-click="submit()">保存</button>
+        <span ng-show="regMode == false">
+          <button type="submit" class="btn btn-default btn-lg glyphicon glyphicon-save" ng-click="detailMode=!detailMode">キャンセル</button>
+        </span>
+      </div>
     </div>
     <div class="col-sm-offset-2 col-sm-10">
       <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>

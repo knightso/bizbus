@@ -8,7 +8,7 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('PutrouteCtrl', function ($scope, Agencies, Routes, $routeParams, $timeout, method) {
+  .controller('PutrouteCtrl', function ($scope, $routeParams, $timeout, $location, method, Agencies, Routes) {
     
     $scope.method = method;
     $scope.route = {};
@@ -17,13 +17,15 @@ angular.module('mngApp')
       id : $routeParams.agencyId
     });
 
-    $scope.ifRegister = true;  
+    $scope.regMode = true;
+    $scope.detailMode = false; 
     if (method === 'PUT') {
       $scope.route = Routes.get({
         agencyId : $routeParams.agencyId,
         id : $routeParams.routeId
       });
-      $scope.ifRegister = false;  
+      $scope.regMode = false;
+      $scope.detailMode = true;
     } else {
       $scope.route.agencyId = $routeParams.agencyId;
     }
@@ -44,6 +46,11 @@ angular.module('mngApp')
             var tat = +new Date() - start;
               $timeout(function() {
                 $scope.alerts.push({type: 'success', msg: '保存に成功しました。'});
+                if ($scope.regMode === false) {
+                  $scope.detailMode = true;
+                } else {
+                  $location.path('routes/' + $routeParams.agencyId);
+                }
               }, (tat >= tout ? 0 : tout - tat));
             },
             function() {
@@ -55,7 +62,7 @@ angular.module('mngApp')
         ); 
       };
 
-      if ($scope.ifRegister) {
+      if ($scope.regMode) {
         doSave(Routes.register);
       } else {
         doSave(Routes.update);

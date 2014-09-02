@@ -8,7 +8,11 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('TerminalsCtrl', function ($scope, Terminals) {
+  .controller('TerminalsCtrl', function ($scope, $location, Terminals) {
     $scope.criteria = {};
     $scope.terminals = Terminals.query();
+
+    $scope.detail = function(terminalId) {
+      $location.path('putTerminal/' + terminalId);
+    };
   });

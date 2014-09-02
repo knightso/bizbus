@@ -8,7 +8,7 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('TripgroupsCtrl', function ($scope, Tripgroups, Enums, $routeParams) {
+  .controller('TripgroupsCtrl', function ($scope, $routeParams, $location, Tripgroups, Enums) {
     $scope.criteria = {};
     $scope.charLimit = 15;
     $scope.agencyId = $routeParams.agencyId;
@@ -19,4 +19,8 @@ angular.module('mngApp')
       agencyId : $routeParams.agencyId,
       routeId : $routeParams.routeId
     });
+
+    $scope.detail = function(agencyId, routeId, tgId) {
+      $location.path('putTripgroup/' + agencyId + '/' + routeId + '/' + tgId);
+    };
   });
