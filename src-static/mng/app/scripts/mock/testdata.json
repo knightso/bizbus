@@ -21,7 +21,7 @@
         {
           "id": "JR",
           "name": "Japan Railway",
-          "url": "http:/japan.co.jp",
+          "url": "http://japan.co.jp",
           "timezone": "Japan/Tokyo",
           "phone": "028-1098-7720",
           "lang": "ja",
@@ -44,70 +44,7 @@
           ]
         }
       ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "tripgroups": {
-      "records": [
-        {
-          "id": "1",
-          "routeId": "JRount1",
-          "desc": "東山線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "東山行き"
-        },
-        {
-          "id": "2",
-          "routeId": "JRount1",
-          "desc": "東山線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き"
-        },
-        {
-          "id": "3",
-          "routeId": "JRount1",
-          "desc": "粟本線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "粟本行き"
-        },
-        {
-          "id": "4",
-          "routeId": "JRount2",
-          "desc": "粟本線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き"
-        },
-        {
-          "id": "5",
-          "routeId": "JRount2",
-          "desc": "居尻線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "東山行き"
-        },
-        {
-          "id": "6",
-          "routeId": "JRount3",
-          "desc": "居尻線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き"
-        },
-        {
-          "id": "7",
-          "routeId": "JRount3",
-          "desc": "倉真線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "粟本行き"
-        },
-        {
-          "id": "8",
-          "routeId": "JRount3",
-          "desc": "倉真線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き"
-        }
-      ],
-      "primary_key": [
+      "pk": [
         "id"
       ]
     },
@@ -188,7 +125,7 @@
           "type": 2
         }
       ],
-      "primary_key": [
+      "pk": [
         "id"
       ]
     },
@@ -273,7 +210,70 @@
           "directionId": 1
         }
       ],
-      "primary_key": [
+      "pk": [
+        "id"
+      ]
+    },
+    "tripgroups": {
+      "records": [
+        {
+          "id": "1",
+          "routeId": "JRount1",
+          "desc": "東山線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "東山行き"
+        },
+        {
+          "id": "2",
+          "routeId": "JRount1",
+          "desc": "東山線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き"
+        },
+        {
+          "id": "3",
+          "routeId": "JRount1",
+          "desc": "粟本線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "粟本行き"
+        },
+        {
+          "id": "4",
+          "routeId": "JRount2",
+          "desc": "粟本線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き"
+        },
+        {
+          "id": "5",
+          "routeId": "JRount2",
+          "desc": "居尻線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "東山行き"
+        },
+        {
+          "id": "6",
+          "routeId": "JRount3",
+          "desc": "居尻線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き"
+        },
+        {
+          "id": "7",
+          "routeId": "JRount3",
+          "desc": "倉真線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "粟本行き"
+        },
+        {
+          "id": "8",
+          "routeId": "JRount3",
+          "desc": "倉真線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き"
+        }
+      ],
+      "pk": [
         "id"
       ]
     },
@@ -282,66 +282,220 @@
         {
           "id": "FUR_CREEK_RES",
           "name": "Furnace Creek Resort (Demo)",
+          "yomi": "Furnace Creek Resort (Demo)",
           "desc": "The stop is located at the southwest corner of the intersection.",
           "lat": 36.425288,
-          "lon": -117.133162
+          "lon": -117.133162,
+          "url": "http://www.example.com/1",
+          "locationType": 1,
+          "active": true
+        },
+        {
+          "id": "FUR_CREEK_RES#INBOUND",
+          "name": "Furnace Creek Resort (Demo) - inbound",
+          "yomi": "Furnace Creek Resort (Demo) - inbound",
+          "desc": "The stop is located at the southwest corner of the intersection.",
+          "lat": 36.425288,
+          "lon": -117.133162,
+          "url": "http://www.example.com/1",
+          "parentStation": "FUR_CREEK_RES",
+          "active": true
+        },
+        {
+          "id": "FUR_CREEK_RES#OUTBOUND",
+          "name": "Furnace Creek Resort (Demo) - outbound",
+          "yomi": "Furnace Creek Resort (Demo) - outbound",
+          "desc": "The stop is located at the southwest corner of the intersection.",
+          "lat": 36.425288,
+          "lon": -117.133162,
+          "url": "http://www.example.com/1",
+          "parentStation": "FUR_CREEK_RES",
+          "active": true
         },
         {
           "id": "BEATTY_AIRPORT",
           "name": "Nye County Airport (Demo)",
+          "yomi": "Nye County Airport (Demo)",
           "desc": "The stop is located 20 feet south of Mission St.",
           "lat": 36.868446,
-          "lon": -116.784582
+          "lon": -116.784582,
+          "url": "http://www.example.com/2",
+          "locationType": 1,
+          "active": true
+        },
+        {
+          "id": "BEATTY_AIRPORT#INBOUND",
+          "name": "Nye County Airport (Demo) - inbound",
+          "yomi": "Nye County Airport (Demo) - inbound",
+          "desc": "The stop is located 20 feet south of Mission St.",
+          "lat": 36.868446,
+          "lon": -116.784582,
+          "url": "http://www.example.com/2",
+          "parentStation": "BEATTY_AIRPORT",
+          "active": true
+        },
+        {
+          "id": "BEATTY_AIRPORT#OUTBOUND",
+          "name": "Nye County Airport (Demo) - outbound",
+          "yomi": "Nye County Airport (Demo) - outbound",
+          "desc": "The stop is located 20 feet south of Mission St.",
+          "lat": 36.868446,
+          "lon": -116.784582,
+          "url": "http://www.example.com/2",
+          "parentStation": "BEATTY_AIRPORT",
+          "active": true
         },
         {
           "id": "BULLFROG",
           "name": "Bullfrog (Demo)",
+          "yomi": "Bullfrog (Demo)",
           "desc": "The stop is located at the southwest corner of the intersection.",
           "lat": 36.88108,
-          "lon": -116.81797
+          "lon": -116.81797,
+          "url": "http://www.example.com/3",
+          "locationType": 1,
+          "active": true
+        },
+        {
+          "id": "BULLFROG#INBOUND",
+          "name": "Bullfrog (Demo) - inbound",
+          "yomi": "Bullfrog (Demo) - inbound",
+          "desc": "The stop is located at the southwest corner of the intersection.",
+          "lat": 36.88108,
+          "lon": -116.81797,
+          "url": "http://www.example.com/3",
+          "parentStation": "BULLFROG",
+          "active": true
+        },
+        {
+          "id": "BULLFROG#OUTBOUND",
+          "name": "Bullfrog (Demo) - outbound",
+          "yomi": "Bullfrog (Demo) - outbound",
+          "desc": "The stop is located at the southwest corner of the intersection.",
+          "lat": 36.88108,
+          "lon": -116.81797,
+          "url": "http://www.example.com/3",
+          "parentStation": "BULLFROG",
+          "active": true
         },
         {
           "id": "STAGECOACH",
           "name": "Stagecoach Hotel & Casino (Demo)",
+          "yomi": "Stagecoach Hotel & Casino (Demo)",
           "desc": "The stop is located at the northwest corner of the intersection.",
           "lat": 36.915682,
-          "lon": -116.751677
+          "lon": -116.751677,
+          "url": "http://www.example.com/4",
+          "locationType": 1,
+          "active": true
+        },
+        {
+          "id": "STAGECOACH#INBOUND",
+          "name": "Stagecoach Hotel & Casino (Demo) - inbound",
+          "yomi": "Stagecoach Hotel & Casino (Demo) - inbound",
+          "desc": "The stop is located at the northwest corner of the intersection.",
+          "lat": 36.915682,
+          "lon": -116.751677,
+          "url": "http://www.example.com/4",
+          "parentStation": "STAGECOACH",
+          "active": true
+        },
+        {
+          "id": "STAGECOACH#OUTBOUND",
+          "name": "Stagecoach Hotel & Casino (Demo) - outbound",
+          "yomi": "Stagecoach Hotel & Casino (Demo) - outbound",
+          "desc": "The stop is located at the northwest corner of the intersection.",
+          "lat": 36.915682,
+          "lon": -116.751677,
+          "url": "http://www.example.com/4",
+          "parentStation": "STAGECOACH",
+          "active": true
         },
         {
           "id": "NADAV",
           "name": "North Ave / D Ave N (Demo)",
+          "yomi": "North Ave / D Ave N (Demo)",
           "desc": "The stop is located 25 feet west of 18th St.",
           "lat": 36.914893,
-          "lon": -116.76821
+          "lon": -116.76821,
+          "url": "http://www.example.com/5",
+          "locationType": 1,
+          "active": true
+        },
+        {
+          "id": "NADAV#INBOUND",
+          "name": "North Ave / D Ave N (Demo) - inbound",
+          "yomi": "North Ave / D Ave N (Demo) - inbound",
+          "desc": "The stop is located 25 feet west of 18th St.",
+          "lat": 36.914893,
+          "lon": -116.76821,
+          "url": "http://www.example.com/5",
+          "parentStation": "NADAV",
+          "active": true
+        },
+        {
+          "id": "NADAV#OUTBOUND",
+          "name": "North Ave / D Ave N (Demo) - outbound",
+          "yomi": "North Ave / D Ave N (Demo) - outbound",
+          "desc": "The stop is located 25 feet west of 18th St.",
+          "lat": 36.914893,
+          "lon": -116.76821,
+          "url": "http://www.example.com/5",
+          "parentStation": "NADAV",
+          "active": true
         },
         {
           "id": "NANAA",
           "name": "North Ave / N A Ave (Demo)",
+          "yomi": "North Ave / N A Ave (Demo)",
           "desc": "The stop is located 10 feet north of Mission St.",
           "lat": 36.914944,
-          "lon": -116.761472
+          "lon": -116.761472,
+          "url": "http://www.example.com/6",
+          "active": true
         },
         {
           "id": "DADAN",
           "name": "Doing Ave / D Ave N (Demo)",
+          "yomi": "Doing Ave / D Ave N (Demo)",
           "lat": 36.909489,
-          "lon": -116.768242
+          "lon": -116.768242,
+          "url": "http://www.example.com/7",
+          "active": true
         },
         {
           "id": "EMSI",
           "name": "E Main St / S Irving St (Demo)",
+          "yomi": "E Main St / S Irving St (Demo)",
           "lat": 36.905697,
-          "lon": -116.76218
+          "lon": -116.76218,
+          "url": "http://www.example.com/8",
+          "active": true
         },
         {
           "id": "AMV",
           "name": "Amargosa Valley (Demo)",
+          "yomi": "Amargosa Valley (Demo)",
           "lat": 36.641496,
-          "lon": -116.40094
+          "lon": -116.40094,
+          "url": "http://www.example.com/9",
+          "active": true
         }
       ],
-      "primary_key": [
+      "pk": [
         "id"
+      ]
+    },
+    "calendar_dates": {
+      "records": [
+        {
+          "serviceId": "FULLW",
+          "date": "20070604",
+          "exceptionType": 2
+        }
+      ],
+      "pk": [
+        "serviceId"
       ]
     },
     "calendars": {
@@ -371,43 +525,29 @@
           "endDate": "20101231"
         }
       ],
-      "primary_key": [
+      "pk": [
         "serviceId"
       ]
     },
-    "fare_rules": {
+    "fare_attributes": {
       "records": [
         {
           "id": "p",
-          "routeId": "AB"
-        },
-        {
-          "id": "p",
-          "routeId": "STBA"
-        },
-        {
-          "id": "p",
-          "routeId": "BFC"
+          "price": "1.25",
+          "currencyType": "USD",
+          "paymentMethod": 0,
+          "transfers": 0
         },
         {
           "id": "a",
-          "routeId": "AAMV"
+          "price": "5.25",
+          "currencyType": "USD",
+          "paymentMethod": 0,
+          "transfers": 0
         }
       ],
-      "primary_key": [
+      "pk": [
         "id"
-      ]
-    },
-    "calendar_dates": {
-      "records": [
-        {
-          "serviceId": "FULLW",
-          "date": "20070604",
-          "exceptionType": 2
-        }
-      ],
-      "primary_key": [
-        "serviceId"
       ]
     },
     "stop_times": {
@@ -609,28 +749,30 @@
           "sequence": 2
         }
       ],
-      "primary_key": [
+      "pk": [
         "id"
       ]
     },
-    "fare_attributes": {
+    "fare_rules": {
       "records": [
         {
           "id": "p",
-          "price": "1.25",
-          "currencyType": "USD",
-          "paymentMethod": 0,
-          "transfers": 0
+          "routeId": "AB"
+        },
+        {
+          "id": "p",
+          "routeId": "STBA"
+        },
+        {
+          "id": "p",
+          "routeId": "BFC"
         },
         {
           "id": "a",
-          "price": "5.25",
-          "currencyType": "USD",
-          "paymentMethod": 0,
-          "transfers": 0
+          "routeId": "AAMV"
         }
       ],
-      "primary_key": [
+      "pk": [
         "id"
       ]
     },
@@ -703,7 +845,7 @@
           "headwaySecs": 1800
         }
       ],
-      "primary_key": []
+      "pk": []
     },
     "terminals": {
       "records": [
@@ -792,7 +934,7 @@
           "version": 2
         }
       ],
-      "primary_key": [
+      "pk": [
         "id"
       ]
     }

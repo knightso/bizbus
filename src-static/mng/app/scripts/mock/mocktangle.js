@@ -39,7 +39,7 @@ mocktangle.JsonDatabase = function(json) {
   var jsonTables = JSON.parse(json).tables;
   var tables = {};
   angular.forEach(jsonTables, function(jsonTable, name) {
-    tables[name] = new mocktangle.JsonTable(jsonTable);
+    tables[name] = new mocktangle.JsonTable(name, jsonTable);
   });
   this.tables = tables;
 };
@@ -48,72 +48,20 @@ mocktangle.JsonDatabase.prototype.select = function(tableName) {
   return this.tables[tableName];
 };
 
-mocktangle.JsonTable = function(table) {
+mocktangle.JsonTable = function(name, table) {
+  this.name = name;
   this.table = table;
 };
 
 /**
  * 主キーでレコードを取得します。
- * @param  {number|string|Object|Array} keyValues 複合主キーは{field_name: key_value, ...}で指定します。
- * @return {Array} 一致したレコードを返します。
+ * @param  {number|string|Object} pk 複合主キーは{field_name: key_value, ...}で指定します。
+ * @return {Object} 一致したレコードを返します。
  */
-mocktangle.JsonTable.prototype.get = function(keyValues) {
-  var records = this.table.records;
-  var primarykeyField = this.table.pk;
-  var isCompoundKeyTable = false;
-  var selectedRecords = [];
-  var samePropertyValue = function(key, record) {
-    for(var i in key) {
-      if(key[i] !== record[i]) {
-        return false;
-      }
-    }
-    return true;
-  };
-
-  // 複合主キーのテーブルか否か。
-  if(primarykeyField.length > 1) {
-    isCompoundKeyTable = true;
-  }else {
-    primarykeyField = primarykeyField[0];
-  }
-
-  // 引数が非Arrayであれば、Arrayに入れる。
-  if(!Array.isArray(keyValues)) {
-    keyValues = [keyValues];
-  }
-
-  for (var ri = 0; ri < records.length; ri++) {
-    for (var ki = 0; ki < keyValues.length; ki++) {
-      if(isCompoundKeyTable) {
-        if(samePropertyValue(keyValues[ki], records[ri])) {
-          selectedRecords.push(records[ri]);
-        }
-      }else {
-        if(records[ri][primarykeyField] === keyValues[ki]) {
-          selectedRecords.push(records[ri]);
-        }
-      }
-    }
-  }
-
-  return selectedRecords.length > 0 ? selectedRecords[0] : null;
-};
-
-/**
- * レコードがテーブルのフィールドと一致するか否か。
- * @param  {Object}  newRecord 新しいレコード。
- * @param  {Object}  extRecord 既存のレコード。
- * @return {Boolean}
- */
-  mocktangle.JsonTable.prototype._isRecordMatch = function(newRecord, extRecord) {
-  for(var field in newRecord) {
-    if(!extRecord[field]){
-      console.log('Error: フィールドが一致しません。');
-      return false;
-    }
-  }
-  return true;
+mocktangle.JsonTable.prototype.get = function(pk) {
+  pk = this._toPkObj(pk);
+  var index = this._indexOf(pk);
+  return index >= 0 ? this.table.records[index] : null;
 };
 
 /**
@@ -124,10 +72,6 @@ mocktangle.JsonTable.prototype.get = function(keyValues) {
 mocktangle.JsonTable.prototype.insert = function(record) {
   var records = this.table.records;
   var primarykeyField = this.table.pk;
-
-  if(!this._isRecordMatch(record, records[0])) {
-    return false;
-  }
 
   // 既存のレコードとの重複を確認する。
   for (var ri = 0; ri < records.length; ri++) {
@@ -151,10 +95,6 @@ mocktangle.JsonTable.prototype.update = function(record) {
   var records = this.table.records;
   var primarykeyField = this.table.pk;
 
-  if(!this._isRecordMatch(record, records[0])) {
-    return false;
-  }
-
   for (var ri = 0; ri < records.length; ri++) {
     for(var ki=0; ki<primarykeyField.length; ki++) {
       if(records[ri][primarykeyField[ki]] === record[primarykeyField[ki]]) {
@@ -177,10 +117,6 @@ mocktangle.JsonTable.prototype.delete = function(record) {
   var records = this.table.records;
   var primarykeyField = this.table.pk;
 
-  if(!this._isRecordMatch(record, records[0])) {
-    return false;
-  }
-
   for (var ri = 0; ri < records.length; ri++) {
     for(var ki=0; ki<primarykeyField.length; ki++) {
       if(records[ri][primarykeyField[ki]] === record[primarykeyField[ki]]) {
@@ -192,3 +128,31 @@ mocktangle.JsonTable.prototype.delete = function(record) {
   console.log('Error: 一致するレコードがありません。');
   return false;
 };
+
+mocktangle.JsonTable.prototype._toPkObj = function(pk) {
+  var newPk = {};
+  for (var i = 0; i < this.table.pk.length; i++) {
+    var pkname = this.table.pk[i];
+    newPk[pkname] = (typeof pk === 'object') ? pk[pkname] : pk;
+  }
+  return newPk;
+};
+
+mocktangle.JsonTable.prototype._indexOf = function(pk) {
+  for (var i = 0; i < this.table.records.length; i++) {
+    if (mocktangle._isPropertyMatched(this.table.records[i], pk)) {
+      return i;
+    }
+  }
+  return -1;
+};
+
+mocktangle._isPropertyMatched = function(obj, props) {
+  for (var name in props) {
+    if (obj[name] !== props[name]) {
+      return false;
+    }
+  }
+  return true;
+};
+

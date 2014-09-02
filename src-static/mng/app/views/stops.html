@@ -1,10 +1,30 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <div ng-repeat="station in stations">
-    {{station.name}}
-      <div ng-repeat="stop in station.stops">
-        &nbsp;&nbsp;+ {{stop.name}}
-      </div>
-    </div>
+    <a href="#/postStop"><button type="button" class="btn btn-default btn-md glyphicon glyphicon-plus">追加</button></a>
   </div>
+  <table class="table">
+    <thead style="background-color: #ddd">
+      <th>ID</th>
+      <th>Name</th>
+      <th>Desc</th>
+      <th>Lat</th>
+      <th>Lon</th>
+      <th>URL</th>
+      <th>編集</th>
+      <th>削除</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="stop in stations">
+        <td>{{stop.id}}</td>
+        <td>{{stop.name}}</td>
+        <td>{{stop.desc | limitTo:20}} {{stop.desc.length > 20 ? '...' : ''}}</td>
+        <td>{{stop.lat}}</td>
+        <td>{{stop.lon}}</td>
+        <td><a ng-href="{{stop.url}}">link</a></td>
+        <td><a ng-href="#/putStop/{{stop.id}}"><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-pencil"></button></a></td>
+        <td><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-remove" ng-click=""></button></td>
+    </tr>
+    </tbody>
+  </table>
 </div>
+<a href="#/postStop"><button type="button" class="btn btn-default btn-md glyphicon glyphicon-plus">追加</button></a>
