@@ -8,17 +8,19 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('PutagencyCtrl', function ($scope, Agencies, $routeParams, $timeout, method) {
+  .controller('PutagencyCtrl', function ($scope, $routeParams, $timeout, $location, method, Agencies) {
     
     $scope.method = method;
     $scope.agency = {};
     
-    $scope.ifRegister = true;
+    $scope.regMode = true;
+    $scope.detailMode = false;
     if (method === 'PUT') {
       $scope.agency = Agencies.get({
         id : $routeParams.id
       });
-    $scope.ifRegister = false;
+      $scope.regMode = false;
+      $scope.detailMode = true;
     }
 
     var validate = function(telnum) {
@@ -50,6 +52,11 @@ angular.module('mngApp')
             var tat = +new Date() - start;
               $timeout(function() {
                 $scope.alerts.push({type: 'success', msg: '保存に成功しました。'});
+                if ($scope.regMode === false) {
+                  $scope.detailMode = true;
+                } else {
+                  $location.path('agencies');
+                }
               }, (tat >= tout ? 0 : tout - tat));
             },
             function() {
@@ -63,7 +70,7 @@ angular.module('mngApp')
 
       var telnum = $scope.agency.phone;
       if (validate(telnum)) {
-        if ($scope.ifRegister) {
+        if ($scope.regMode) {
           doSave(Agencies.register);
         } else {
           doSave(Agencies.update);

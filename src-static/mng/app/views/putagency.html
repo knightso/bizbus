@@ -7,43 +7,70 @@
   <div class="form-group">
     <label for="inputAgencyId" class="col-sm-2 control-label">ID</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputAgencyId" placeholder="（例）AGENCY ID" ng-model="agency.id" required>
+      <div ng-show="detailMode">{{agency.id}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputAgencyId" placeholder="（例）AGENCY ID" ng-model="agency.id" required>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="inputName" class="col-sm-2 control-label">Agency名</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputName" placeholder="（例）AGENCY NAME" ng-model="agency.name" required>
+      <div ng-show="detailMode">{{agency.name}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputName" placeholder="（例）AGENCY NAME" ng-model="agency.name" required>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="inputUrl" class="col-sm-2 control-label">Url</label>
     <div class="col-sm-10">
-      <input type="url" class="form-control" id="inputUrl" placeholder="（例）http://www.example.com" ng-model="agency.url" required>
+      <div ng-show="detailMode">{{agency.url}}</div>
+      <div ng-hide="detailMode">
+        <input type="url" class="form-control" id="inputUrl" placeholder="（例）http://www.example.com" ng-model="agency.url" required>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="inputTimezone" class="col-sm-2 control-label">Timezone</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputTimezone" placeholder="（例）America/Los_Angeles" ng-model="agency.timezone" required>
+      <div ng-show="detailMode">{{agency.timezone}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputTimezone" placeholder="（例）America/Los_Angeles" ng-model="agency.timezone" required>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputPhone" placeholder="（例）01-1234-5678" ng-model="agency.phone" required>
-      <span class="error_msg" ng-show="error.telerror">正しい電話番号を入力して下さい</span>
+      <div ng-show="detailMode">{{agency.phone}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputPhone" placeholder="（例）01-1234-5678" ng-model="agency.phone" required>
+        <span class="error_msg" ng-show="error.telerror">正しい電話番号を入力して下さい</span>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="inputLang" class="col-sm-2 control-label">Lang</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputLang" placeholder="（例）en" ng-model="agency.lang" required>
+      <div ng-show="detailMode">{{agency.lang}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputLang" placeholder="（例）en" ng-model="agency.lang" required>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default btn-lg glyphicon glyphicon-save" ng-click="submit()">保存</button>
+      <div ng-show="detailMode">
+        <button type="button" class="btn btn-default btn-lg glyphicon glyphicon-pencil" ng-click="detailMode=!detailMode">編集</button>
+        <button type="button" class="btn btn-default btn-lg glyphicon glyphicon-remove" ng-click="">削除</button>
+      </div>
+      <div ng-show="detailMode == false">
+        <button type="submit" class="btn btn-default btn-lg glyphicon glyphicon-save" ng-click="submit()">保存</button>
+        <span ng-show="regMode == false">
+          <button type="submit" class="btn btn-default btn-lg glyphicon glyphicon-save" ng-click="detailMode=!detailMode">キャンセル</button>
+        </span>
+      </div>
     </div>
     <div class="col-sm-offset-2 col-sm-10">
       <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>

@@ -11,8 +11,6 @@
       <th><input type="text" size="10" ng-model="criteria.timezone" class="form-control" placeholder="Timezone"></th>
       <th><input type="text" size="20" ng-model="criteria.phone" class="form-control" placeholder="Phone"></th>
       <th><input type="text" size="10" ng-model="criteria.lang" class="form-control" placeholder="Lang"></th>
-      <th></th>
-      <th></th>
       <th><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-remove-sign" ng-click="criteria={}"></button></th>
     </thead>
     <thead style="background-color: #ddd">
@@ -22,20 +20,16 @@
       <th>Timezone</th>
       <th>Phone</th>
       <th>Lang</th>
-      <th>編集</th>
-      <th>削除</th>
       <th>Routes</th>
     </thead>
     <tbody>
-      <tr ng-repeat="agency in agencies | filter:(filtering ? criteria : {})">
+      <tr ng-repeat="agency in agencies | filter:(filtering ? criteria : {})" ng-click="detail(agency.id)">
         <td>{{agency.id}}</td>
         <td>{{agency.name}}</td>
         <td>{{agency.url}}</td>
         <td>{{agency.timezone}}</td>
         <td>{{agency.phone}}</td>
         <td>{{agency.lang}}</td>
-        <td><a ng-href="#/putAgency/{{agency.id}}"><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-pencil"></button></a></td>
-        <td><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-remove" ng-click=""></button></td>
         <td><a ng-href="#/routes/{{agency.id}}">{{agency.routenums}}</a></td>
     </tr>
     </tbody>

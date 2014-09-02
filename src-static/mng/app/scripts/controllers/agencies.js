@@ -8,7 +8,7 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('AgenciesCtrl', function ($scope, Agencies) {
+  .controller('AgenciesCtrl', function ($scope, $location, Agencies) {
     $scope.criteria = {};
     $scope.agencies = Agencies.query();
 
@@ -18,4 +18,7 @@ angular.module('mngApp')
       }
     });
 
+    $scope.detail = function(agencyId) {
+      $location.path('putAgency/' + agencyId);
+    };
   });

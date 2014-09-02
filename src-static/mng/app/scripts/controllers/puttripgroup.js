@@ -8,13 +8,14 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('PuttripgroupCtrl', function ($scope, Tripgroups, Enums, $routeParams, $timeout, method) {
+  .controller('PuttripgroupCtrl', function ($scope, $routeParams, $timeout, $location, method, Tripgroups, Enums) {
     
     $scope.method = method;
     $scope.tg = {};
     $scope.directionTypes = Enums.directionTypes;
 
-    $scope.ifRegister = true;  
+    $scope.regMode = true;
+    $scope.detailMode = false;  
     if (method === 'PUT') {
       $scope.tg = Tripgroups.get({
         agencyId : $routeParams.agencyId,
@@ -25,7 +26,8 @@ angular.module('mngApp')
         $scope.tg.agencyId = $routeParams.agencyId;
         $scope.tg.routeId = $routeParams.routeId;
       });
-      $scope.ifRegister = false;
+      $scope.regMode = false;
+      $scope.detailMode = true;
     } else {
       $scope.tg.agencyId = $routeParams.agencyId;
       $scope.tg.routeId = $routeParams.routeId;
@@ -47,6 +49,11 @@ angular.module('mngApp')
             var tat = +new Date() - start;
               $timeout(function() {
                 $scope.alerts.push({type: 'success', msg: '保存に成功しました。'});
+                if ($scope.regMode === false) {
+                  $scope.detailMode = true;
+                } else {
+                  $location.path('tripgroups/' + $routeParams.agencyId + '/' + $routeParams.routeId);
+                }
               }, (tat >= tout ? 0 : tout - tat));
             },
             function() {
@@ -58,7 +65,7 @@ angular.module('mngApp')
         ); 
       };
 
-      if ($scope.ifRegister) {
+      if ($scope.regMode) {
         doSave(Tripgroups.register);
       } else {
         doSave(Tripgroups.update);

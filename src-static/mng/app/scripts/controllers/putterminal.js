@@ -8,17 +8,19 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('PutterminalCtrl', function ($scope, Terminals, $routeParams, $timeout, method) {
+  .controller('PutterminalCtrl', function ($scope, $routeParams, $timeout, $location, method, Terminals) {
     
     $scope.method = method;
     $scope.terminal = {};
-    
-    $scope.ifRegister = true;
+
+    $scope.regMode = true;
+    $scope.detailMode = false;
     if (method === 'PUT') {
       $scope.terminal = Terminals.get({
         id : $routeParams.id
       });
-    $scope.ifRegister = false;
+      $scope.regMode = false;
+      $scope.detailMode = true;
     }
 
     $scope.submit = function() {
@@ -38,6 +40,11 @@ angular.module('mngApp')
             var tat = +new Date() - start;
               $timeout(function() {
                 $scope.alerts.push({type: 'success', msg: '保存に成功しました。'});
+                if ($scope.regMode === false) {
+                  $scope.detailMode = true;
+                } else {
+                  $location.path('terminals');
+                }
               }, (tat >= tout ? 0 : tout - tat));
             },
             function() {
@@ -49,7 +56,7 @@ angular.module('mngApp')
         ); 
       };
 
-      if ($scope.ifRegister) {
+      if ($scope.regMode) {
         doSave(Terminals.register);
       } else {
         doSave(Terminals.update);

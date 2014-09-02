@@ -19,33 +19,54 @@
   <div class="form-group">
     <label for="inputTripGroupId" class="col-sm-2 control-label">TripGroup ID</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputTripGroupId" placeholder="TripGroup ID" ng-model="tg.id" required>
+      <div ng-show="detailMode">{{tg.id}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputTripGroupId" placeholder="TripGroup ID" ng-model="tg.id" required>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="inputDesc" class="col-sm-2 control-label">Desc</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputDesc" placeholder="（例）TripGroup Desc in here" ng-model="tg.desc" required>
+      <div ng-show="detailMode">{{tg.desc}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputDesc" placeholder="（例）TripGroup Desc in here" ng-model="tg.desc" required>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="inputDirection" class="col-sm-2 control-label">TripGroup Direction</label>
     <div class="col-sm-10">
-      <select name="directionId" ng-model="tg.directionId" class="form-control" 
+      <div ng-show="detailMode">{{tg.directionId | directionType}}</div>
+      <div ng-hide="detailMode">
+        <select name="directionId" ng-model="tg.directionId" class="form-control" 
           ng-options="dType.id as dType.name for dType in directionTypes" required>
           <option value="">------</option>
         </select>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label for="inputDefaultHeadsign" class="col-sm-2 control-label">DefaultHeadsign</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputDefaultHeadsign" placeholder="（例）掛川駅行き" ng-model="tg.defaultHeadsign" required>
+      <div ng-show="detailMode">{{tg.defaultHeadsign}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputDefaultHeadsign" placeholder="（例）掛川駅行き" ng-model="tg.defaultHeadsign" required>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default btn-lg glyphicon glyphicon-save" ng-click="submit()">保存</button>
+      <div ng-show="detailMode">
+        <button type="button" class="btn btn-default btn-lg glyphicon glyphicon-pencil" ng-click="detailMode=!detailMode">編集</button>
+        <button type="button" class="btn btn-default btn-lg glyphicon glyphicon-remove" ng-click="">削除</button>
+      </div>
+      <div ng-show="detailMode == false">
+        <button type="submit" class="btn btn-default btn-lg glyphicon glyphicon-save" ng-click="submit()">保存</button>
+        <span ng-show="regMode == false">
+          <button type="submit" class="btn btn-default btn-lg glyphicon glyphicon-save" ng-click="detailMode=!detailMode">キャンセル</button>
+        </span>
+      </div>
     </div>
     <div class="col-sm-offset-2 col-sm-10">
       <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
