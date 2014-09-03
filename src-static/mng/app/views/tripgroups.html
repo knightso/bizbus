@@ -3,8 +3,8 @@
     Agency: [{{agencyId}}] - Route: [{{routeId}}]
   </div>
   <div class="panel-body">
-    <a href="#/postTripgroup/{{agencyId}}/{{routeId}}"><button type="button" class="btn btn-default btn-md glyphicon glyphicon-plus">追加</button></a>
-    <button type="button" class="btn btn-default btn-md glyphicon glyphicon-search" ng-click="filtering=!filtering">フィルタ</button>
+    <a href="#/postTripgroup/{{agencyId}}/{{routeId}}"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus">追加</button></a>
+    <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-search" ng-click="filtering=!filtering">フィルタ</button>
   </div>
   <table class="table">
     <thead ng-show="filtering">
@@ -19,7 +19,7 @@
         </select>
       </th>
       <th><input type="text" size="20" ng-model="criteria.defaultHeadsign" class="form-control" placeholder="DefaultHeadsign"></th>
-      <th><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-remove-sign" ng-click="criteria={}"></button></th>
+      <th><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-remove-sign" ng-click="criteria={}"></button></th>
     </thead>
     <thead style="background-color: #ddd">
       <th>TgID</th>
@@ -30,7 +30,7 @@
       <th></th>
     </thead>
     <tbody>
-      <tr ng-repeat="tg in tripgroups | filter:(filtering ? criteria : {})" ng-click="detail(agencyId, routeId, tg.id)">
+      <tr ng-repeat="tg in tripgroups | filter:(filtering ? criteria : {})" ng-click="detail(agencyId, routeId, tg.id)" class="selectable" ng-class-even="'even'">
         <td>{{tg.id}}</td>
         <td>{{tg.routeId}}</td>
         <td>{{tg.desc | limitTo:charLimit}}<span ng-show="tg.desc.length > charLimit">...</span></td>
@@ -41,4 +41,4 @@
     </tbody>
   </table>
 </div>
-<a href="#/postTripgroup/{{agencyId}}/{{routeId}}"><button type="button" class="btn btn-default btn-md glyphicon glyphicon-plus">追加</button></a><br/><br/>
+<a href="#/postTripgroup/{{agencyId}}/{{routeId}}"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus">追加</button></a><br/><br/>

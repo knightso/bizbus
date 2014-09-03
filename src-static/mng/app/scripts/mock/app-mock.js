@@ -44,7 +44,13 @@
  
     $httpBackend.whenGET(/^\/api\/agencies\/[^\/]+\/routes+\/[^\/]+$/).respond(function(method, url) {
       var routeId = url.substring(url.lastIndexOf('/')+1);
-      var route = routes.get(routeId);
+      //var route = routes.get(routeId); // did not get it?
+      var route;
+      for (var i = 0; i < routes.table.records.length; i++) {
+        if (routes.table.records[i].id === routeId) {
+          route = routes.table.records[i];
+        }
+      }
       return [200, route];
     });
 

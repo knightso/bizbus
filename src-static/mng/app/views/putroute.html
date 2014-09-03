@@ -1,7 +1,7 @@
 <h2>Route{{method=='POST' && '登録' || '編集'}}</h2>
 
 <div class="panel-body">
-   <a href="#/routes/{{agency.id}}"><button type="button" class="btn btn-default btn-md glyphicon glyphicon-arrow-left">戻る</button></a>
+   <a href="#/routes/{{agency.id}}"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left">戻る</button></a>
 </div>
 <form name="routeForm" class="form-horizontal" role="form">
   <div class="form-group">
@@ -58,13 +58,13 @@
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <div ng-show="detailMode">
-        <button type="button" class="btn btn-default btn-lg glyphicon glyphicon-pencil" ng-click="detailMode=!detailMode">編集</button>
-        <button type="button" class="btn btn-default btn-lg glyphicon glyphicon-remove" ng-click="">削除</button>
+        <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-pencil" ng-click="detailMode=!detailMode">編集</button>
+        <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-remove" ng-click="">削除</button>
       </div>
       <div ng-show="detailMode == false">
-        <button type="submit" class="btn btn-default btn-lg glyphicon glyphicon-save" ng-click="submit()">保存</button>
+        <button type="submit" class="btn btn-primary btn-sm glyphicon glyphicon-save" ng-click="submit()">保存</button>
         <span ng-show="regMode == false">
-          <button type="submit" class="btn btn-default btn-lg glyphicon glyphicon-save" ng-click="detailMode=!detailMode">キャンセル</button>
+          <button type="submit" class="btn btn-primary btn-sm glyphicon glyphicon-save" ng-click="detailMode=!detailMode">キャンセル</button>
         </span>
       </div>
     </div>
@@ -74,5 +74,5 @@
   </div>
 </form>
 <div class="panel-body">
-   <a href="#/routes/{{agency.id}}"><button type="button" class="btn btn-default btn-md glyphicon glyphicon-arrow-left">戻る</button></a>
+   <a href="#/routes/{{agency.id}}"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left">戻る</button></a>
 </div>
