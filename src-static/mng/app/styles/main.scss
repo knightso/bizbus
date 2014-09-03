@@ -101,4 +101,10 @@ body {
   width: 80%;
 }
 
+tr.even {
+  background: #f3f3f3;
+}
 
+tr.selectable:hover {
+  background: #428bca + #555;
+}

@@ -10,5 +10,9 @@
 angular.module('mngApp')
   .controller('StopsCtrl', function ($scope, Stations) {
     $scope.criteria = {};
-    $scope.stations = Stations.query();
+    $scope.stations = [];
+
+    $scope.search = function () {
+      $scope.stations = Stations.query();
+    };
   });

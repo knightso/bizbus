@@ -1,30 +1,58 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <a href="#/postStop"><button type="button" class="btn btn-default btn-md glyphicon glyphicon-plus">追加</button></a>
+    <a href="#/postStop"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus">追加</button></a>
   </div>
-  <table class="table">
-    <thead style="background-color: #ddd">
-      <th>ID</th>
-      <th>Name</th>
-      <th>Desc</th>
-      <th>Lat</th>
-      <th>Lon</th>
-      <th>URL</th>
-      <th>編集</th>
-      <th>削除</th>
-    </thead>
-    <tbody>
-      <tr ng-repeat="stop in stations">
-        <td>{{stop.id}}</td>
-        <td>{{stop.name}}</td>
-        <td>{{stop.desc | limitTo:20}} {{stop.desc.length > 20 ? '...' : ''}}</td>
-        <td>{{stop.lat}}</td>
-        <td>{{stop.lon}}</td>
-        <td><a ng-href="{{stop.url}}">link</a></td>
-        <td><a ng-href="#/putStop/{{stop.id}}"><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-pencil"></button></a></td>
-        <td><button type="button" class="btn btn-default btn-sm glyphicon glyphicon-remove" ng-click=""></button></td>
-    </tr>
-    </tbody>
-  </table>
+  <div class="panel-body">
+    <div class="form-group">
+      <input type="text" class="form-control" name="searchCriteria" ng-model="searchCriteria" style="width:30%;display:inline;">
+      <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus" ng-click="search();">検索</a>
+    </div>
+  </div>
+  <div class="panel-body">
+    <table class="table">
+      <thead style="background-color: #ddd">
+        <th></th>
+        <th></th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Desc</th>
+        <th>Lat</th>
+        <th>Lon</th>
+        <th>URL</th>
+        <th>乗り場</th>
+      </thead>
+      <tbody ng-repeat="stop in stations">
+        <tr class="selectable" ng-class-even="'even'">
+          <td>
+            <button type="button" class="btn btn-xs btn-default glyphicon" ng-class="{'glyphicon-chevron-right': !stop.expand, 'glyphicon-chevron-down': stop.expand}" ng-click="stop.expand = !stop.expand" ng-show="stop.locationType === 1"></button>
+            <span class="glyphicon glyphicon-glass" ng-show="stop.locationType !== 1"></span>
+          </td>
+          <td></td>
+          <td>{{stop.id}}</td>
+          <td>{{stop.name}}</td>
+          <td>{{stop.desc | limitTo:20}} {{stop.desc.length > 20 ? '...' : ''}}</td>
+          <td>{{stop.lat}}</td>
+          <td>{{stop.lon}}</td>
+          <td><a ng-href="{{stop.url}}">link</a></td>
+          <td>
+            <button type="button" class="btn btn-xs btn-default glyphicon glyphicon-plus" ng-show="stop.locationType === 1"></button>
+          </td>
+        </tr>
+        <tr ng-repeat="child in stop.children" class="selectable" ng-show="stop.expand">
+          <td></td>
+          <td><span class="glyphicon glyphicon-glass" ng-show="child.locationType !== 1"></span></td>
+          <td>{{child.id}}</td>
+          <td>{{child.name}}</td>
+          <td>{{child.desc | limitTo:20}} {{child.desc.length > 20 ? '...' : ''}}</td>
+          <td>{{child.lat}}</td>
+          <td>{{child.lon}}</td>
+          <td><a ng-href="{{child.url}}">link</a></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel-body">
+    <a href="#/postStop"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus">追加</button></a>
+  </div>
 </div>
-<a href="#/postStop"><button type="button" class="btn btn-default btn-md glyphicon glyphicon-plus">追加</button></a>

@@ -90,6 +90,13 @@
       var filtered = _.filter(stops.table.records, function(stop) {
         return stop.locationType === 1 || !stop.parentStation;
       });
+      _.each(filtered, function(stop) {
+        if (stop.locationType === 1) {
+          stop.children = _.filter(stops.table.records, function(child) {
+            return child.parentStation === stop.id;
+          });
+        }
+      });
      return [200, filtered];
     });
 
