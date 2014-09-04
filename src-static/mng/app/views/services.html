@@ -6,12 +6,14 @@
   <table class="table">
     <thead ng-show="filtering">
       <th><input type="text" size="10" ng-model="criteria.id" class="form-control" placeholder="ID"></th>
+      <th><input type="text" size="10" ng-model="criteria.name" class="form-control" placeholder="Name"></th>
       <th><input type="text" size="10" ng-model="criteria.agencyId" class="form-control" placeholder="AgencyId"></th>
       <th><input type="text" size="10" ng-model="criteria.desc" class="form-control" placeholder="Desc"></th>
       <th><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-remove-sign" ng-click="criteria={}"></button></th>
     </thead>
     <thead style="background-color: #ddd">
       <th>ID</th>
+      <th>Name</th>
       <th>AgencyId</th>
       <th>Desc</th>
       <th></th>
@@ -19,6 +21,7 @@
     <tbody>
       <tr ng-repeat="service in services | filter:(filtering ? criteria : {})" ng-click="detail(service.id)" class="selectable" ng-class-even="'even'">
         <td>{{service.id}}</td>
+        <td>{{service.name}}</td>
         <td>{{service.agencyId}}</td>
         <td>{{service.desc}}</td>
         <td></td>
