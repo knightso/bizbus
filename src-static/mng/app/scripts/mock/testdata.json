@@ -1,6 +1,53 @@
 {
   "title": "testdata",
   "tables": {
+    "agencies": {
+      "records": [
+        {
+          "id": "DTA",
+          "name": "Demo Transit Authority",
+          "url": "http://google.com",
+          "timezone": "America/Los_Angeles",
+          "phone": "123-456-789",
+          "lang": "en",
+          "routes": [
+            "AB",
+            "BFC",
+            "STBA",
+            "CITY",
+            "AAMV"
+          ]
+        },
+        {
+          "id": "JR",
+          "name": "Japan Railway",
+          "url": "http://japan.co.jp",
+          "timezone": "Japan/Tokyo",
+          "phone": "028-1098-7720",
+          "lang": "ja",
+          "routes": [
+            "JRount1",
+            "JRount2",
+            "JRount3"
+          ]
+        },
+        {
+          "id": "GT",
+          "name": "Gao Tie",
+          "url": "http://china.com.cn",
+          "timezone": "China/Beijing",
+          "phone": "168-999-890",
+          "lang": "zh",
+          "routes": [
+            "GTRount1",
+            "GTRount2"
+          ]
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
     "tripgroups": {
       "records": [
         {
@@ -58,138 +105,6 @@
           "desc": "倉真線 上り",
           "directionId": 1,
           "defaultHeadsign": "掛川駅行き"
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "trips": {
-      "records": [
-        {
-          "id": "AB1",
-          "routeId": "AB",
-          "serviceId": "FULLW",
-          "headsign": "to Bullfrog",
-          "directionId": 0,
-          "blockId": 1
-        },
-        {
-          "id": "AB2",
-          "routeId": "AB",
-          "serviceId": "FULLW",
-          "headsign": "to Airport",
-          "directionId": 1,
-          "blockId": 2
-        },
-        {
-          "id": "STBA",
-          "routeId": "STBA",
-          "serviceId": "FULLW",
-          "headsign": "Shuttle"
-        },
-        {
-          "id": "CITY1",
-          "routeId": "CITY",
-          "serviceId": "FULLW",
-          "directionId": 0
-        },
-        {
-          "id": "CITY2",
-          "routeId": "CITY",
-          "serviceId": "FULLW",
-          "directionId": 1
-        },
-        {
-          "id": "BFC1",
-          "routeId": "BFC",
-          "serviceId": "FULLW",
-          "headsign": "to Furnace Creek Resort",
-          "directionId": 0,
-          "blockId": 1
-        },
-        {
-          "id": "BFC2",
-          "routeId": "BFC",
-          "serviceId": "FULLW",
-          "headsign": "to Bullfrog",
-          "directionId": 1,
-          "blockId": 2
-        },
-        {
-          "id": "AAMV1",
-          "routeId": "AAMV",
-          "serviceId": "WE",
-          "headsign": "to Amargosa Valley",
-          "directionId": 0
-        },
-        {
-          "id": "AAMV2",
-          "routeId": "AAMV",
-          "serviceId": "WE",
-          "headsign": "to Airport",
-          "directionId": 1
-        },
-        {
-          "id": "AAMV3",
-          "routeId": "AAMV",
-          "serviceId": "WE",
-          "headsign": "to Amargosa Valley",
-          "directionId": 0
-        },
-        {
-          "id": "AAMV4",
-          "routeId": "AAMV",
-          "serviceId": "WE",
-          "headsign": "to Airport",
-          "directionId": 1
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "agencies": {
-      "records": [
-        {
-          "id": "DTA",
-          "name": "Demo Transit Authority",
-          "url": "http://google.com",
-          "timezone": "America/Los_Angeles",
-          "phone": "123-456-789",
-          "lang": "en",
-          "routes": [
-            "AB",
-            "BFC",
-            "STBA",
-            "CITY",
-            "AAMV"
-          ]
-        },
-        {
-          "id": "JR",
-          "name": "Japan Railway",
-          "url": "http://japan.co.jp",
-          "timezone": "Japan/Tokyo",
-          "phone": "028-1098-7720",
-          "lang": "ja",
-          "routes": [
-            "JRount1",
-            "JRount2",
-            "JRount3"
-          ]
-        },
-        {
-          "id": "GT",
-          "name": "Gao Tie",
-          "url": "http://china.com.cn",
-          "timezone": "China/Beijing",
-          "phone": "168-999-890",
-          "lang": "zh",
-          "routes": [
-            "GTRount1",
-            "GTRount2"
-          ]
         }
       ],
       "primary_key": [
@@ -277,472 +192,85 @@
         "id"
       ]
     },
-    "services": {
+    "trips": {
       "records": [
         {
-          "id": "FULLW",
-          "agencyId": "DTA",
-          "desc": "毎日"
-        },
-        {
-          "id": "WE",
-          "agencyId": "JR",
-          "desc": "週末"
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "calendars": {
-      "records": [
-        {
-          "id": "1",
+          "id": "AB1",
+          "routeId": "AB",
           "serviceId": "FULLW",
-          "monday": 1,
-          "tuesday": 1,
-          "wednesday": 1,
-          "thursday": 1,
-          "friday": 1,
-          "saturday": 1,
-          "sunday": 1,
-          "startDate": "20070101",
-          "endDate": "20101231"
+          "headsign": "to Bullfrog",
+          "directionId": 0,
+          "blockId": 1
         },
         {
-          "id": "2",
+          "id": "AB2",
+          "routeId": "AB",
+          "serviceId": "FULLW",
+          "headsign": "to Airport",
+          "directionId": 1,
+          "blockId": 2
+        },
+        {
+          "id": "STBA",
+          "routeId": "STBA",
+          "serviceId": "FULLW",
+          "headsign": "Shuttle"
+        },
+        {
+          "id": "CITY1",
+          "routeId": "CITY",
+          "serviceId": "FULLW",
+          "directionId": 0
+        },
+        {
+          "id": "CITY2",
+          "routeId": "CITY",
+          "serviceId": "FULLW",
+          "directionId": 1
+        },
+        {
+          "id": "BFC1",
+          "routeId": "BFC",
+          "serviceId": "FULLW",
+          "headsign": "to Furnace Creek Resort",
+          "directionId": 0,
+          "blockId": 1
+        },
+        {
+          "id": "BFC2",
+          "routeId": "BFC",
+          "serviceId": "FULLW",
+          "headsign": "to Bullfrog",
+          "directionId": 1,
+          "blockId": 2
+        },
+        {
+          "id": "AAMV1",
+          "routeId": "AAMV",
           "serviceId": "WE",
-          "monday": 0,
-          "tuesday": 0,
-          "wednesday": 0,
-          "thursday": 0,
-          "friday": 0,
-          "saturday": 1,
-          "sunday": 1,
-          "startDate": "20070101",
-          "endDate": "20101231"
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "calendar_dates": {
-      "records": [
-        {
-          "id": "1",
-          "serviceId": "FULLW",
-          "date": "20070604",
-          "exceptionType": 2
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "stop_times": {
-      "records": [
-        {
-          "id": "STAGECOACH",
-          "tripId": "STBA",
-          "arrivalTime": "6:00:00",
-          "departureTime": "6:00:00",
-          "sequence": 1
+          "headsign": "to Amargosa Valley",
+          "directionId": 0
         },
         {
-          "id": "BEATTY_AIRPORT",
-          "tripId": "STBA",
-          "arrivalTime": "6:20:00",
-          "departureTime": "6:20:00",
-          "sequence": 2
+          "id": "AAMV2",
+          "routeId": "AAMV",
+          "serviceId": "WE",
+          "headsign": "to Airport",
+          "directionId": 1
         },
         {
-          "id": "STAGECOACH",
-          "tripId": "CITY1",
-          "arrivalTime": "6:00:00",
-          "departureTime": "6:00:00",
-          "sequence": 1
+          "id": "AAMV3",
+          "routeId": "AAMV",
+          "serviceId": "WE",
+          "headsign": "to Amargosa Valley",
+          "directionId": 0
         },
         {
-          "id": "NANAA",
-          "tripId": "CITY1",
-          "arrivalTime": "6:05:00",
-          "departureTime": "6:07:00",
-          "sequence": 2
-        },
-        {
-          "id": "NADAV",
-          "tripId": "CITY1",
-          "arrivalTime": "6:12:00",
-          "departureTime": "6:14:00",
-          "sequence": 3
-        },
-        {
-          "id": "DADAN",
-          "tripId": "CITY1",
-          "arrivalTime": "6:19:00",
-          "departureTime": "6:21:00",
-          "sequence": 4
-        },
-        {
-          "id": "EMSI",
-          "tripId": "CITY1",
-          "arrivalTime": "6:26:00",
-          "departureTime": "6:28:00",
-          "sequence": 5
-        },
-        {
-          "id": "EMSI",
-          "tripId": "CITY2",
-          "arrivalTime": "6:28:00",
-          "departureTime": "6:30:00",
-          "sequence": 1
-        },
-        {
-          "id": "DADAN",
-          "tripId": "CITY2",
-          "arrivalTime": "6:35:00",
-          "departureTime": "6:37:00",
-          "sequence": 2
-        },
-        {
-          "id": "NADAV",
-          "tripId": "CITY2",
-          "arrivalTime": "6:42:00",
-          "departureTime": "6:44:00",
-          "sequence": 3
-        },
-        {
-          "id": "NANAA",
-          "tripId": "CITY2",
-          "arrivalTime": "6:49:00",
-          "departureTime": "6:51:00",
-          "sequence": 4
-        },
-        {
-          "id": "STAGECOACH",
-          "tripId": "CITY2",
-          "arrivalTime": "6:56:00",
-          "departureTime": "6:58:00",
-          "sequence": 5
-        },
-        {
-          "id": "BEATTY_AIRPORT",
-          "tripId": "AB1",
-          "arrivalTime": "8:00:00",
-          "departureTime": "8:00:00",
-          "sequence": 1
-        },
-        {
-          "id": "BULLFROG",
-          "tripId": "AB1",
-          "arrivalTime": "8:10:00",
-          "departureTime": "8:15:00",
-          "sequence": 2
-        },
-        {
-          "id": "BULLFROG",
-          "tripId": "AB2",
-          "arrivalTime": "12:05:00",
-          "departureTime": "12:05:00",
-          "sequence": 1
-        },
-        {
-          "id": "BEATTY_AIRPORT",
-          "tripId": "AB2",
-          "arrivalTime": "12:15:00",
-          "departureTime": "12:15:00",
-          "sequence": 2
-        },
-        {
-          "id": "BULLFROG",
-          "tripId": "BFC1",
-          "arrivalTime": "8:20:00",
-          "departureTime": "8:20:00",
-          "sequence": 1
-        },
-        {
-          "id": "FUR_CREEK_RES",
-          "tripId": "BFC1",
-          "arrivalTime": "9:20:00",
-          "departureTime": "9:20:00",
-          "sequence": 2
-        },
-        {
-          "id": "FUR_CREEK_RES",
-          "tripId": "BFC2",
-          "arrivalTime": "11:00:00",
-          "departureTime": "11:00:00",
-          "sequence": 1
-        },
-        {
-          "id": "BULLFROG",
-          "tripId": "BFC2",
-          "arrivalTime": "12:00:00",
-          "departureTime": "12:00:00",
-          "sequence": 2
-        },
-        {
-          "id": "BEATTY_AIRPORT",
-          "tripId": "AAMV1",
-          "arrivalTime": "8:00:00",
-          "departureTime": "8:00:00",
-          "sequence": 1
-        },
-        {
-          "id": "AMV",
-          "tripId": "AAMV1",
-          "arrivalTime": "9:00:00",
-          "departureTime": "9:00:00",
-          "sequence": 2
-        },
-        {
-          "id": "AMV",
-          "tripId": "AAMV2",
-          "arrivalTime": "10:00:00",
-          "departureTime": "10:00:00",
-          "sequence": 1
-        },
-        {
-          "id": "BEATTY_AIRPORT",
-          "tripId": "AAMV2",
-          "arrivalTime": "11:00:00",
-          "departureTime": "11:00:00",
-          "sequence": 2
-        },
-        {
-          "id": "BEATTY_AIRPORT",
-          "tripId": "AAMV3",
-          "arrivalTime": "13:00:00",
-          "departureTime": "13:00:00",
-          "sequence": 1
-        },
-        {
-          "id": "AMV",
-          "tripId": "AAMV3",
-          "arrivalTime": "14:00:00",
-          "departureTime": "14:00:00",
-          "sequence": 2
-        },
-        {
-          "id": "AMV",
-          "tripId": "AAMV4",
-          "arrivalTime": "15:00:00",
-          "departureTime": "15:00:00",
-          "sequence": 1
-        },
-        {
-          "id": "BEATTY_AIRPORT",
-          "tripId": "AAMV4",
-          "arrivalTime": "16:00:00",
-          "departureTime": "16:00:00",
-          "sequence": 2
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "fare_attributes": {
-      "records": [
-        {
-          "id": "p",
-          "price": "1.25",
-          "currencyType": "USD",
-          "paymentMethod": 0,
-          "transfers": 0
-        },
-        {
-          "id": "a",
-          "price": "5.25",
-          "currencyType": "USD",
-          "paymentMethod": 0,
-          "transfers": 0
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "fare_rules": {
-      "records": [
-        {
-          "id": "p",
-          "routeId": "AB"
-        },
-        {
-          "id": "p",
-          "routeId": "STBA"
-        },
-        {
-          "id": "p",
-          "routeId": "BFC"
-        },
-        {
-          "id": "a",
-          "routeId": "AAMV"
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "frequencies": {
-      "records": [
-        {
-          "tripId": "STBA",
-          "startTime": "6:00:00",
-          "endTime": "22:00:00",
-          "headwaySecs": 1800
-        },
-        {
-          "tripId": "CITY1",
-          "startTime": "6:00:00",
-          "endTime": "7:59:59",
-          "headwaySecs": 1800
-        },
-        {
-          "tripId": "CITY2",
-          "startTime": "6:00:00",
-          "endTime": "7:59:59",
-          "headwaySecs": 1800
-        },
-        {
-          "tripId": "CITY1",
-          "startTime": "8:00:00",
-          "endTime": "9:59:59",
-          "headwaySecs": 600
-        },
-        {
-          "tripId": "CITY2",
-          "startTime": "8:00:00",
-          "endTime": "9:59:59",
-          "headwaySecs": 600
-        },
-        {
-          "tripId": "CITY1",
-          "startTime": "10:00:00",
-          "endTime": "15:59:59",
-          "headwaySecs": 1800
-        },
-        {
-          "tripId": "CITY2",
-          "startTime": "10:00:00",
-          "endTime": "15:59:59",
-          "headwaySecs": 1800
-        },
-        {
-          "tripId": "CITY1",
-          "startTime": "16:00:00",
-          "endTime": "18:59:59",
-          "headwaySecs": 600
-        },
-        {
-          "tripId": "CITY2",
-          "startTime": "16:00:00",
-          "endTime": "18:59:59",
-          "headwaySecs": 600
-        },
-        {
-          "tripId": "CITY1",
-          "startTime": "19:00:00",
-          "endTime": "22:00:00",
-          "headwaySecs": 1800
-        },
-        {
-          "tripId": "CITY2",
-          "startTime": "19:00:00",
-          "endTime": "22:00:00",
-          "headwaySecs": 1800
-        }
-      ],
-      "primary_key": []
-    },
-    "terminals": {
-      "records": [
-        {
-          "id": "1",
-          "active": true,
-          "counterId": 1,
-          "desc": "test device 001",
-          "deviceId": 1,
-          "number": "20",
-          "owner": "jack",
-          "status": 1,
-          "totalDays": 30,
-          "totalReport": 29,
-          "totalTrip": 25,
-          "version": 3
-        },
-        {
-          "id": "2",
-          "active": true,
-          "counterId": 1,
-          "desc": "test device 002",
-          "deviceId": 2,
-          "number": "30",
-          "owner": "mike",
-          "status": 1,
-          "totalDays": 92,
-          "totalReport": 85,
-          "totalTrip": 30,
-          "version": 1
-        },
-        {
-          "id": "3",
-          "active": false,
-          "counterId": 2,
-          "desc": "test device 003",
-          "deviceId": 3,
-          "number": "28",
-          "owner": "tome",
-          "status": 0,
-          "totalDays": 35,
-          "totalReport": 27,
-          "totalTrip": 32,
-          "version": 6
-        },
-        {
-          "id": "4",
-          "active": true,
-          "counterId": 2,
-          "desc": "test device 004",
-          "deviceId": 3,
-          "number": "39",
-          "owner": "jerry",
-          "status": 0,
-          "totalDays": 88,
-          "totalReport": 82,
-          "totalTrip": 19,
-          "version": 5
-        },
-        {
-          "id": "5",
-          "active": false,
-          "counterId": 3,
-          "desc": "test device 005",
-          "deviceId": 2,
-          "number": "22",
-          "owner": "tony",
-          "status": 1,
-          "totalDays": 76,
-          "totalReport": 70,
-          "totalTrip": 27,
-          "version": 3
-        },
-        {
-          "id": "6",
-          "active": false,
-          "counterId": 3,
-          "desc": "test device 006",
-          "deviceId": 1,
-          "number": "19",
-          "owner": "alex",
-          "status": 0,
-          "totalDays": 50,
-          "totalReport": 49,
-          "totalTrip": 31,
-          "version": 2
+          "id": "AAMV4",
+          "routeId": "AAMV",
+          "serviceId": "WE",
+          "headsign": "to Airport",
+          "directionId": 1
         }
       ],
       "primary_key": [
@@ -952,6 +480,480 @@
           "lon": -116.40094,
           "url": "http://www.example.com/9",
           "active": true
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "services": {
+      "records": [
+        {
+          "id": "FULLW",
+          "agencyId": "DTA",
+          "name": "2007-2010毎日",
+          "desc": "2007-2010毎日"
+        },
+        {
+          "id": "WE",
+          "agencyId": "JR",
+          "name": "2007-2010週末のみ",
+          "desc": "2007-2010週末のみ"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "calendar_dates": {
+      "records": [
+        {
+          "id": "1",
+          "serviceId": "FULLW",
+          "date": "20070604",
+          "exceptionType": 2
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "calendars": {
+      "records": [
+        {
+          "id": "1",
+          "serviceId": "FULLW",
+          "monday": 1,
+          "tuesday": 1,
+          "wednesday": 1,
+          "thursday": 1,
+          "friday": 1,
+          "saturday": 1,
+          "sunday": 1,
+          "startDate": "20070101",
+          "endDate": "20101231"
+        },
+        {
+          "id": "2",
+          "serviceId": "WE",
+          "monday": 0,
+          "tuesday": 0,
+          "wednesday": 0,
+          "thursday": 0,
+          "friday": 0,
+          "saturday": 1,
+          "sunday": 1,
+          "startDate": "20070101",
+          "endDate": "20101231"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "fare_attributes": {
+      "records": [
+        {
+          "id": "p",
+          "price": "1.25",
+          "currencyType": "USD",
+          "paymentMethod": 0,
+          "transfers": 0
+        },
+        {
+          "id": "a",
+          "price": "5.25",
+          "currencyType": "USD",
+          "paymentMethod": 0,
+          "transfers": 0
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "fare_rules": {
+      "records": [
+        {
+          "id": "p",
+          "routeId": "AB"
+        },
+        {
+          "id": "p",
+          "routeId": "STBA"
+        },
+        {
+          "id": "p",
+          "routeId": "BFC"
+        },
+        {
+          "id": "a",
+          "routeId": "AAMV"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "stop_times": {
+      "records": [
+        {
+          "id": "STAGECOACH",
+          "tripId": "STBA",
+          "arrivalTime": "6:00:00",
+          "departureTime": "6:00:00",
+          "sequence": 1
+        },
+        {
+          "id": "BEATTY_AIRPORT",
+          "tripId": "STBA",
+          "arrivalTime": "6:20:00",
+          "departureTime": "6:20:00",
+          "sequence": 2
+        },
+        {
+          "id": "STAGECOACH",
+          "tripId": "CITY1",
+          "arrivalTime": "6:00:00",
+          "departureTime": "6:00:00",
+          "sequence": 1
+        },
+        {
+          "id": "NANAA",
+          "tripId": "CITY1",
+          "arrivalTime": "6:05:00",
+          "departureTime": "6:07:00",
+          "sequence": 2
+        },
+        {
+          "id": "NADAV",
+          "tripId": "CITY1",
+          "arrivalTime": "6:12:00",
+          "departureTime": "6:14:00",
+          "sequence": 3
+        },
+        {
+          "id": "DADAN",
+          "tripId": "CITY1",
+          "arrivalTime": "6:19:00",
+          "departureTime": "6:21:00",
+          "sequence": 4
+        },
+        {
+          "id": "EMSI",
+          "tripId": "CITY1",
+          "arrivalTime": "6:26:00",
+          "departureTime": "6:28:00",
+          "sequence": 5
+        },
+        {
+          "id": "EMSI",
+          "tripId": "CITY2",
+          "arrivalTime": "6:28:00",
+          "departureTime": "6:30:00",
+          "sequence": 1
+        },
+        {
+          "id": "DADAN",
+          "tripId": "CITY2",
+          "arrivalTime": "6:35:00",
+          "departureTime": "6:37:00",
+          "sequence": 2
+        },
+        {
+          "id": "NADAV",
+          "tripId": "CITY2",
+          "arrivalTime": "6:42:00",
+          "departureTime": "6:44:00",
+          "sequence": 3
+        },
+        {
+          "id": "NANAA",
+          "tripId": "CITY2",
+          "arrivalTime": "6:49:00",
+          "departureTime": "6:51:00",
+          "sequence": 4
+        },
+        {
+          "id": "STAGECOACH",
+          "tripId": "CITY2",
+          "arrivalTime": "6:56:00",
+          "departureTime": "6:58:00",
+          "sequence": 5
+        },
+        {
+          "id": "BEATTY_AIRPORT",
+          "tripId": "AB1",
+          "arrivalTime": "8:00:00",
+          "departureTime": "8:00:00",
+          "sequence": 1
+        },
+        {
+          "id": "BULLFROG",
+          "tripId": "AB1",
+          "arrivalTime": "8:10:00",
+          "departureTime": "8:15:00",
+          "sequence": 2
+        },
+        {
+          "id": "BULLFROG",
+          "tripId": "AB2",
+          "arrivalTime": "12:05:00",
+          "departureTime": "12:05:00",
+          "sequence": 1
+        },
+        {
+          "id": "BEATTY_AIRPORT",
+          "tripId": "AB2",
+          "arrivalTime": "12:15:00",
+          "departureTime": "12:15:00",
+          "sequence": 2
+        },
+        {
+          "id": "BULLFROG",
+          "tripId": "BFC1",
+          "arrivalTime": "8:20:00",
+          "departureTime": "8:20:00",
+          "sequence": 1
+        },
+        {
+          "id": "FUR_CREEK_RES",
+          "tripId": "BFC1",
+          "arrivalTime": "9:20:00",
+          "departureTime": "9:20:00",
+          "sequence": 2
+        },
+        {
+          "id": "FUR_CREEK_RES",
+          "tripId": "BFC2",
+          "arrivalTime": "11:00:00",
+          "departureTime": "11:00:00",
+          "sequence": 1
+        },
+        {
+          "id": "BULLFROG",
+          "tripId": "BFC2",
+          "arrivalTime": "12:00:00",
+          "departureTime": "12:00:00",
+          "sequence": 2
+        },
+        {
+          "id": "BEATTY_AIRPORT",
+          "tripId": "AAMV1",
+          "arrivalTime": "8:00:00",
+          "departureTime": "8:00:00",
+          "sequence": 1
+        },
+        {
+          "id": "AMV",
+          "tripId": "AAMV1",
+          "arrivalTime": "9:00:00",
+          "departureTime": "9:00:00",
+          "sequence": 2
+        },
+        {
+          "id": "AMV",
+          "tripId": "AAMV2",
+          "arrivalTime": "10:00:00",
+          "departureTime": "10:00:00",
+          "sequence": 1
+        },
+        {
+          "id": "BEATTY_AIRPORT",
+          "tripId": "AAMV2",
+          "arrivalTime": "11:00:00",
+          "departureTime": "11:00:00",
+          "sequence": 2
+        },
+        {
+          "id": "BEATTY_AIRPORT",
+          "tripId": "AAMV3",
+          "arrivalTime": "13:00:00",
+          "departureTime": "13:00:00",
+          "sequence": 1
+        },
+        {
+          "id": "AMV",
+          "tripId": "AAMV3",
+          "arrivalTime": "14:00:00",
+          "departureTime": "14:00:00",
+          "sequence": 2
+        },
+        {
+          "id": "AMV",
+          "tripId": "AAMV4",
+          "arrivalTime": "15:00:00",
+          "departureTime": "15:00:00",
+          "sequence": 1
+        },
+        {
+          "id": "BEATTY_AIRPORT",
+          "tripId": "AAMV4",
+          "arrivalTime": "16:00:00",
+          "departureTime": "16:00:00",
+          "sequence": 2
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "frequencies": {
+      "records": [
+        {
+          "tripId": "STBA",
+          "startTime": "6:00:00",
+          "endTime": "22:00:00",
+          "headwaySecs": 1800
+        },
+        {
+          "tripId": "CITY1",
+          "startTime": "6:00:00",
+          "endTime": "7:59:59",
+          "headwaySecs": 1800
+        },
+        {
+          "tripId": "CITY2",
+          "startTime": "6:00:00",
+          "endTime": "7:59:59",
+          "headwaySecs": 1800
+        },
+        {
+          "tripId": "CITY1",
+          "startTime": "8:00:00",
+          "endTime": "9:59:59",
+          "headwaySecs": 600
+        },
+        {
+          "tripId": "CITY2",
+          "startTime": "8:00:00",
+          "endTime": "9:59:59",
+          "headwaySecs": 600
+        },
+        {
+          "tripId": "CITY1",
+          "startTime": "10:00:00",
+          "endTime": "15:59:59",
+          "headwaySecs": 1800
+        },
+        {
+          "tripId": "CITY2",
+          "startTime": "10:00:00",
+          "endTime": "15:59:59",
+          "headwaySecs": 1800
+        },
+        {
+          "tripId": "CITY1",
+          "startTime": "16:00:00",
+          "endTime": "18:59:59",
+          "headwaySecs": 600
+        },
+        {
+          "tripId": "CITY2",
+          "startTime": "16:00:00",
+          "endTime": "18:59:59",
+          "headwaySecs": 600
+        },
+        {
+          "tripId": "CITY1",
+          "startTime": "19:00:00",
+          "endTime": "22:00:00",
+          "headwaySecs": 1800
+        },
+        {
+          "tripId": "CITY2",
+          "startTime": "19:00:00",
+          "endTime": "22:00:00",
+          "headwaySecs": 1800
+        }
+      ],
+      "primary_key": []
+    },
+    "terminals": {
+      "records": [
+        {
+          "id": "1",
+          "active": true,
+          "counterId": 1,
+          "desc": "test device 001",
+          "deviceId": 1,
+          "number": "20",
+          "owner": "jack",
+          "status": 1,
+          "totalDays": 30,
+          "totalReport": 29,
+          "totalTrip": 25,
+          "version": 3
+        },
+        {
+          "id": "2",
+          "active": true,
+          "counterId": 1,
+          "desc": "test device 002",
+          "deviceId": 2,
+          "number": "30",
+          "owner": "mike",
+          "status": 1,
+          "totalDays": 92,
+          "totalReport": 85,
+          "totalTrip": 30,
+          "version": 1
+        },
+        {
+          "id": "3",
+          "active": false,
+          "counterId": 2,
+          "desc": "test device 003",
+          "deviceId": 3,
+          "number": "28",
+          "owner": "tome",
+          "status": 0,
+          "totalDays": 35,
+          "totalReport": 27,
+          "totalTrip": 32,
+          "version": 6
+        },
+        {
+          "id": "4",
+          "active": true,
+          "counterId": 2,
+          "desc": "test device 004",
+          "deviceId": 3,
+          "number": "39",
+          "owner": "jerry",
+          "status": 0,
+          "totalDays": 88,
+          "totalReport": 82,
+          "totalTrip": 19,
+          "version": 5
+        },
+        {
+          "id": "5",
+          "active": false,
+          "counterId": 3,
+          "desc": "test device 005",
+          "deviceId": 2,
+          "number": "22",
+          "owner": "tony",
+          "status": 1,
+          "totalDays": 76,
+          "totalReport": 70,
+          "totalTrip": 27,
+          "version": 3
+        },
+        {
+          "id": "6",
+          "active": false,
+          "counterId": 3,
+          "desc": "test device 006",
+          "deviceId": 1,
+          "number": "19",
+          "owner": "alex",
+          "status": 0,
+          "totalDays": 50,
+          "totalReport": 49,
+          "totalTrip": 31,
+          "version": 2
         }
       ],
       "primary_key": [
