@@ -27,18 +27,18 @@
             <button type="button" class="btn btn-xs btn-default glyphicon" ng-class="{'glyphicon-chevron-right': !stop.expand, 'glyphicon-chevron-down': stop.expand}" ng-click="stop.expand = !stop.expand" ng-show="stop.locationType === 1"></button>
             <span class="glyphicon glyphicon-glass" ng-show="stop.locationType !== 1"></span>
           </td>
-          <td></td>
-          <td>{{stop.id}}</td>
-          <td>{{stop.name}}</td>
-          <td>{{stop.desc | limitTo:20}} {{stop.desc.length > 20 ? '...' : ''}}</td>
-          <td>{{stop.lat}}</td>
-          <td>{{stop.lon}}</td>
+          <td ng-click="detail(stop.id)"></td>
+          <td ng-click="detail(stop.id)">{{stop.id}}</td>
+          <td ng-click="detail(stop.id)">{{stop.name}}</td>
+          <td ng-click="detail(stop.id)">{{stop.desc | limitTo:20}} {{stop.desc.length > 20 ? '...' : ''}}</td>
+          <td ng-click="detail(stop.id)">{{stop.lat}}</td>
+          <td ng-click="detail(stop.id)">{{stop.lon}}</td>
           <td><a ng-href="{{stop.url}}">link</a></td>
           <td>
-            <button type="button" class="btn btn-xs btn-default glyphicon glyphicon-plus" ng-show="stop.locationType === 1"></button>
+            <button type="button" class="btn btn-xs btn-default glyphicon glyphicon-plus" ng-show="stop.locationType === 1" ng-click="post(stop.id)"></button>
           </td>
         </tr>
-        <tr ng-repeat="child in stop.children" class="selectable" ng-show="stop.expand">
+        <tr ng-repeat="child in stop.children" class="selectable" ng-show="stop.expand" ng-click="detail(child.id)">
           <td></td>
           <td><span class="glyphicon glyphicon-glass" ng-show="child.locationType !== 1"></span></td>
           <td>{{child.id}}</td>

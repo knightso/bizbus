@@ -72,6 +72,21 @@ angular
         templateUrl: 'views/stops.html',
         controller: 'StopsCtrl'
       })
+      .when('/postStop', {
+        templateUrl: 'views/putstop.html',
+        controller: 'PutstopCtrl',
+        resolve: {method: function(){return 'POST';}}
+      })
+      .when('/postStop/:id', {
+        templateUrl: 'views/putstop.html',
+        controller: 'PutstopCtrl',
+        resolve: {method: function(){return 'POST';}}
+      })
+      .when('/putStop/:id', {
+        templateUrl: 'views/putstop.html',
+        controller: 'PutstopCtrl',
+        resolve: {method: function(){return 'PUT';}}
+      })
       .when('/terminals', {
         templateUrl: 'views/terminals.html',
         controller: 'TerminalsCtrl'

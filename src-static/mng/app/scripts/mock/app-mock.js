@@ -106,6 +106,24 @@
      return [200, filtered];
     });
 
+    $httpBackend.whenGET(/^\/api\/stations\/[^\/]+$/).respond(function(method, url) {
+      var stopId = url.substring(url.lastIndexOf('/')+1);
+      stopId = stopId.replace('%23','#');
+      var filtered = _.filter(stops.table.records, function(stop) {
+        if (stop.id === stopId) {
+          return stop;
+        }
+      });
+      if (filtered.length === 1) {
+        return [200, filtered[0]];
+      }else {
+        return [404];
+      }
+    });
+
+    $httpBackend.whenPOST(/^\/api\/stations\/[^\/]+$/).respond({});
+    $httpBackend.whenPUT(/^\/api\/stations\/[^\/]+$/).respond({});
+
     var terminals = mockDB.select('terminals');
 
     $httpBackend.whenGET(/^\/api\/terminals+$/).respond(terminals.table.records);

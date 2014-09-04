@@ -1,20 +1,21 @@
 'use strict';
 
-describe('Controller: ContainerCtrl', function () {
+describe('Controller: PutstopCtrl', function () {
 
   // load the controller's module
   beforeEach(module('mngApp'));
   beforeEach(module('ngResource'));
   beforeEach(module('ui.bootstrap'));
 
-  var ContainerCtrl,
+  var PutstopCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    ContainerCtrl = $controller('ContainerCtrl', {
-      $scope: scope
+    PutstopCtrl = $controller('PutstopCtrl', {
+      $scope: scope,
+      method: function(){return 'PUT';}
     });
   }));
 
