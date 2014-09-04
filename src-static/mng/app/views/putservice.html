@@ -46,21 +46,21 @@
 
   <hr>
   <div class="form-group" ng-repeat="d in testdates">
-    <label class="col-sm-2 control-label"><span ng-show="{{$index==0}}">Calendar</span></label>
+    <label class="col-sm-2 control-label"><span ng-show="$first">Calendar</span></label>
     <div class="col-sm-2">
       <p class="input-group">
-      <input id="s{{$index}}" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="d.startDate" is-open="s{{$index}}" ng-required="true" close-text="Close" />
+      <input id="s{{$index}}" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="d.startDate" is-open="d.startCalOpened" ng-required="true" close-text="Close" />
       <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="open($event, 's'+$index)"><i class="glyphicon glyphicon-calendar"></i></button>
+        <button type="button" class="btn btn-default" ng-click="open($event, d, 'startCalOpened')"><i class="glyphicon glyphicon-calendar"></i></button>
       </span>
       </p>
     </div>
     <div class="col-sm-1">～</div>
     <div class="col-sm-2">
       <p class="input-group">
-      <input id="e{{$index}}" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="d.endDate" is-open="e{{$index}}" ng-required="true" close-text="Close" />
+      <input id="e{{$index}}" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="d.endDate" is-open="d.endCalOpened" ng-required="true" close-text="Close" />
       <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="open($event, 'e'+$index)"><i class="glyphicon glyphicon-calendar"></i></button>
+        <button type="button" class="btn btn-default" ng-click="open($event, d, 'endCalOpened')"><i class="glyphicon glyphicon-calendar"></i></button>
       </span>
       </p>
     </div>

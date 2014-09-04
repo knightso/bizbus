@@ -22,46 +22,10 @@ angular.module('mngApp')
           {'startDate':'2014/09/01','endDate':'2014/10/01'},
           {'startDate':'2014/09/02','endDate':'2014/10/02'},
           {'startDate':'2014/09/03','endDate':'2014/10/03'}];
-    $scope.open = function($event, inputId) {
+    $scope.open = function($event, data, propName) {
       $event.preventDefault();
-      $event.stopPropagation();console.log(inputId);
-
-      //TODO need refactor there...
-      if (inputId === 's0') {
-        $scope.s0 = true;
-      } else if (inputId === 'e0') {
-        $scope.e0 = true;
-      }  
-
-      if (inputId === 's1') {
-        $scope.s1 = true;
-      } else if (inputId === 'e1') {
-        $scope.e1 = true;
-      }
-
-     if (inputId === 's2') {
-        $scope.s2 = true;
-      } else if (inputId === 'e2') {
-        $scope.e2 = true;
-      }
-
-     if (inputId === 's3') {
-        $scope.s3 = true;
-      } else if (inputId === 'e3') {
-        $scope.e3 = true;
-      }
-
-     if (inputId === 's4') {
-        $scope.s4 = true;
-      } else if (inputId === 'e4') {
-        $scope.e4 = true;
-      }
-
-     if (inputId === 's5') {
-        $scope.s5 = true;
-      } else if (inputId === 'e5') {
-        $scope.e5 = true;
-      }
+      $event.stopPropagation();
+      data[propName] = true;
     };
     $scope.open2 = function($event, openName) {
       $event.preventDefault();
