@@ -142,6 +142,24 @@
     $httpBackend.whenPOST(/^\/api\/terminals\/[^\/]+$/).respond({});
     $httpBackend.whenPUT(/^\/api\/terminals\/[^\/]+$/).respond({});
 
+    var services = mockDB.select('services');
+
+    $httpBackend.whenGET(/^\/api\/services+$/).respond(services.table.records);
+
+    $httpBackend.whenGET(/^\/api\/services\/[^\/]+$/).respond(function(method, url) {
+      var id = url.substring(url.lastIndexOf('/')+1);
+      var service;
+      for (var i = 0; i < services.table.records.length; i++) {
+        if (services.table.records[i].id === id) {
+          service = services.table.records[i];
+        }
+      }
+      return [200, service];
+    });
+
+    //$httpBackend.whenPOST(/^\/api\/services\/[^\/]+$/).respond({});
+    //$httpBackend.whenPUT(/^\/api\/services\/[^\/]+$/).respond({});
+
     // htmlファイルの取得等はそのままスルー
     $httpBackend.whenGET(/.*/).passThrough();
 

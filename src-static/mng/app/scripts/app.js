@@ -101,6 +101,20 @@ angular
         controller: 'PutterminalCtrl',
         resolve: {method: function(){return 'PUT';}}
       })
+      .when('/services', {
+        templateUrl: 'views/services.html',
+        controller: 'ServicesCtrl'
+      })
+      .when('/postService', {
+        templateUrl: 'views/putservice.html',
+        controller: 'PutserviceCtrl',
+        resolve: {method: function(){return 'POST';}}
+      })
+      .when('/putService/:id', {
+        templateUrl: 'views/putservice.html',
+        controller: 'PutserviceCtrl',
+        resolve: {method: function(){return 'PUT';}}
+      })
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
