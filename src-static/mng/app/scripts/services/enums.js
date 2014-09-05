@@ -22,6 +22,18 @@ angular.module('mngApp')
         }
         return null;
       },
+      exceptionTypes : [
+        {name:'追加', id:1},
+        {name:'除外', id:2}
+      ],
+      findExceptionType : function(id) {
+        for (var i = 0; i < this.exceptionTypes.length; i++) {
+          if (this.exceptionTypes[i].id === id) {
+            return this.exceptionTypes[i];
+          }
+        }
+        return null;
+      },
     };
   })
   .run(function ($rootScope, Enums) {

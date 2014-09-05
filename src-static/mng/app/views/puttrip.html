@@ -1,0 +1,87 @@
+<h2>Trip{{method=='POST' && '登録' || '編集'}}</h2>
+
+<div class="panel-body">
+   <a href="#/trips"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left">戻る</button></a>
+</div>
+<form name="tripForm" class="form-horizontal" role="form">
+  <div class="form-group">
+    <label for="inputTripId" class="col-sm-2 control-label">Trip ID</label>
+    <div class="col-sm-10">
+      <div ng-show="detailMode">{{trip.id}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputTripId" placeholder="Trip ID" ng-model="trip.id" required>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Service</label>
+    <div class="col-sm-10">
+      <div ng-show="detailMode">{{trip.serviceId}}</div>
+      <div ng-hide="detailMode">
+        <select name="serviceId" ng-model="trip.serviceId" class="form-control" 
+          ng-options="service.id as '<'+service.id+'>:<'+service.name+'>' for service in services" required>
+          <option value="">------</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputDirection" class="col-sm-2 control-label">Trip Direction</label>
+    <div class="col-sm-10">
+      <div ng-show="detailMode">{{trip.directionId | directionType}}</div>
+      <div ng-hide="detailMode">
+        <select name="directionId" ng-model="trip.directionId" class="form-control" 
+          ng-options="dType.id as dType.name for dType in directionTypes" required>
+          <option value="">------</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputRouteId" class="col-sm-2 control-label">RouteId</label>
+    <div class="col-sm-10">
+      <div ng-show="detailMode">{{trip.routeId}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputRouteId" placeholder="（例）Route Id" ng-model="trip.routeId" required>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputBlockId" class="col-sm-2 control-label">BlockId</label>
+    <div class="col-sm-10">
+      <div ng-show="detailMode">{{trip.blockId}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputBlockId" placeholder="（例）Block Id" ng-model="trip.blockId" required>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputHeadsign" class="col-sm-2 control-label">Headsign</label>
+    <div class="col-sm-10">
+      <div ng-show="detailMode">{{trip.headsign}}</div>
+      <div ng-hide="detailMode">
+        <input type="text" class="form-control" id="inputHeadsign" placeholder="（例）掛川駅行き" ng-model="trip.headsign" required>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div ng-show="detailMode">
+        <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-pencil" ng-click="detailMode=!detailMode">編集</button>
+        <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-remove" ng-click="">削除</button>
+      </div>
+      <div ng-show="detailMode == false">
+        <button type="submit" class="btn btn-primary btn-sm glyphicon glyphicon-save" ng-click="submit()">保存</button>
+        <span ng-show="regMode == false">
+          <button type="submit" class="btn btn-primary btn-sm glyphicon glyphicon-save" ng-click="detailMode=!detailMode">キャンセル</button>
+        </span>
+      </div>
+    </div>
+    <div class="col-sm-offset-2 col-sm-10">
+      <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+  </div>
+</form>
+<div class="panel-body">
+   <a href="#/trips"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left">戻る</button></a>
+</div>

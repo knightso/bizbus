@@ -8,35 +8,13 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('PutserviceCtrl', function ($scope, $routeParams, $timeout, $location, method, Agencies, Services) {
+  .controller('PutserviceCtrl', function ($scope, $routeParams, $timeout, $location, method, Agencies, Services, Calendars, Calendardates, Enums) {
     
     $scope.method = method;
     $scope.agencies = Agencies.query();
+    $scope.exceptionTypes = Enums.exceptionTypes;
     $scope.service = {};
-    $scope.calendars = {};
-    $scope.calendarDates = {};
-    $scope.format = 'yyyy/MM/dd';
-    
-    //TODO need remove it..
-    $scope.testdates = [
-          {'startDate':'2014/09/01','endDate':'2014/10/01'},
-          {'startDate':'2014/09/02','endDate':'2014/10/02'},
-          {'startDate':'2014/09/03','endDate':'2014/10/03'}];
-    $scope.open = function($event, data, propName) {
-      $event.preventDefault();
-      $event.stopPropagation();
-      data[propName] = true;
-    };
-    $scope.open2 = function($event, openName) {
-      $event.preventDefault();
-      $event.stopPropagation();
-
-      if (openName === 'openDde1') {
-        $scope.openDde1 = true;
-      } else if (openName === 'openDds1') {
-        $scope.openDds1 = true;
-      }
-    };
+    $scope.format = 'yyyyMMdd';
 
     $scope.regMode = true;
     $scope.detailMode = false;
@@ -46,7 +24,70 @@ angular.module('mngApp')
       });
       $scope.regMode = false;
       $scope.detailMode = true;
+
+      $scope.calendars = Calendars.queryByService({
+        serviceId : $routeParams.id
+      });
+      $scope.calendars.$promise.then(function(calendars) {
+        if (calendars.length === 0) {
+          $scope.calendars = [{}];
+        } else {
+          angular.forEach(calendars, function(calendar) {console.log(calendar.startDate);console.log(calendar.endDate);
+            if (calendar.startDate !== undefined || calendar.startDate !== '') {
+              calendar.startDateType = new Date(calendar.startDate.substring(0,4), calendar.startDate.substring(4,6)-1, calendar.startDate.substring(6,8));
+            }
+
+            if (calendar.endDate !== undefined || calendar.endDate !== '') {
+              calendar.endDateType = new Date(calendar.endDate.substring(0,4), calendar.endDate.substring(4,6)-1, calendar.endDate.substring(6,8));
+            }
+          });
+        }
+      });
+
+      $scope.calendarDates = Calendardates.queryByService({
+        serviceId : $routeParams.id
+      });
+      $scope.calendarDates.$promise.then(function(calendarDates) {
+        if (calendarDates.length === 0) {
+          $scope.calendarDates = [{}];
+        } else {
+          angular.forEach(calendarDates, function(calendarDate) {console.log(calendarDate.date);
+            if (calendarDate.date !== undefined || calendarDate.date !== '') {
+              calendarDate.dateType = new Date(calendarDate.date.substring(0,4), calendarDate.date.substring(4,6)-1, calendarDate.date.substring(6,8));
+            }
+          });
+        }
+      });
+    } else {
+      $scope.calendars = [{}];
+      $scope.calendarDates = [{}];
     }
+    
+    $scope.open = function($event, data, propName) {
+      $event.preventDefault();
+      $event.stopPropagation();
+      data[propName] = true;
+    };
+
+    $scope.addCalendar = function() {
+      $scope.calendars.push({
+      });
+    };
+    
+    $scope.removeCalendar = function(calToRemove) {
+      var index = $scope.calendars.indexOf(calToRemove);
+      $scope.calendars.splice(index, 1);
+    };
+
+    $scope.addCalendarDate = function() {
+      $scope.calendarDates.push({
+      });
+    };
+    
+    $scope.removeCalendarDate = function(cdToRemove) {
+      var index = $scope.calendarDates.indexOf(cdToRemove);
+      $scope.calendarDates.splice(index, 1);
+    };
 
     $scope.submit = function() {
 
@@ -80,7 +121,7 @@ angular.module('mngApp')
             }
         ); 
       };
-console.log($scope.service);
+
       if ($scope.regMode) {
         doSave(Services.register);
       } else {

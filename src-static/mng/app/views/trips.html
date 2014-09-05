@@ -1,0 +1,44 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <a href="#/postTrip"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus">追加</button></a>
+    <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-search" ng-click="filtering=!filtering">フィルタ</button>
+  </div>
+  <table class="table">
+    <thead ng-show="filtering">
+      <th><input type="text" size="10" ng-model="criteria.id" class="form-control" placeholder="ID"></th>
+      <th><input type="text" size="10" ng-model="criteria.routeId" class="form-control" placeholder="RouteId"></th>
+      <th><input type="text" size="10" ng-model="criteria.serviceId" class="form-control" placeholder="ServiceId"></th>
+      <th>
+        <select name="directionId" ng-model="criteria.directionId" class="form-control" 
+          ng-options="dType.id as dType.name for dType in directionTypes" 
+          ng-change="criteria.directionId = criteria.directionId ? criteria.directionId : undefined">
+          <option value="">------</option>
+        </select>
+      </th>
+      <th><input type="text" size="10" ng-model="criteria.blockId" class="form-control" placeholder="BlockId"></th>
+      <th><input type="text" size="20" ng-model="criteria.headsign" class="form-control" placeholder="Headsign"></th>
+      <th><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-remove-sign" ng-click="criteria={}"></button></th>
+    </thead>
+    <thead style="background-color: #ddd">
+      <th>TripID</th>
+      <th>RouteId</th>
+      <th>ServiceId</th>
+      <th>DirectionId</th>
+      <th>BlockId</th>
+      <th>Headsign</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="trip in trips | filter:(filtering ? criteria : {})" ng-click="detail(trip.id)" class="selectable" ng-class-even="'even'">
+        <td>{{trip.id}}</td>
+        <td>{{trip.routeId}}</td>
+        <td>{{trip.serviceId}}</td>
+        <td>{{trip.directionId | directionType}}</td>
+        <td>{{trip.blockId}}</td>
+        <td>{{trip.headsign}}</td>
+        <td></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<a href="#/postTrip"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus">追加</button></a><br/><br/>

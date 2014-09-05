@@ -28,7 +28,7 @@
       <div ng-show="detailMode">{{service.agencyId}}</div>
       <div ng-hide="detailMode">
         <select name="agencyId" ng-model="service.agencyId" class="form-control" 
-          ng-options="agency.id as agency.id+'('+agency.name+')' for agency in agencies" required>
+          ng-options="agency.id as '<'+agency.id+'>:<'+agency.name+'>' for agency in agencies" required>
           <option value="">------</option>
         </select>
       </div>
@@ -45,48 +45,156 @@
   </div>
 
   <hr>
-  <div class="form-group" ng-repeat="d in testdates">
-    <label class="col-sm-2 control-label"><span ng-show="$first">Calendar</span></label>
-    <div class="col-sm-2">
-      <p class="input-group">
-      <input id="s{{$index}}" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="d.startDate" is-open="d.startCalOpened" ng-required="true" close-text="Close" />
-      <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="open($event, d, 'startCalOpened')"><i class="glyphicon glyphicon-calendar"></i></button>
-      </span>
-      </p>
-    </div>
-    <div class="col-sm-1">～</div>
-    <div class="col-sm-2">
-      <p class="input-group">
-      <input id="e{{$index}}" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="d.endDate" is-open="d.endCalOpened" ng-required="true" close-text="Close" />
-      <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="open($event, d, 'endCalOpened')"><i class="glyphicon glyphicon-calendar"></i></button>
-      </span>
-      </p>
+  <div ng-show="detailMode">
+    <div ng-repeat="cal in calendars">
+      <div class="form-group">
+        <label class="col-sm-2 control-label"><span ng-show="$first">Calendar</span></label>
+        <div class="col-sm-10">
+          startDate:{{cal.startDate}} ～ endDate:{{cal.endDate}}
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label"></label>
+        <div class="col-sm-1">
+          <label class="control-label">Sun:</label><span ng-show="cal.sunday == '1'">true</span><span ng-show="cal.sunday == '0'">false</span>
+        </div>
+        <div class="col-sm-1">
+          <label class="control-label">Mon:</label><span ng-show="cal.monday == '1'">true</span><span ng-show="cal.monday == '0'">false</span>
+        </div>
+        <div class="col-sm-1">
+          <label class="control-label">Tue:</label><span ng-show="cal.tuesday == '1'">true</span><span ng-show="cal.tuesday == '0'">false</span>
+        </div>
+        <div class="col-sm-1">
+          <label class="control-label">Wed:</label><span ng-show="cal.wednesday == '1'">true</span><span ng-show="cal.wednesday == '0'">false</span>
+        </div>
+        <div class="col-sm-1">
+          <label class="control-label">Thu:</label><span ng-show="cal.thursday == '1'">true</span><span ng-show="cal.thursday == '0'">false</span>
+        </div>
+        <div class="col-sm-1">
+          <label class="control-label">Fri:</label><span ng-show="cal.friday == '1'">true</span><span ng-show="cal.friday == '0'">false</span>
+        </div>
+        <div class="col-sm-1">
+          <label class="control-label">Sat:</label><span ng-show="cal.saturday == '1'">true</span><span ng-show="cal.saturday == '0'">false</span>
+        </div>
+      </div>
     </div>
   </div>
-
+  <div ng-hide="detailMode">
+  <div ng-repeat="cal in calendars">
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><span ng-show="$first">Calendar</span></label>
+      <div class="col-sm-2">
+        <p class="input-group">
+        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="cal.startDateType" is-open="cal.startCalOpened" ng-required="true" close-text="Close" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="open($event, cal, 'startCalOpened')"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+        </p>
+      </div>
+      <div class="col-sm-1">～</div>
+      <div class="col-sm-2">
+        <p class="input-group">
+        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="cal.endDateType" is-open="cal.endCalOpened" ng-required="true" close-text="Close" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="open($event, cal, 'endCalOpened')"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+        </p>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-xs btn-default glyphicon glyphicon-plus" ng-click="addCalendar()"></button>&nbsp;&nbsp;
+        <button type="button" class="btn btn-xs btn-default glyphicon glyphicon-minus" ng-click="removeCalendar(cal)"></button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label"></label>
+      <div class="col-sm-1">
+        <label for="chkSun{{$index}}" class="control-label">Sun.</label>
+      </div>
+      <div class="col-sm-1">
+        <label for="chkMon{{$index}}" class="control-label">Mon.</label>
+      </div>
+      <div class="col-sm-1">
+        <label for="chkTues{{$index}}" class="control-label">Tue.</label>
+      </div>
+      <div class="col-sm-1">
+        <label for="chkWed{{$index}}" class="control-label">Wed.</label>
+      </div>
+      <div class="col-sm-1">
+        <label for="chkThur{{$index}}" class="control-label">Thu.</label>
+      </div>
+      <div class="col-sm-1">
+        <label for="chkFri{{$index}}" class="control-label">Fri.</label>
+      </div>
+      <div class="col-sm-1">
+        <label for="chkSat{{$index}}" class="control-label">Sat.</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label"></label>
+      <div class="col-sm-1">
+        <input type="checkbox" id="chkSun{{$index}}" ng-model="cal.sunday" ng-true-value="1" ng-false-value="0">
+      </div>
+      <div class="col-sm-1">
+        <input type="checkbox" id="chkMon{{$index}}" ng-model="cal.monday" ng-true-value="1" ng-false-value="0">
+      </div>
+      <div class="col-sm-1">
+        <input type="checkbox" id="chkTues{{$index}}" ng-model="cal.tuesday" ng-true-value="1" ng-false-value="0">
+      </div>
+      <div class="col-sm-1">
+        <input type="checkbox" id="chkWed{{$index}}" ng-model="cal.wednesday" ng-true-value="1" ng-false-value="0">
+      </div>
+      <div class="col-sm-1">
+        <input type="checkbox" id="chkThur{{$index}}" ng-model="cal.thursday" ng-true-value="1" ng-false-value="0">
+      </div>
+      <div class="col-sm-1">
+        <input type="checkbox" id="chkFri{{$index}}" ng-model="cal.friday" ng-true-value="1" ng-false-value="0">
+      </div>
+      <div class="col-sm-1">
+        <input type="checkbox" id="chkSat{{$index}}" ng-model="cal.saturday" ng-true-value="1" ng-false-value="0">
+      </div>
+    </div>
+  </div>
+  <div class="controls" ng-show="calendars.length == 0">
+    <a href="" ng-click="addCalendar()">[追加 - Add Calendar]</a>
+  </div>
+  </div>
 
   <hr>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Calendar_date</label>
+  <div ng-show="detailMode">
+    <div class="form-group" ng-repeat="cd in calendarDates">
+      <div class="form-group">
+        <label class="col-sm-2 control-label"><span ng-show="$first">Calendar_date</span></label>
+        <div class="col-sm-2">date: {{cd.date}}</div>
+        <div class="col-sm-2">exceptionType: {{cd.exceptionType}}<!-- {{cd.exceptionType | exceptionType}} --></div>
+      </div>
+    </div>
+  </div>
+  <div ng-hide="detailMode">
+  <div class="form-group" ng-repeat="cd in calendarDates">
+    <label class="col-sm-2 control-label"><span ng-show="$first">Calendar_date</span></label>
     <div class="col-sm-2">
       <p class="input-group">
-      <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dd1" is-open="openDds1" ng-required="true" close-text="Close" />
+      <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="cd.dateType" is-open="cd.calOpened" ng-required="true" close-text="Close" />
       <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="open2($event, 'openDds1')"><i class="glyphicon glyphicon-calendar"></i></button>
+        <button type="button" class="btn btn-default" ng-click="open($event, cd, 'calOpened')"><i class="glyphicon glyphicon-calendar"></i></button>
       </span>
       </p>
     </div>
-    <div class="col-sm-1">～</div>
     <div class="col-sm-2">
-      <p class="input-group">
-      <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dd2" is-open="openDde1" ng-required="true" close-text="Close" />
-      <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="open2($event, 'openDde1')"><i class="glyphicon glyphicon-calendar"></i></button>
-      </span>
-      </p>
+      <select name="exceptionType" ng-model="cd.exceptionType" class="form-control" 
+          ng-options="eType.id as eType.name for eType in exceptionTypes" required>
+          <option value="">------</option>
+        </select>
     </div>
+    <div class="col-sm-1">
+      <button type="button" class="btn btn-xs btn-default glyphicon glyphicon-plus" ng-click="addCalendarDate()"></button>&nbsp;&nbsp;
+      <button type="button" class="btn btn-xs btn-default glyphicon glyphicon-minus" ng-click="removeCalendarDate(cd)"></button>
+    </div>
+  </div>
+  <div class="controls" ng-show="calendarDates.length == 0">
+    <a href="" ng-click="addCalendarDate()">[追加 - Add Calendar Date]</a>
+  </div>
   </div>
 
   <div class="form-group">

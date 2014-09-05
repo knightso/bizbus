@@ -115,6 +115,20 @@ angular
         controller: 'PutserviceCtrl',
         resolve: {method: function(){return 'PUT';}}
       })
+      .when('/trips', {
+        templateUrl: 'views/trips.html',
+        controller: 'TripsCtrl'
+      })
+      .when('/postTrip', {
+        templateUrl: 'views/puttrip.html',
+        controller: 'PuttripCtrl',
+        resolve: {method: function(){return 'POST';}}
+      })
+      .when('/putTrip/:id', {
+        templateUrl: 'views/puttrip.html',
+        controller: 'PuttripCtrl',
+        resolve: {method: function(){return 'PUT';}}
+      })
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'

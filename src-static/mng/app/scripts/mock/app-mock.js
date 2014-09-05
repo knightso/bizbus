@@ -157,8 +157,56 @@
       return [200, service];
     });
 
-    //$httpBackend.whenPOST(/^\/api\/services\/[^\/]+$/).respond({});
-    //$httpBackend.whenPUT(/^\/api\/services\/[^\/]+$/).respond({});
+    $httpBackend.whenPOST(/^\/api\/services\/[^\/]+$/).respond({});
+    $httpBackend.whenPUT(/^\/api\/services\/[^\/]+$/).respond({});
+
+    var calendars = mockDB.select('calendars');
+    $httpBackend.whenGET(/^\/api\/services\/[^\/]+\/calendars+$/).respond(function(method, url) {
+      var strings = url.split('/');
+      var serviceId;
+      for (var i = 0; i < strings.length; i++) {
+        if (i === 3) {
+          serviceId = strings[i];
+        }
+      }
+      var filtered = _.filter(calendars.table.records, function(calendars) {
+        return calendars.serviceId === serviceId;
+      });
+     return [200, filtered];
+    });
+
+    var calendarDates = mockDB.select('calendar_dates');
+    $httpBackend.whenGET(/^\/api\/services\/[^\/]+\/calendardates+$/).respond(function(method, url) {
+      var strings = url.split('/');
+      var serviceId;
+      for (var i = 0; i < strings.length; i++) {
+        if (i === 3) {
+          serviceId = strings[i];
+        }
+      }
+      var filtered = _.filter(calendarDates.table.records, function(calendarDates) {
+        return calendarDates.serviceId === serviceId;
+      });
+     return [200, filtered];
+    });
+
+    var trips = mockDB.select('trips');
+
+    $httpBackend.whenGET(/^\/api\/trips+$/).respond(trips.table.records);
+
+    $httpBackend.whenGET(/^\/api\/trips\/[^\/]+$/).respond(function(method, url) {
+      var id = url.substring(url.lastIndexOf('/')+1);
+      var trip;
+      for (var i = 0; i < trips.table.records.length; i++) {
+        if (trips.table.records[i].id === id) {
+          trip = trips.table.records[i];
+        }
+      }
+      return [200, trip];
+    });
+
+    $httpBackend.whenPOST(/^\/api\/trips\/[^\/]+$/).respond({});
+    $httpBackend.whenPUT(/^\/api\/trips\/[^\/]+$/).respond({});
 
     // htmlファイルの取得等はそのままスルー
     $httpBackend.whenGET(/.*/).passThrough();
