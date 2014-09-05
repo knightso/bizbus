@@ -32,7 +32,7 @@ angular.module('mngApp')
         if (calendars.length === 0) {
           $scope.calendars = [{}];
         } else {
-          angular.forEach(calendars, function(calendar) {console.log(calendar.startDate);console.log(calendar.endDate);
+          angular.forEach(calendars, function(calendar) {
             if (calendar.startDate !== undefined || calendar.startDate !== '') {
               calendar.startDateType = new Date(calendar.startDate.substring(0,4), calendar.startDate.substring(4,6)-1, calendar.startDate.substring(6,8));
             }
@@ -51,7 +51,7 @@ angular.module('mngApp')
         if (calendarDates.length === 0) {
           $scope.calendarDates = [{}];
         } else {
-          angular.forEach(calendarDates, function(calendarDate) {console.log(calendarDate.date);
+          angular.forEach(calendarDates, function(calendarDate) {
             if (calendarDate.date !== undefined || calendarDate.date !== '') {
               calendarDate.dateType = new Date(calendarDate.date.substring(0,4), calendarDate.date.substring(4,6)-1, calendarDate.date.substring(6,8));
             }
