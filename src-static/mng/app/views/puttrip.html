@@ -19,7 +19,7 @@
       <div ng-show="detailMode">{{trip.serviceId}}</div>
       <div ng-hide="detailMode">
         <select name="serviceId" ng-model="trip.serviceId" class="form-control" 
-          ng-options="service.id as '<'+service.id+'>:<'+service.name+'>' for service in services" required>
+          ng-options="service.id as service.id+':'+service.name for service in services" required>
           <option value="">------</option>
         </select>
       </div>

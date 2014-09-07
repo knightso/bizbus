@@ -28,7 +28,7 @@
       <div ng-show="detailMode">{{service.agencyId}}</div>
       <div ng-hide="detailMode">
         <select name="agencyId" ng-model="service.agencyId" class="form-control" 
-          ng-options="agency.id as '<'+agency.id+'>:<'+agency.name+'>' for agency in agencies" required>
+          ng-options="agency.id as agency.id+':'+agency.name for agency in agencies" required>
           <option value="">------</option>
         </select>
       </div>
