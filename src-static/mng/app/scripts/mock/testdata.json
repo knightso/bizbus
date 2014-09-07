@@ -48,69 +48,6 @@
         "id"
       ]
     },
-    "tripgroups": {
-      "records": [
-        {
-          "id": "1",
-          "routeId": "JRount1",
-          "desc": "東山線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "東山行き"
-        },
-        {
-          "id": "2",
-          "routeId": "JRount1",
-          "desc": "東山線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き"
-        },
-        {
-          "id": "3",
-          "routeId": "JRount1",
-          "desc": "粟本線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "粟本行き"
-        },
-        {
-          "id": "4",
-          "routeId": "JRount2",
-          "desc": "粟本線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き"
-        },
-        {
-          "id": "5",
-          "routeId": "JRount2",
-          "desc": "居尻線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "東山行き"
-        },
-        {
-          "id": "6",
-          "routeId": "JRount3",
-          "desc": "居尻線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き"
-        },
-        {
-          "id": "7",
-          "routeId": "JRount3",
-          "desc": "倉真線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "粟本行き"
-        },
-        {
-          "id": "8",
-          "routeId": "JRount3",
-          "desc": "倉真線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き"
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
     "routes": {
       "records": [
         {
@@ -192,85 +129,102 @@
         "id"
       ]
     },
-    "trips": {
+    "tripgroups": {
       "records": [
         {
-          "id": "AB1",
-          "routeId": "AB",
-          "serviceId": "FULLW",
-          "headsign": "to Bullfrog",
+          "id": "1",
+          "routeId": "JRount1",
+          "desc": "東山線 下り",
           "directionId": 0,
-          "blockId": 1
+          "defaultHeadsign": "東山行き",
+          "stops": [
+            "NANAA",
+            "EMSI",
+            "AMV"
+          ]
         },
         {
-          "id": "AB2",
-          "routeId": "AB",
-          "serviceId": "FULLW",
-          "headsign": "to Airport",
+          "id": "2",
+          "routeId": "JRount1",
+          "desc": "東山線 上り",
           "directionId": 1,
-          "blockId": 2
+          "defaultHeadsign": "掛川駅行き",
+          "stops": [
+            "NANAA",
+            "DADAN",
+            "EMSI"
+          ]
         },
         {
-          "id": "STBA",
-          "routeId": "STBA",
-          "serviceId": "FULLW",
-          "headsign": "Shuttle"
-        },
-        {
-          "id": "CITY1",
-          "routeId": "CITY",
-          "serviceId": "FULLW",
-          "directionId": 0
-        },
-        {
-          "id": "CITY2",
-          "routeId": "CITY",
-          "serviceId": "FULLW",
-          "directionId": 1
-        },
-        {
-          "id": "BFC1",
-          "routeId": "BFC",
-          "serviceId": "FULLW",
-          "headsign": "to Furnace Creek Resort",
+          "id": "3",
+          "routeId": "JRount1",
+          "desc": "粟本線 下り",
           "directionId": 0,
-          "blockId": 1
+          "defaultHeadsign": "粟本行き",
+          "stops": [
+            "NADAV",
+            "DADAN"
+          ]
         },
         {
-          "id": "BFC2",
-          "routeId": "BFC",
-          "serviceId": "FULLW",
-          "headsign": "to Bullfrog",
+          "id": "4",
+          "routeId": "JRount2",
+          "desc": "粟本線 上り",
           "directionId": 1,
-          "blockId": 2
+          "defaultHeadsign": "掛川駅行き",
+          "stops": [
+            "FUR_CREEK_RE",
+            "BEATTY_AIRPORT"
+          ]
         },
         {
-          "id": "AAMV1",
-          "routeId": "AAMV",
-          "serviceId": "WE",
-          "headsign": "to Amargosa Valley",
-          "directionId": 0
+          "id": "5",
+          "routeId": "JRount2",
+          "desc": "居尻線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "東山行き",
+          "stops": [
+            "NADAV",
+            "BULLFROG",
+            "AMV"
+          ]
         },
         {
-          "id": "AAMV2",
-          "routeId": "AAMV",
-          "serviceId": "WE",
-          "headsign": "to Airport",
-          "directionId": 1
+          "id": "6",
+          "routeId": "JRount3",
+          "desc": "居尻線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き",
+          "stops": [
+            "FUR_CREEK_RES",
+            "STAGECOACH",
+            "NANAA",
+            "DADAN"
+          ]
         },
         {
-          "id": "AAMV3",
-          "routeId": "AAMV",
-          "serviceId": "WE",
-          "headsign": "to Amargosa Valley",
-          "directionId": 0
+          "id": "7",
+          "routeId": "JRount3",
+          "desc": "倉真線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "粟本行き",
+          "stops": [
+            "STAGECOACH",
+            "BEATTY_AIRPORT"
+          ]
         },
         {
-          "id": "AAMV4",
-          "routeId": "AAMV",
-          "serviceId": "WE",
-          "headsign": "to Airport",
-          "directionId": 1
+          "id": "8",
+          "routeId": "JRount3",
+          "desc": "倉真線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き",
+          "stops": [
+            "NANAA",
+            "BEATTY_AIRPORT",
+            "NADAV",
+            "DADAN"
+          ]
         }
       ],
       "primary_key": [
@@ -486,6 +440,92 @@
         "id"
       ]
     },
+    "trips": {
+      "records": [
+        {
+          "id": "AB1",
+          "routeId": "AB",
+          "serviceId": "FULLW",
+          "headsign": "to Bullfrog",
+          "directionId": 0,
+          "blockId": 1
+        },
+        {
+          "id": "AB2",
+          "routeId": "AB",
+          "serviceId": "FULLW",
+          "headsign": "to Airport",
+          "directionId": 1,
+          "blockId": 2
+        },
+        {
+          "id": "STBA",
+          "routeId": "STBA",
+          "serviceId": "FULLW",
+          "headsign": "Shuttle",
+          "directionId": 1
+        },
+        {
+          "id": "CITY1",
+          "routeId": "CITY",
+          "serviceId": "FULLW",
+          "directionId": 0
+        },
+        {
+          "id": "CITY2",
+          "routeId": "CITY",
+          "serviceId": "FULLW",
+          "directionId": 1
+        },
+        {
+          "id": "BFC1",
+          "routeId": "BFC",
+          "serviceId": "FULLW",
+          "headsign": "to Furnace Creek Resort",
+          "directionId": 0,
+          "blockId": 1
+        },
+        {
+          "id": "BFC2",
+          "routeId": "BFC",
+          "serviceId": "FULLW",
+          "headsign": "to Bullfrog",
+          "directionId": 1,
+          "blockId": 2
+        },
+        {
+          "id": "AAMV1",
+          "routeId": "AAMV",
+          "serviceId": "WE",
+          "headsign": "to Amargosa Valley",
+          "directionId": 0
+        },
+        {
+          "id": "AAMV2",
+          "routeId": "AAMV",
+          "serviceId": "WE",
+          "headsign": "to Airport",
+          "directionId": 1
+        },
+        {
+          "id": "AAMV3",
+          "routeId": "AAMV",
+          "serviceId": "WE",
+          "headsign": "to Amargosa Valley",
+          "directionId": 0
+        },
+        {
+          "id": "AAMV4",
+          "routeId": "AAMV",
+          "serviceId": "WE",
+          "headsign": "to Airport",
+          "directionId": 1
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
     "services": {
       "records": [
         {
@@ -499,19 +539,6 @@
           "agencyId": "JR",
           "name": "2007-2010週末のみ",
           "desc": "2007-2010週末のみ"
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "calendar_dates": {
-      "records": [
-        {
-          "id": "1",
-          "serviceId": "FULLW",
-          "date": "20070604",
-          "exceptionType": 2
         }
       ],
       "primary_key": [
@@ -572,23 +599,13 @@
         "id"
       ]
     },
-    "fare_rules": {
+    "calendar_dates": {
       "records": [
         {
-          "id": "p",
-          "routeId": "AB"
-        },
-        {
-          "id": "p",
-          "routeId": "STBA"
-        },
-        {
-          "id": "p",
-          "routeId": "BFC"
-        },
-        {
-          "id": "a",
-          "routeId": "AAMV"
+          "id": "1",
+          "serviceId": "FULLW",
+          "date": "20070604",
+          "exceptionType": 2
         }
       ],
       "primary_key": [
@@ -792,6 +809,29 @@
           "arrivalTime": "16:00:00",
           "departureTime": "16:00:00",
           "sequence": 2
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "fare_rules": {
+      "records": [
+        {
+          "id": "p",
+          "routeId": "AB"
+        },
+        {
+          "id": "p",
+          "routeId": "STBA"
+        },
+        {
+          "id": "p",
+          "routeId": "BFC"
+        },
+        {
+          "id": "a",
+          "routeId": "AAMV"
         }
       ],
       "primary_key": [
