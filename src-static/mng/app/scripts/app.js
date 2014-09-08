@@ -15,6 +15,7 @@ angular
     'ngResource',
     'ngRoute',
     'ui.bootstrap',
+    'ui.sortable',
     'ui.select'
   ])
   .config(function ($routeProvider) {
