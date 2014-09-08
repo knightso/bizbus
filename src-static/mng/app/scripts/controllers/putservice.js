@@ -16,6 +16,21 @@ angular.module('mngApp')
     $scope.service = {};
     $scope.format = 'yyyyMMdd';
 
+    $scope.$watch('calendars', function() {
+      if (!$scope.calendars) {
+        return;
+      }
+      angular.forEach($scope.calendars, function(cal) {
+        cal.sunday = Number(cal.sunday);
+        cal.monday = Number(cal.monday);
+        cal.tuesday = Number(cal.tuesday);
+        cal.wednesday = Number(cal.wednesday);
+        cal.thursday = Number(cal.thursday);
+        cal.friday = Number(cal.friday);
+        cal.saturday = Number(cal.saturday);
+      });
+    }, true); // TODO: optimize this
+
     $scope.regMode = true;
     $scope.detailMode = false;
     if (method === 'PUT') {
