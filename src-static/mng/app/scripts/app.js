@@ -13,8 +13,9 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
+    'ngRoute',
     'ui.bootstrap',
-    'ngRoute'
+    'ui.select'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -57,6 +58,10 @@ angular
       .when('/tripgroups/:agencyId/:routeId', {
         templateUrl: 'views/tripgroups.html',
         controller: 'TripgroupsCtrl'
+      })
+      .when('/tripgroups/:agencyId/:routeId/:tripgroupId/stops', {
+        templateUrl: 'views/tripgroupstops.html',
+        controller: 'TripgroupstopsCtrl'
       })
       .when('/postTripgroup/:agencyId/:routeId', {
         templateUrl: 'views/puttripgroup.html',

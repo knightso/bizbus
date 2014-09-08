@@ -1,0 +1,26 @@
+<h2>Trip Group for Stops編集</h2>
+
+<div class="panel-body">
+   <a href="#/tripgroups/{{agencyId}}/{{routeId}}"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left">戻る</button></a>
+</div>
+<form name="tgForm" class="form-horizontal" role="form">
+
+ <p>Selected: {{stop.selected.name}}</p>
+  <ui-select ng-model="stop.selected"
+             theme="bootstrap"
+             ng-disabled="disabled"
+             reset-search-input="false"
+             style="width: 300px;">
+    <ui-select-match placeholder="Enter an stop...">{{$select.selected.name}}</ui-select-match>
+    <ui-select-choices repeat="stop in stops track by $index"
+             refresh="refreshStops($select.search)"
+             refresh-delay="0">
+      <div ng-bind-html="stop.name | highlight: $select.search"></div>
+    </ui-select-choices>
+</ui-select>
+  
+  
+</form>
+<div class="panel-body">
+   <a href="#/tripgroups/{{agencyId}}/{{routeId}}"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left">戻る</button></a>
+</div>

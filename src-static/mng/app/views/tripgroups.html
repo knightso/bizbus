@@ -27,7 +27,7 @@
       <th>Desc</th>
       <th>Direction</th>
       <th>DefaultHeadsign</th>
-      <th></th>
+      <th>Stops</th>
     </thead>
     <tbody>
       <tr ng-repeat="tg in tripgroups | filter:(filtering ? criteria : {})" ng-click="detail(agencyId, routeId, tg.id)" class="selectable" ng-class-even="'even'">
@@ -36,7 +36,7 @@
         <td>{{tg.desc | limitTo:charLimit}}<span ng-show="tg.desc.length > charLimit">...</span></td>
         <td>{{tg.directionId | directionType}}</td>
         <td>{{tg.defaultHeadsign}}</td>
-        <td></td>
+        <td><a ng-href="#/tripgroups/{{agencyId}}/{{routeId}}/{{tg.id}}/stops"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-list"></button></a></td>
     </tr>
     </tbody>
   </table>

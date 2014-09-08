@@ -106,6 +106,23 @@
      return [200, filtered];
     });
 
+    $httpBackend.whenGET(/^\/api\/stops\?.*/).respond(function(method, url) {console.log(url);
+      var query = url.substring(url.lastIndexOf('=')+1);
+      if (query === undefined) {console.log("null");
+        return [200, []];
+      }
+      console.log(query);
+
+      var filtered = _.filter(stops.table.records, function(stop) {
+        if (stop.locationType === undefined || stop.locationType === 0 || stop.locationType === '') {
+          if (stop.name !== undefined && stop.name.indexOf(query) > 0) {
+            return stop;
+          }
+        }
+      });
+     return [200, filtered];
+    });
+
     $httpBackend.whenGET(/^\/api\/stations\/[^\/]+$/).respond(function(method, url) {
       var stopId = url.substring(url.lastIndexOf('/')+1);
       stopId = stopId.replace('%23','#');
