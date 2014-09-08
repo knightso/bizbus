@@ -4,7 +4,44 @@
    <a href="#/tripgroups/{{agencyId}}/{{routeId}}"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left">戻る</button></a>
 </div>
 <form name="tgForm" class="form-horizontal" role="form">
+  <div class="form-group">
+    <label for="inputAgencyId" class="col-sm-2 control-label">Tripgroup Info</label>
+    <div>
+      <label>agencyId:{{agencyId}} - routeId:{{routeId}} - TripGroupId:{{tg.id}}</label>
+    </div>
+  </div>
 
+  <div class="panel-body">
+    <table class="table">
+      <thead style="background-color: #ddd">
+        <th></th>
+        <th></th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Desc</th>
+        <th>Lat</th>
+        <th>Lon</th>
+        <th>URL</th>
+        <th>乗り場</th>
+        <th>削除</th>
+      </thead>
+      <tbody ui-sortable>
+        <tr ng-repeat="stop in selectedStops" class="selectable" style="cursor: move;">
+          <td></td>
+          <td><span class="glyphicon glyphicon-glass" ng-show="stop.locationType !== 1"></span></td>
+          <td>{{stop.id}}</td>
+          <td>{{stop.name}}</td>
+          <td>{{stop.desc | limitTo:20}} {{child.desc.length > 20 ? '...' : ''}}</td>
+          <td>{{stop.lat}}</td>
+          <td>{{stop.lon}}</td>
+          <td><a ng-href="{{stop.url}}">link</a></td>
+          <td></td>
+          <td><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-remove" ng-click="removeStop(stop)">削除</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
  <p>Selected: {{stop.selected.name}}</p>
   <ui-select ng-model="stop.selected"
              theme="bootstrap"
@@ -17,8 +54,8 @@
              refresh-delay="0">
       <div ng-bind-html="stop.name | highlight: $select.search"></div>
     </ui-select-choices>
-</ui-select>
-  
+  </ui-select>
+  <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left" ng-click="addStop(stop.selected)">追加</button>
   
 </form>
 <div class="panel-body">

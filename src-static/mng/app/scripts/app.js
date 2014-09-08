@@ -16,6 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ui.bootstrap',
+    'ui.sortable',
     'ui.select'
   ])
   .config(function ($routeProvider) {

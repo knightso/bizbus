@@ -13,6 +13,7 @@ angular.module('mngApp')
         id: '@id'
       }, {
         query: {method:'GET', url:'/api/stations', isArray:true},
+        //queryStops: {method:'GET', url:'/api/stops/:query', isArray:true},
         update: {method:'PUT'},
         register: {method:'POST'},
         delete: {method:'DELETE'}
