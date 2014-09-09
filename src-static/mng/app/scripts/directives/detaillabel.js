@@ -9,7 +9,7 @@
 angular.module('mngApp')
   .directive('detailLabel', function () {
     return {
-      template: '<span>{{!detailMode && (method=="POST" && "登録" || "編集") || ""}}</span>',
+      template: '<span>{{!detailMode && (method=="POST" && "Add" || "Edit") || ""}}</span>',
       restrict: 'E',
       link: function postLink(scope, element, attrs, $state) {
       }
