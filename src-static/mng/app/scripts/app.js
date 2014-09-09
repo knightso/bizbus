@@ -152,7 +152,10 @@ angular
       .state('stops', {
         url: '/stops', 
         templateUrl: 'views/stops.html',
-        controller: 'StopsCtrl'
+        controller: 'StopsCtrl',
+        data: {
+          ncyBreadcrumbLabel: 'Stops'
+        }
       })
       .state('postStop', {
         url: '/postStop', 
@@ -177,7 +180,7 @@ angular
         templateUrl: 'views/terminals.html',
         controller: 'TerminalsCtrl',
         data: {
-          ncyBreadcrumbLabel: 'terminals'
+          ncyBreadcrumbLabel: 'Terminals'
         }
       })
       .state('terminals.post', {

@@ -5,7 +5,7 @@
   <div class="panel-body">
     <div class="form-group">
       <input type="text" class="form-control" name="searchCriteria" ng-model="searchCriteria" style="width:30%;display:inline;">
-      <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus" ng-click="search();">検索</a>
+      <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-search" ng-click="search();">検索</a>
     </div>
   </div>
   <div class="panel-body">
@@ -19,7 +19,7 @@
         <th>Lat</th>
         <th>Lon</th>
         <th>URL</th>
-        <th>乗り場</th>
+        <th></th>
       </thead>
       <tbody ng-repeat="stop in stations">
         <tr class="selectable" ng-class-even="'even'">
@@ -35,7 +35,7 @@
           <td ng-click="detail(stop.id)">{{stop.lon}}</td>
           <td><a ng-href="{{stop.url}}">link</a></td>
           <td>
-            <button type="button" class="btn btn-xs btn-default glyphicon glyphicon-plus" ng-show="stop.locationType === 1" ng-click="post(stop.id)"></button>
+            <button type="button" class="btn btn-xs btn-default glyphicon glyphicon-plus" ng-show="stop.locationType === 1" ng-click="post(stop.id)">追加</button>
           </td>
         </tr>
         <tr ng-repeat="child in stop.children" class="selectable" ng-show="stop.expand" ng-click="detail(child.id)">
@@ -51,6 +51,9 @@
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="panel-body" ng-show="stations.length > 0">
+    <pagination total-items="stations.length" items-per-page="1" ng-model="aaa" max-size="5" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
   </div>
   <div class="panel-body">
     <a href="#/postStop"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus">追加</button></a>

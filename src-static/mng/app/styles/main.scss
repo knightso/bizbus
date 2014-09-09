@@ -121,3 +121,15 @@ tr.selectable:hover {
 label.padright {
   padding-right:10px;
 }
+
+.nav > li a {
+  border-radius: $border-radius-base $border-radius-base $border-radius-base $border-radius-base;
+  position: relative;
+  display: block;
+  padding: $nav-link-padding;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background-color: $nav-link-hover-bg;
+  }
+}

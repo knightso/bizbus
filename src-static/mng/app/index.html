@@ -26,9 +26,20 @@
     <div class="container" ng-controller="ContainerCtrl">
       <div class="header">
         <ul class="nav nav-pills pull-right" ng-show="getLoginUser()">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
+          <li class="active"><a ui-sref="agencies">Routes</a></li>
+          <li><a ui-sref="stops">Stops</a></li>
+          <li>
+          <div class="btn-group" dropdown>
+            <a href class="dropdown-toggle">
+              Others <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a ui-sref="terminals">Terminals</a></li>
+              <li class="divider"></li>
+              <li><a ui-sref="help">Help</a></li>
+            </ul>
+          </div>
+          </li>
         </ul>
         <h3 class="text-muted">OpenTransit</h3>
       </div>
