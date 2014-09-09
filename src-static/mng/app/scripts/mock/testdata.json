@@ -946,7 +946,8 @@
           "headsign": "to Bullfrog",
           "id": "AB1",
           "routeId": "AB",
-          "serviceId": "FULLW"
+          "serviceId": "FULLW",
+          "tripGroupId": 1
         },
         {
           "blockId": 2,
@@ -954,26 +955,32 @@
           "headsign": "to Airport",
           "id": "AB2",
           "routeId": "AB",
-          "serviceId": "FULLW"
+          "serviceId": "FULLW",
+          "tripGroupId": 1
         },
         {
           "directionId": 1,
           "headsign": "Shuttle",
           "id": "STBA",
           "routeId": "STBA",
-          "serviceId": "FULLW"
+          "serviceId": "FULLW",
+          "tripGroupId": 2
         },
         {
           "directionId": 0,
+          "headsign": "city1",
           "id": "CITY1",
           "routeId": "CITY",
-          "serviceId": "FULLW"
+          "serviceId": "FULLW",
+          "tripGroupId": 3
         },
         {
           "directionId": 1,
+          "headsign": "city2",
           "id": "CITY2",
           "routeId": "CITY",
-          "serviceId": "FULLW"
+          "serviceId": "FULLW",
+          "tripGroupId": 3
         },
         {
           "blockId": 1,
@@ -981,7 +988,8 @@
           "headsign": "to Furnace Creek Resort",
           "id": "BFC1",
           "routeId": "BFC",
-          "serviceId": "FULLW"
+          "serviceId": "FULLW",
+          "tripGroupId": 4
         },
         {
           "blockId": 2,
@@ -989,35 +997,112 @@
           "headsign": "to Bullfrog",
           "id": "BFC2",
           "routeId": "BFC",
-          "serviceId": "FULLW"
+          "serviceId": "FULLW",
+          "tripGroupId": 4
         },
         {
           "directionId": 0,
           "headsign": "to Amargosa Valley",
           "id": "AAMV1",
           "routeId": "AAMV",
-          "serviceId": "WE"
+          "serviceId": "WE",
+          "tripGroupId": 5
         },
         {
           "directionId": 1,
           "headsign": "to Airport",
           "id": "AAMV2",
           "routeId": "AAMV",
-          "serviceId": "WE"
+          "serviceId": "WE",
+          "tripGroupId": 5
         },
         {
           "directionId": 0,
           "headsign": "to Amargosa Valley",
           "id": "AAMV3",
           "routeId": "AAMV",
-          "serviceId": "WE"
+          "serviceId": "WE",
+          "tripGroupId": 5
         },
         {
           "directionId": 1,
           "headsign": "to Airport",
           "id": "AAMV4",
           "routeId": "AAMV",
-          "serviceId": "WE"
+          "serviceId": "WE",
+          "tripGroupId": 5
+        },
+        {
+          "directionId": 1,
+          "headsign": "to JR one A",
+          "id": "JRount1a",
+          "routeId": "JRount1",
+          "serviceId": "FULLW",
+          "tripGroupId": 6
+        },
+        {
+          "directionId": 1,
+          "headsign": "to JR one B",
+          "id": "JRount1b",
+          "routeId": "JRount1",
+          "serviceId": "WE",
+          "tripGroupId": 6
+        },
+        {
+          "directionId": 0,
+          "headsign": "to JR one C",
+          "id": "JRount1c",
+          "routeId": "JRount1",
+          "serviceId": "FULLW",
+          "tripGroupId": 6
+        },
+        {
+          "directionId": 1,
+          "headsign": "to JR two A",
+          "id": "JRount2a",
+          "routeId": "JRount2",
+          "serviceId": "WE",
+          "tripGroupId": 7
+        },
+        {
+          "directionId": 0,
+          "headsign": "to JR two B",
+          "id": "JRount2b",
+          "routeId": "JRount2",
+          "serviceId": "FULLW",
+          "tripGroupId": 7
+        },
+        {
+          "directionId": 1,
+          "headsign": "to JR two C",
+          "id": "JRount2c",
+          "routeId": "JRount2",
+          "serviceId": "FULLW",
+          "tripGroupId": 7
+        },
+        {
+          "directionId": 1,
+          "headsign": "to JR three A",
+          "id": "JRount3a",
+          "routeId": "JRount3",
+          "serviceId": "FULLW",
+          "tripGroupId": 8
+        },
+        {
+          "directionId": 0,
+          "headsign": "to JR three B",
+          "id": "JRount3b",
+          "routeId": "JRount3",
+          "serviceId": "WE",
+          "tripGroupId": 8
+        },
+        {
+          "directionId": 0,
+          "headsign": "to JR three C",
+          "id": "JRount3c",
+          "routeId": "JRount3",
+          "serviceId": "WE",
+          "tripGroupId": 8
         }
       ]
     }
