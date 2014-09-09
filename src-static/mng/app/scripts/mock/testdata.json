@@ -134,108 +134,6 @@
         "id"
       ]
     },
-    "tripgroups": {
-      "records": [
-        {
-          "id": "1",
-          "routeId": "JRount1",
-          "desc": "東山線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "東山行き",
-          "stops": [
-            "NANAA",
-            "EMSI",
-            "AMV"
-          ]
-        },
-        {
-          "id": "2",
-          "routeId": "JRount1",
-          "desc": "東山線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き",
-          "stops": [
-            "NANAA",
-            "DADAN",
-            "EMSI"
-          ]
-        },
-        {
-          "id": "3",
-          "routeId": "JRount1",
-          "desc": "粟本線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "粟本行き",
-          "stops": [
-            "NADAV",
-            "DADAN"
-          ]
-        },
-        {
-          "id": "4",
-          "routeId": "JRount2",
-          "desc": "粟本線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き",
-          "stops": [
-            "FUR_CREEK_RE",
-            "BEATTY_AIRPORT"
-          ]
-        },
-        {
-          "id": "5",
-          "routeId": "JRount2",
-          "desc": "居尻線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "東山行き",
-          "stops": [
-            "NADAV",
-            "BULLFROG",
-            "AMV"
-          ]
-        },
-        {
-          "id": "6",
-          "routeId": "JRount3",
-          "desc": "居尻線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き",
-          "stops": [
-            "FUR_CREEK_RES",
-            "STAGECOACH",
-            "NANAA",
-            "DADAN"
-          ]
-        },
-        {
-          "id": "7",
-          "routeId": "JRount3",
-          "desc": "倉真線 下り",
-          "directionId": 0,
-          "defaultHeadsign": "粟本行き",
-          "stops": [
-            "STAGECOACH",
-            "BEATTY_AIRPORT"
-          ]
-        },
-        {
-          "id": "8",
-          "routeId": "JRount3",
-          "desc": "倉真線 上り",
-          "directionId": 1,
-          "defaultHeadsign": "掛川駅行き",
-          "stops": [
-            "NANAA",
-            "BEATTY_AIRPORT",
-            "NADAV",
-            "DADAN"
-          ]
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
     "routes": {
       "records": [
         {
@@ -311,6 +209,109 @@
           "shortName": "g2",
           "longName": "Hongkong - Guangzhou",
           "type": 2
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    "tripgroups": {
+      "records": [
+        {
+          "id": "1",
+          "routeId": "JRount1",
+          "desc": "東山線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "東山行き",
+          "stops": [
+            "NANAA",
+            "EMSI",
+            "AMV"
+          ]
+        },
+        {
+          "id": "2",
+          "routeId": "JRount1",
+          "desc": "東山線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き",
+          "stops": [
+            "NANAA",
+            "DADAN",
+            "EMSI"
+          ]
+        },
+        {
+          "id": "3",
+          "routeId": "JRount1",
+          "desc": "粟本線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "粟本行き",
+          "stops": [
+            "NADAV#INBOUND",
+            "DADAN"
+          ]
+        },
+        {
+          "id": "4",
+          "routeId": "JRount2",
+          "desc": "粟本線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き",
+          "stops": [
+            "FUR_CREEK_RES#INBOUND",
+            "BEATTY_AIRPORT#INBOUND",
+            "EMSI"
+          ]
+        },
+        {
+          "id": "5",
+          "routeId": "JRount2",
+          "desc": "居尻線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "東山行き",
+          "stops": [
+            "NADAV#OUTBOUND",
+            "BULLFROG#INBOUND",
+            "AMV"
+          ]
+        },
+        {
+          "id": "6",
+          "routeId": "JRount3",
+          "desc": "居尻線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き",
+          "stops": [
+            "FUR_CREEK_RES#INBOUND",
+            "STAGECOACH#OUTBOUND",
+            "NANAA",
+            "DADAN"
+          ]
+        },
+        {
+          "id": "7",
+          "routeId": "JRount3",
+          "desc": "倉真線 下り",
+          "directionId": 0,
+          "defaultHeadsign": "粟本行き",
+          "stops": [
+            "STAGECOACH#OUTBOUND",
+            "BEATTY_AIRPORT#INBOUND"
+          ]
+        },
+        {
+          "id": "8",
+          "routeId": "JRount3",
+          "desc": "倉真線 上り",
+          "directionId": 1,
+          "defaultHeadsign": "掛川駅行き",
+          "stops": [
+            "NANAA",
+            "BEATTY_AIRPORT#OUTBOUND",
+            "NADAV#INBOUND",
+            "DADAN"
+          ]
         }
       ],
       "primary_key": [
@@ -545,6 +546,39 @@
         "id"
       ]
     },
+    "calendars": {
+      "records": [
+        {
+          "id": "1",
+          "serviceId": "FULLW",
+          "monday": 1,
+          "tuesday": 1,
+          "wednesday": 1,
+          "thursday": 1,
+          "friday": 1,
+          "saturday": 1,
+          "sunday": 1,
+          "startDate": "20070101",
+          "endDate": "20101231"
+        },
+        {
+          "id": "2",
+          "serviceId": "WE",
+          "monday": 0,
+          "tuesday": 0,
+          "wednesday": 0,
+          "thursday": 0,
+          "friday": 0,
+          "saturday": 1,
+          "sunday": 1,
+          "startDate": "20070101",
+          "endDate": "20101231"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
     "calendar_dates": {
       "records": [
         {
@@ -552,27 +586,6 @@
           "serviceId": "FULLW",
           "date": "20070604",
           "exceptionType": 2
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "fare_attributes": {
-      "records": [
-        {
-          "id": "p",
-          "price": "1.25",
-          "currencyType": "USD",
-          "paymentMethod": 0,
-          "transfers": 0
-        },
-        {
-          "id": "a",
-          "price": "5.25",
-          "currencyType": "USD",
-          "paymentMethod": 0,
-          "transfers": 0
         }
       ],
       "primary_key": [
@@ -782,56 +795,21 @@
         "id"
       ]
     },
-    "fare_rules": {
+    "fare_attributes": {
       "records": [
         {
           "id": "p",
-          "routeId": "AB"
-        },
-        {
-          "id": "p",
-          "routeId": "STBA"
-        },
-        {
-          "id": "p",
-          "routeId": "BFC"
+          "price": "1.25",
+          "currencyType": "USD",
+          "paymentMethod": 0,
+          "transfers": 0
         },
         {
           "id": "a",
-          "routeId": "AAMV"
-        }
-      ],
-      "primary_key": [
-        "id"
-      ]
-    },
-    "calendars": {
-      "records": [
-        {
-          "id": "1",
-          "serviceId": "FULLW",
-          "monday": 1,
-          "tuesday": 1,
-          "wednesday": 1,
-          "thursday": 1,
-          "friday": 1,
-          "saturday": 1,
-          "sunday": 1,
-          "startDate": "20070101",
-          "endDate": "20101231"
-        },
-        {
-          "id": "2",
-          "serviceId": "WE",
-          "monday": 0,
-          "tuesday": 0,
-          "wednesday": 0,
-          "thursday": 0,
-          "friday": 0,
-          "saturday": 1,
-          "sunday": 1,
-          "startDate": "20070101",
-          "endDate": "20101231"
+          "price": "5.25",
+          "currencyType": "USD",
+          "paymentMethod": 0,
+          "transfers": 0
         }
       ],
       "primary_key": [
@@ -908,6 +886,29 @@
         }
       ],
       "primary_key": []
+    },
+    "fare_rules": {
+      "records": [
+        {
+          "id": "p",
+          "routeId": "AB"
+        },
+        {
+          "id": "p",
+          "routeId": "STBA"
+        },
+        {
+          "id": "p",
+          "routeId": "BFC"
+        },
+        {
+          "id": "a",
+          "routeId": "AAMV"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ]
     },
     "terminals": {
       "records": [
