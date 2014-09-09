@@ -173,21 +173,38 @@ angular
         resolve: {method: function(){return 'PUT';}}
       })
       .state('terminals', {
-        url: '/terminals', 
+        url: '/terminals',
         templateUrl: 'views/terminals.html',
-        controller: 'TerminalsCtrl'
+        controller: 'TerminalsCtrl',
+        data: {
+          ncyBreadcrumbLabel: 'terminals'
+        }
       })
-      .state('postTerminal', {
-        url: '/postTerminal', 
-        templateUrl: 'views/putterminal.html',
-        controller: 'PutterminalCtrl',
-        resolve: {method: function(){return 'POST';}}
+      .state('terminals.post', {
+        url: '/@post', 
+        views: {
+          '@': { 
+            templateUrl: 'views/putterminal.html',
+            controller: 'PutterminalCtrl',
+            resolve: {method: function(){return 'POST';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Add'
+        }
       })
-      .state('putTerminal/:id', {
-        url: '/putTerminal/:id', 
-        templateUrl: 'views/putterminal.html',
-        controller: 'PutterminalCtrl',
-        resolve: {method: function(){return 'PUT';}}
+      .state('terminals.detail', {
+        url: '/:terminalId',
+        views: {
+          '@': { 
+            templateUrl: 'views/putterminal.html',
+            controller: 'PutterminalCtrl',
+            resolve: {method: function(){return 'PUT';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: '{{terminal.desc}}'
+        }
       })
       .state('agencies.detail.services', {
         url: '/services', 
