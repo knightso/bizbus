@@ -96,30 +96,58 @@ angular
           }
         },
         data: {
-          ncyBreadcrumbLabel: '{{route.name}}'
+          ncyBreadcrumbLabel: '{{route.id}}'
         }
       })
-      .state('tripgroups/:agencyId/:routeId', {
-        url: '/tripgroups/:agencyId/:routeId', 
-        templateUrl: 'views/tripgroups.html',
-        controller: 'TripgroupsCtrl'
+      .state('agencies.detail.routes.detail.tripgroups', {
+        url: '/tripgroups', 
+        views: {
+          '@': {
+            templateUrl: 'views/tripgroups.html',
+            controller: 'TripgroupsCtrl'
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Tripgroups'
+        }
       })
-      .state('tripgroups/:agencyId/:routeId/:tripgroupId/stops', {
-        url: '/tripgroups/:agencyId/:routeId/:tripgroupId/stops', 
-        templateUrl: 'views/tripgroupstops.html',
-        controller: 'TripgroupstopsCtrl'
+      .state('agencies.detail.routes.detail.tripgroups.post', {
+        url: '@post', 
+        views: {
+          '@': {
+            templateUrl: 'views/puttripgroup.html',
+            controller: 'PuttripgroupCtrl',
+            resolve: {method: function(){return 'POST';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Add'
+        }
       })
-      .state('postTripgroup/:agencyId/:routeId', {
-        url: '/postTripgroup/:agencyId/:routeId', 
-        templateUrl: 'views/puttripgroup.html',
-        controller: 'PuttripgroupCtrl',
-        resolve: {method: function(){return 'POST';}}
+      .state('agencies.detail.routes.detail.tripgroups.detail', {
+        url: '/:tripgroupId', 
+        views: {
+          '@': {
+            templateUrl: 'views/puttripgroup.html',
+            controller: 'PuttripgroupCtrl',
+            resolve: {method: function(){return 'PUT';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: '{{tg.desc}}'
+        }
       })
-      .state('putTripgroup/:agencyId/:routeId/:tripgroupId', {
-        url: '/putTripgroup/:agencyId/:routeId/:tripgroupId', 
-        templateUrl: 'views/puttripgroup.html',
-        controller: 'PuttripgroupCtrl',
-        resolve: {method: function(){return 'PUT';}}
+      .state('agencies.detail.routes.detail.tripgroups.detail.stops', {
+        url: '/stops', 
+        views: {
+          '@': {
+            templateUrl: 'views/tripgroupstops.html',
+            controller: 'TripgroupstopsCtrl'
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'TripgroupStops'
+        }
       })
       .state('stops', {
         url: '/stops', 
@@ -145,21 +173,38 @@ angular
         resolve: {method: function(){return 'PUT';}}
       })
       .state('terminals', {
-        url: '/terminals', 
+        url: '/terminals',
         templateUrl: 'views/terminals.html',
-        controller: 'TerminalsCtrl'
+        controller: 'TerminalsCtrl',
+        data: {
+          ncyBreadcrumbLabel: 'terminals'
+        }
       })
-      .state('postTerminal', {
-        url: '/postTerminal', 
-        templateUrl: 'views/putterminal.html',
-        controller: 'PutterminalCtrl',
-        resolve: {method: function(){return 'POST';}}
+      .state('terminals.post', {
+        url: '/@post', 
+        views: {
+          '@': { 
+            templateUrl: 'views/putterminal.html',
+            controller: 'PutterminalCtrl',
+            resolve: {method: function(){return 'POST';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Add'
+        }
       })
-      .state('putTerminal/:id', {
-        url: '/putTerminal/:id', 
-        templateUrl: 'views/putterminal.html',
-        controller: 'PutterminalCtrl',
-        resolve: {method: function(){return 'PUT';}}
+      .state('terminals.detail', {
+        url: '/:terminalId',
+        views: {
+          '@': { 
+            templateUrl: 'views/putterminal.html',
+            controller: 'PutterminalCtrl',
+            resolve: {method: function(){return 'PUT';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: '{{terminal.desc}}'
+        }
       })
       .state('agencies.detail.services', {
         url: '/services', 

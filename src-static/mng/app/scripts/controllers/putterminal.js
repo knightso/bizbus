@@ -17,7 +17,7 @@ angular.module('mngApp')
     $scope.detailMode = false;
     if (method === 'PUT') {
       $scope.terminal = Terminals.get({
-        id : $stateParams.id
+        id : $stateParams.terminalId
       });
       $scope.regMode = false;
       $scope.detailMode = true;

@@ -1,9 +1,9 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    Agency: [{{agencyId}}] - Route: [{{routeId}}]
+    Agency: [{{agency.id}}] - Route: [{{route.id}}]
   </div>
   <div class="panel-body">
-    <a href="#/postTripgroup/{{agencyId}}/{{routeId}}"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus">追加</button></a>
+    <a ui-sref="agencies.detail.routes.detail.tripgroups.post({agencyId: agency.id, routeId: route.id})"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus">追加</button></a>
     <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-search" ng-click="filtering=!filtering">フィルタ</button>
   </div>
   <table class="table">
@@ -30,15 +30,17 @@
       <th>Stops</th>
     </thead>
     <tbody>
-      <tr ng-repeat="tg in tripgroups | filter:(filtering ? criteria : {})" ng-click="detail(agencyId, routeId, tg.id)" class="selectable" ng-class-even="'even'">
+      <tr ng-repeat="tg in tripgroups | filter:(filtering ? criteria : {})" ng-click="detail(agency.id, route.id, tg.id)" class="selectable" ng-class-even="'even'">
         <td>{{tg.id}}</td>
         <td>{{tg.routeId}}</td>
         <td>{{tg.desc | limitTo:charLimit}}<span ng-show="tg.desc.length > charLimit">...</span></td>
         <td>{{tg.directionId | directionType}}</td>
         <td>{{tg.defaultHeadsign}}</td>
-        <td><a ng-href="#/tripgroups/{{agencyId}}/{{routeId}}/{{tg.id}}/stops"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-list"></button></a></td>
+        <td><a ui-sref="agencies.detail.routes.detail.tripgroups.detail.stops({agencyId: agency.id, routeId: route.id, tripgroupId: tg.id})"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-list"></button></a></td>
     </tr>
     </tbody>
   </table>
 </div>
-<a href="#/postTripgroup/{{agencyId}}/{{routeId}}"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus">追加</button></a><br/><br/>
+<div class="panel-body">
+  <a ui-sref="agencies.detail.routes.detail.tripgroups.post({agencyId: agency.id, routeId: route.id})"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus">追加</button></a>
+</div>

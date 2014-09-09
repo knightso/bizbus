@@ -8,11 +8,20 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('PuttripgroupCtrl', function ($scope, $stateParams, $timeout, $location, method, Tripgroups, Enums) {
+  .controller('PuttripgroupCtrl', function ($scope, $stateParams, $timeout, $location, method, Agencies, Routes, Tripgroups, Enums) {
     
     $scope.method = method;
     $scope.tg = {};
     $scope.directionTypes = Enums.directionTypes;
+
+    $scope.agency = Agencies.get({
+      id : $stateParams.agencyId
+    });
+
+    $scope.route = Routes.get({
+      agencyId : $stateParams.agencyId,
+      id : $stateParams.routeId
+    });
 
     $scope.regMode = true;
     $scope.detailMode = false;  
@@ -52,7 +61,7 @@ angular.module('mngApp')
                 if ($scope.regMode === false) {
                   $scope.detailMode = true;
                 } else {
-                  $location.path('tripgroups/' + $stateParams.agencyId + '/' + $stateParams.routeId);
+                  $location.path('agencies/' + $stateParams.agencyId + '/routes/' + $stateParams.routeId + '/tripgroups');
                 }
               }, (tat >= tout ? 0 : tout - tat));
             },
