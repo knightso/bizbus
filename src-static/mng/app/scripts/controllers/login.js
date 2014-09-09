@@ -8,10 +8,9 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('LoginCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('LoginCtrl', function ($scope, $location, login) {
+    $scope.login = function () {
+      login.login();
+      $location.path('/agencies');
+    };
   });

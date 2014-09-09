@@ -9,7 +9,13 @@
  */
 angular.module('mngApp')
   .service('login', function login() {
+    this.loginUser = null;
     this.getLoginUser = function() {
-      return 'hoge';
+      return this.loginUser;
+    };
+
+    this.login = function(id, pass) {
+      console.log('id=' + id +', pass=' + pass);
+      this.loginUser = {name: '山田太郎'};
     };
   });
