@@ -96,30 +96,58 @@ angular
           }
         },
         data: {
-          ncyBreadcrumbLabel: '{{route.name}}'
+          ncyBreadcrumbLabel: '{{route.id}}'
         }
       })
-      .state('tripgroups/:agencyId/:routeId', {
-        url: '/tripgroups/:agencyId/:routeId', 
-        templateUrl: 'views/tripgroups.html',
-        controller: 'TripgroupsCtrl'
+      .state('agencies.detail.routes.detail.tripgroups', {
+        url: '/tripgroups', 
+        views: {
+          '@': {
+            templateUrl: 'views/tripgroups.html',
+            controller: 'TripgroupsCtrl'
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Tripgroups'
+        }
       })
-      .state('tripgroups/:agencyId/:routeId/:tripgroupId/stops', {
-        url: '/tripgroups/:agencyId/:routeId/:tripgroupId/stops', 
-        templateUrl: 'views/tripgroupstops.html',
-        controller: 'TripgroupstopsCtrl'
+      .state('agencies.detail.routes.detail.tripgroups.post', {
+        url: '@post', 
+        views: {
+          '@': {
+            templateUrl: 'views/puttripgroup.html',
+            controller: 'PuttripgroupCtrl',
+            resolve: {method: function(){return 'POST';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Add'
+        }
       })
-      .state('postTripgroup/:agencyId/:routeId', {
-        url: '/postTripgroup/:agencyId/:routeId', 
-        templateUrl: 'views/puttripgroup.html',
-        controller: 'PuttripgroupCtrl',
-        resolve: {method: function(){return 'POST';}}
+      .state('agencies.detail.routes.detail.tripgroups.detail', {
+        url: '/:tripgroupId', 
+        views: {
+          '@': {
+            templateUrl: 'views/puttripgroup.html',
+            controller: 'PuttripgroupCtrl',
+            resolve: {method: function(){return 'PUT';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: '{{tg.desc}}'
+        }
       })
-      .state('putTripgroup/:agencyId/:routeId/:tripgroupId', {
-        url: '/putTripgroup/:agencyId/:routeId/:tripgroupId', 
-        templateUrl: 'views/puttripgroup.html',
-        controller: 'PuttripgroupCtrl',
-        resolve: {method: function(){return 'PUT';}}
+      .state('agencies.detail.routes.detail.tripgroups.detail.stops', {
+        url: '/stops', 
+        views: {
+          '@': {
+            templateUrl: 'views/tripgroupstops.html',
+            controller: 'TripgroupstopsCtrl'
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'TripgroupStops'
+        }
       })
       .state('stops', {
         url: '/stops', 

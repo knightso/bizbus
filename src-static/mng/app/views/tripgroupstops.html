@@ -1,13 +1,13 @@
 <h2>Trip Group for Stops編集</h2>
 
 <div class="panel-body">
-   <a href="#/tripgroups/{{agencyId}}/{{routeId}}"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left">戻る</button></a>
+   <a ui-sref="agencies.detail.routes.detail.tripgroups({agencyId: agency.id, routeId: route.id})"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left">戻る</button></a>
 </div>
 <form name="tgStopsForm" class="form-horizontal" role="form">
   <div class="form-group">
     <label for="inputAgencyId" class="col-sm-2 control-label">Tripgroup Info</label>
     <div>
-      <label>agencyId:{{agencyId}} - routeId:{{routeId}} - TripGroupId:{{tg.id}}</label>
+      <label>agencyId:{{agency.id}} - routeId:{{route.id}} - TripGroupId:{{tg.id}}</label>
     </div>
   </div>
 
@@ -82,5 +82,5 @@
   </div>
 </form>
 <div class="panel-body">
-   <a href="#/tripgroups/{{agencyId}}/{{routeId}}"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left">戻る</button></a>
+   <a ui-sref="agencies.detail.routes.detail.tripgroups({agencyId: agency.id, routeId: route.id})"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left">戻る</button></a>
 </div>
