@@ -27,7 +27,7 @@
         <td>{{route.longName | limitTo:charLimit}}<span ng-show="route.longName.length > charLimit">...</span></td>
         <td>{{route.desc | limitTo:charLimit}}<span ng-show="route.desc.length > charLimit">...</span></td>
         <td>{{route.type}}</td>
-        <td><a ui-sref="agencies.detail.routes.detail.tripgroups({agencyId: agency.id, routeId: route.id})"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-list"></button></a></td>
+        <td><a ui-sref="agencies.detail.routes.detail.tripgroups({agencyId: agency.id, routeId: route.id})"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-list">&nbsp;{{route.tripGroups.length}}</button></a></td>
     </tr>
     </tbody>
   </table>

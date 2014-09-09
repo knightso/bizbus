@@ -33,7 +33,7 @@
         <td>{{tg.desc | limitTo:charLimit}}<span ng-show="tg.desc.length > charLimit">...</span></td>
         <td>{{tg.directionId | directionType}}</td>
         <td>{{tg.defaultHeadsign}}</td>
-        <td><a ui-sref="agencies.detail.routes.detail.tripgroups.detail.stops({agencyId: agency.id, routeId: route.id, tripgroupId: tg.id})"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-list"></button></a></td>
+        <td><a ui-sref="agencies.detail.routes.detail.tripgroups.detail.stops({agencyId: agency.id, routeId: route.id, tripgroupId: tg.id})"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-list">&nbsp;{{tg.stops.length}}</button></a></td>
     </tr>
     </tbody>
   </table>

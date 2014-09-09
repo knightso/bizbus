@@ -219,6 +219,7 @@
           "id": "AB",
           "longName": "Airport - Bullfrog",
           "shortName": "10",
+          "tripGroups": [],
           "type": 3
         },
         {
@@ -227,6 +228,7 @@
           "id": "BFC",
           "longName": "Bullfrog - Furnace Creek Resort",
           "shortName": "20",
+          "tripGroups": [],
           "type": 3
         },
         {
@@ -235,6 +237,7 @@
           "id": "STBA",
           "longName": "Stagecoach - Airport Shuttle",
           "shortName": "30",
+          "tripGroups": [],
           "type": 3
         },
         {
@@ -242,6 +245,7 @@
           "id": "CITY",
           "longName": "City",
           "shortName": "40",
+          "tripGroups": [],
           "type": 3
         },
         {
@@ -250,6 +254,7 @@
           "id": "AAMV",
           "longName": "Airport - Amargosa Valley",
           "shortName": "50",
+          "tripGroups": [],
           "type": 3
         },
         {
@@ -257,6 +262,11 @@
           "id": "JRount1",
           "longName": "area1 - area2",
           "shortName": "j1",
+          "tripGroups": [
+            "1",
+            "2",
+            "3"
+          ],
           "type": 2
         },
         {
@@ -264,6 +274,10 @@
           "id": "JRount2",
           "longName": "area2 - area3",
           "shortName": "j2",
+          "tripGroups": [
+            "4",
+            "5"
+          ],
           "type": 3
         },
         {
@@ -271,6 +285,11 @@
           "id": "JRount3",
           "longName": "area3 - area4",
           "shortName": "j3",
+          "tripGroups": [
+            "6",
+            "7",
+            "8"
+          ],
           "type": 4
         },
         {
@@ -278,6 +297,7 @@
           "id": "GTRount1",
           "longName": "Beijing - Shanghai",
           "shortName": "g1",
+          "tripGroups": [],
           "type": 1
         },
         {
@@ -285,6 +305,7 @@
           "id": "GTRount2",
           "longName": "Hongkong - Guangzhou",
           "shortName": "g2",
+          "tripGroups": [],
           "type": 2
         }
       ]
