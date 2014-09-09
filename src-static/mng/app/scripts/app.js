@@ -17,9 +17,12 @@ angular
     'ngSanitize',
     'ui.bootstrap',
     'ui.sortable',
-    'ui.select'
+    'ui.select',
+    'ncy-angular-breadcrumb'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider/*, $locationProvider*/) {
+    //$locationProvider.html5Mode(true);
+
     $routeProvider
       .when('/', {
         //templateUrl: 'views/main.html',
@@ -32,7 +35,10 @@ angular
       })
       .when('/agencies', {
         templateUrl: 'views/agencies.html',
-        controller: 'AgenciesCtrl'
+        controller: 'AgenciesCtrl',
+        data: {
+          ncyBreadcrumbLabel: 'Agencies'
+        }
       })
       .when('/postAgency', {
         templateUrl: 'views/putagency.html',

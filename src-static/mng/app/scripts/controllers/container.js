@@ -13,7 +13,6 @@ angular.module('mngApp')
     $scope.getLoginUser = function() {
       //return login.getLoginUser();
       // TODO
-      console.log($location.path());
       return $location.path() === '/login' ? null : $scope.dummyLoginUser;
     };
   });
