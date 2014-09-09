@@ -59,6 +59,15 @@ angular.module('mngApp')
             if (calendar.endDate !== undefined || calendar.endDate !== '') {
               calendar.endDateType = new Date(calendar.endDate.substring(0,4), calendar.endDate.substring(4,6)-1, calendar.endDate.substring(6,8));
             }
+
+            // TODO
+            calendar.sundayTmp = (calendar.sunday === 1);
+            calendar.mondayTmp = (calendar.monday === 1);
+            calendar.tuesdayTmp = (calendar.tuesday === 1);
+            calendar.wednesdayTmp = (calendar.wednesday === 1);
+            calendar.thursdayTmp = (calendar.thursday === 1);
+            calendar.fridayTmp = (calendar.friday === 1);
+            calendar.saturdayTmp = (calendar.saturday === 1);
           });
         }
       });

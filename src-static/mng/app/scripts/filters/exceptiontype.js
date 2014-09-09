@@ -11,6 +11,9 @@
 angular.module('mngApp')
   .filter('exceptionType', function (Enums) {
     return function (id) {
+      if (id === null || id === undefined) {
+        return id;
+      }
       var exceptionType = Enums.findExceptionType(id);
       return exceptionType ? exceptionType.name : 'error';
     };

@@ -11,8 +11,8 @@ angular.module('mngApp')
   .service('Enums', function Enums() {
     return {
       directionTypes : [
-        {name:'下り', id:0},
-        {name:'上り', id:1}
+        {name:'0', id:0},
+        {name:'1', id:1}
       ],
       findDirectionType : function(id) {
         for (var i = 0; i < this.directionTypes.length; i++) {
@@ -23,8 +23,8 @@ angular.module('mngApp')
         return null;
       },
       exceptionTypes : [
-        {name:'追加', id:1},
-        {name:'除外', id:2}
+        {name:'Include', id:1},
+        {name:'Exclude', id:2}
       ],
       findExceptionType : function(id) {
         for (var i = 0; i < this.exceptionTypes.length; i++) {

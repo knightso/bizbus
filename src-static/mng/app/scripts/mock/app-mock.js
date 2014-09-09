@@ -177,32 +177,20 @@
 
     var calendars = mockDB.select('calendars');
     $httpBackend.whenGET(/^\/api\/services\/[^\/]+\/calendars+$/).respond(function(method, url) {
-      var strings = url.split('/');
-      var serviceId;
-      for (var i = 0; i < strings.length; i++) {
-        if (i === 3) {
-          serviceId = strings[i];
-        }
-      }
+      var serviceId = url.split('/')[3];
       var filtered = _.filter(calendars.table.records, function(calendars) {
         return calendars.serviceId === serviceId;
       });
-     return [200, filtered];
+      return [200, filtered];
     });
 
     var calendarDates = mockDB.select('calendar_dates');
     $httpBackend.whenGET(/^\/api\/services\/[^\/]+\/calendardates+$/).respond(function(method, url) {
-      var strings = url.split('/');
-      var serviceId;
-      for (var i = 0; i < strings.length; i++) {
-        if (i === 3) {
-          serviceId = strings[i];
-        }
-      }
+      var serviceId = url.split('/')[3];
       var filtered = _.filter(calendarDates.table.records, function(calendarDates) {
         return calendarDates.serviceId === serviceId;
       });
-     return [200, filtered];
+      return [200, filtered];
     });
 
     var trips = mockDB.select('trips');
