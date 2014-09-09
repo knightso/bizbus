@@ -161,22 +161,43 @@ angular
         controller: 'PutterminalCtrl',
         resolve: {method: function(){return 'PUT';}}
       })
-      .state('services', {
+      .state('agencies.detail.services', {
         url: '/services', 
-        templateUrl: 'views/services.html',
-        controller: 'ServicesCtrl'
+        views: {
+          '@': {
+            templateUrl: 'views/services.html',
+            controller: 'ServicesCtrl'
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Services'
+        }
       })
-      .state('postService', {
-        url: '/postService', 
-        templateUrl: 'views/putservice.html',
-        controller: 'PutserviceCtrl',
-        resolve: {method: function(){return 'POST';}}
+      .state('agencies.detail.services.post', {
+        url: '@post', 
+        views: {
+          '@': {
+            templateUrl: 'views/putservice.html',
+            controller: 'PutserviceCtrl',
+            resolve: {method: function(){return 'POST';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Add'
+        }
       })
-      .state('putService/:id', {
-        url: '/putService/:id', 
-        templateUrl: 'views/putservice.html',
-        controller: 'PutserviceCtrl',
-        resolve: {method: function(){return 'PUT';}}
+      .state('agencies.detail.services.detail', {
+        url: ':serviceId', 
+        views: {
+          '@': {
+            templateUrl: 'views/putservice.html',
+            controller: 'PutserviceCtrl',
+            resolve: {method: function(){return 'PUT';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: '{{service.name}}'
+        }
       })
       .state('trips', {
         url: '/trips', 

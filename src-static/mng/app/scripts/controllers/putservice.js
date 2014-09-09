@@ -15,6 +15,10 @@ angular.module('mngApp')
     $scope.exceptionTypes = Enums.exceptionTypes;
     $scope.service = {};
     $scope.format = 'yyyyMMdd';
+    
+    $scope.agency = Agencies.get({
+      id : $stateParams.agencyId
+    });
 
     $scope.$watch('calendars', function() {
       if (!$scope.calendars) {
@@ -35,13 +39,13 @@ angular.module('mngApp')
     $scope.detailMode = false;
     if (method === 'PUT') {
       $scope.service = Services.get({
-        id : $stateParams.id
+        id : $stateParams.serviceId
       });
       $scope.regMode = false;
       $scope.detailMode = true;
 
       $scope.calendars = Calendars.queryByService({
-        serviceId : $stateParams.id
+        serviceId : $stateParams.serviceId
       });
       $scope.calendars.$promise.then(function(calendars) {
         if (calendars.length === 0) {
@@ -60,7 +64,7 @@ angular.module('mngApp')
       });
 
       $scope.calendarDates = Calendardates.queryByService({
-        serviceId : $stateParams.id
+        serviceId : $stateParams.serviceId
       });
       $scope.calendarDates.$promise.then(function(calendarDates) {
         if (calendarDates.length === 0) {
