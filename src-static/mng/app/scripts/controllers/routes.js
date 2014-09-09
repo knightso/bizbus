@@ -8,19 +8,19 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('RoutesCtrl', function ($scope, $routeParams, $location, Agencies, Routes) {
+  .controller('RoutesCtrl', function ($scope, $stateParams, $location, $state, Agencies, Routes) {
     $scope.criteria = {};
     $scope.charLimit = 15;
 
     $scope.agency = Agencies.get({
-      id : $routeParams.agencyId
+      id : $stateParams.agencyId
     });
 
     $scope.routes = Routes.query({
-      agencyId : $routeParams.agencyId
+      agencyId : $stateParams.agencyId
     });
 
     $scope.detail = function(agencyId, routeId) {
-      $location.path('putRoute/' + agencyId + '/' + routeId);
+      $state.go('agencies.detail.routes.detail', {agencyId: agencyId, routeId: routeId});
     };
   });

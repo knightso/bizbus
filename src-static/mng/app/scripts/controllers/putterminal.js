@@ -8,7 +8,7 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('PutterminalCtrl', function ($scope, $routeParams, $timeout, $location, method, Terminals) {
+  .controller('PutterminalCtrl', function ($scope, $stateParams, $timeout, $location, method, Terminals) {
     
     $scope.method = method;
     $scope.terminal = {};
@@ -17,7 +17,7 @@ angular.module('mngApp')
     $scope.detailMode = false;
     if (method === 'PUT') {
       $scope.terminal = Terminals.get({
-        id : $routeParams.id
+        id : $stateParams.id
       });
       $scope.regMode = false;
       $scope.detailMode = true;

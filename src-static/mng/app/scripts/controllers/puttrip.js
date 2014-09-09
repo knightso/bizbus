@@ -8,7 +8,7 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('PuttripCtrl', function ($scope, $routeParams, $timeout, $location, method, Trips, Services, Enums) {
+  .controller('PuttripCtrl', function ($scope, $stateParams, $timeout, $location, method, Trips, Services, Enums) {
     
     $scope.method = method;
     $scope.services = Services.query();
@@ -19,7 +19,7 @@ angular.module('mngApp')
     $scope.detailMode = false;
     if (method === 'PUT') {
       $scope.trip = Trips.get({
-        id : $routeParams.id
+        id : $stateParams.id
       });
       $scope.regMode = false;
       $scope.detailMode = true;

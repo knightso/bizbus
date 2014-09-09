@@ -8,7 +8,7 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('PutstopCtrl', function ($scope, $routeParams, $timeout, $location, method, Stations) {
+  .controller('PutstopCtrl', function ($scope, $stateParams, $timeout, $location, method, Stations) {
     
     $scope.method = method;
     $scope.stop = {};
@@ -18,7 +18,7 @@ angular.module('mngApp')
     $scope.detailMode = false;
     if (method === 'PUT') {
       $scope.stop = Stations.get({
-        id : $routeParams.id
+        id : $stateParams.id
       });
       $scope.stop.$promise.then(function(stop) {
         if (stop.locationType === undefined) {
@@ -34,11 +34,11 @@ angular.module('mngApp')
       $scope.regMode = false;
       $scope.detailMode = true;
     } else {
-      $scope.stop.parentStation = $routeParams.id;
+      $scope.stop.parentStation = $stateParams.id;
       if ($scope.stop.parentStation !== undefined) {
         $scope.ifTopStop = false;
         $scope.pStop = Stations.get({
-          id : $routeParams.id
+          id : $stateParams.id
         });
       }
       $scope.stop.locationType = 0;

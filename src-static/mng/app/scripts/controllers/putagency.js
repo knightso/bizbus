@@ -8,7 +8,7 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('PutagencyCtrl', function ($scope, $routeParams, $timeout, $location, method, Agencies) {
+  .controller('PutagencyCtrl', function ($scope, $stateParams, $timeout, $location, method, Agencies) {
     
     $scope.method = method;
     $scope.agency = {};
@@ -17,7 +17,7 @@ angular.module('mngApp')
     $scope.detailMode = false;
     if (method === 'PUT') {
       $scope.agency = Agencies.get({
-        id : $routeParams.id
+        id : $stateParams.agencyId
       });
       $scope.regMode = false;
       $scope.detailMode = true;

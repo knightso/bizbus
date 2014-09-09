@@ -16,6 +16,7 @@
     "underscore": "1.7.0",
     "angular-ui-sortable": "0.12.6",
     "angular-ui-select": "0.6.0",
+    "angular-ui-router": "0.2.11",
     "angular-translate": "2.2.0",
     "angular-breadcrumb": "0.2"
   },

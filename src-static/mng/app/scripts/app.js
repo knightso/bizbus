@@ -13,143 +13,198 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
+    //'ngRoute',
     'ngSanitize',
     'ui.bootstrap',
     'ui.sortable',
     'ui.select',
+    'ui.router',
     'ncy-angular-breadcrumb'
   ])
-  .config(function ($routeProvider/*, $locationProvider*/) {
+  .config(function ($stateProvider, $urlRouterProvider/*$routeProvider , $locationProvider*/) {
     //$locationProvider.html5Mode(true);
 
-    $routeProvider
-      .when('/', {
-        //templateUrl: 'views/main.html',
-        //controller: 'MainCtrl'
-        redirectTo: '/login'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .when('/agencies', {
+    $urlRouterProvider.otherwise('/login');
+
+    $stateProvider
+      .state('agencies', {
+        url: '/agencies',
         templateUrl: 'views/agencies.html',
         controller: 'AgenciesCtrl',
         data: {
           ncyBreadcrumbLabel: 'Agencies'
         }
       })
-      .when('/postAgency', {
-        templateUrl: 'views/putagency.html',
-        controller: 'PutagencyCtrl',
-        resolve: {method: function(){return 'POST';}}
+      .state('agencies.post', {
+        url: '/@post', 
+        views: {
+          '@': { 
+            templateUrl: 'views/putagency.html',
+            controller: 'PutagencyCtrl',
+            resolve: {method: function(){return 'POST';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Add'
+        }
       })
-      .when('/putAgency/:id', {
-        templateUrl: 'views/putagency.html',
-        controller: 'PutagencyCtrl',
-        resolve: {method: function(){return 'PUT';}}
+      .state('agencies.detail', {
+        url: '/:agencyId',
+        views: {
+          '@': { 
+            templateUrl: 'views/putagency.html',
+            controller: 'PutagencyCtrl',
+            resolve: {method: function(){return 'PUT';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: '{{agency.name}}'
+        }
       })
-      .when('/routes/:agencyId', {
-        templateUrl: 'views/routes.html',
-        controller: 'RoutesCtrl'
+      .state('agencies.detail.routes', {
+        url: '/routes', 
+        views: {
+          '@': {
+            templateUrl: 'views/routes.html',
+            controller: 'RoutesCtrl'
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Routes'
+        }
       })
-      .when('/postRoute/:agencyId', {
-        templateUrl: 'views/putroute.html',
-        controller: 'PutrouteCtrl',
-        resolve: {method: function(){return 'POST';}}
+      .state('agencies.detail.routes.post', {
+        url: '@post', 
+        views: {
+          '@': {
+            templateUrl: 'views/putroute.html',
+            controller: 'PutrouteCtrl',
+            resolve: {method: function(){return 'POST';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Add'
+        }
       })
-      .when('/putRoute/:agencyId/:routeId', {
-        templateUrl: 'views/putroute.html',
-        controller: 'PutrouteCtrl',
-        resolve: {method: function(){return 'PUT';}}
+      .state('agencies.detail.routes.detail', {
+        url: '/:routeId', 
+        views: {
+          '@': {
+            templateUrl: 'views/putroute.html',
+            controller: 'PutrouteCtrl',
+            resolve: {method: function(){return 'PUT';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: '{{route.name}}'
+        }
       })
-      .when('/tripgroups/:agencyId/:routeId', {
+      .state('tripgroups/:agencyId/:routeId', {
+        url: '/tripgroups/:agencyId/:routeId', 
         templateUrl: 'views/tripgroups.html',
         controller: 'TripgroupsCtrl'
       })
-      .when('/tripgroups/:agencyId/:routeId/:tripgroupId/stops', {
+      .state('tripgroups/:agencyId/:routeId/:tripgroupId/stops', {
+        url: '/tripgroups/:agencyId/:routeId/:tripgroupId/stops', 
         templateUrl: 'views/tripgroupstops.html',
         controller: 'TripgroupstopsCtrl'
       })
-      .when('/postTripgroup/:agencyId/:routeId', {
+      .state('postTripgroup/:agencyId/:routeId', {
+        url: '/postTripgroup/:agencyId/:routeId', 
         templateUrl: 'views/puttripgroup.html',
         controller: 'PuttripgroupCtrl',
         resolve: {method: function(){return 'POST';}}
       })
-      .when('/putTripgroup/:agencyId/:routeId/:tripgroupId', {
+      .state('putTripgroup/:agencyId/:routeId/:tripgroupId', {
+        url: '/putTripgroup/:agencyId/:routeId/:tripgroupId', 
         templateUrl: 'views/puttripgroup.html',
         controller: 'PuttripgroupCtrl',
         resolve: {method: function(){return 'PUT';}}
       })
-      .when('/stops', {
+      .state('stops', {
+        url: '/stops', 
         templateUrl: 'views/stops.html',
         controller: 'StopsCtrl'
       })
-      .when('/postStop', {
+      .state('postStop', {
+        url: '/postStop', 
         templateUrl: 'views/putstop.html',
         controller: 'PutstopCtrl',
         resolve: {method: function(){return 'POST';}}
       })
-      .when('/postStop/:id', {
+      .state('postStop/:id', {
+        url: '/postStop/:id', 
         templateUrl: 'views/putstop.html',
         controller: 'PutstopCtrl',
         resolve: {method: function(){return 'POST';}}
       })
-      .when('/putStop/:id', {
+      .state('putStop/:id', {
+        url: '/putStop/:id', 
         templateUrl: 'views/putstop.html',
         controller: 'PutstopCtrl',
         resolve: {method: function(){return 'PUT';}}
       })
-      .when('/terminals', {
+      .state('terminals', {
+        url: '/terminals', 
         templateUrl: 'views/terminals.html',
         controller: 'TerminalsCtrl'
       })
-      .when('/postTerminal', {
+      .state('postTerminal', {
+        url: '/postTerminal', 
         templateUrl: 'views/putterminal.html',
         controller: 'PutterminalCtrl',
         resolve: {method: function(){return 'POST';}}
       })
-      .when('/putTerminal/:id', {
+      .state('putTerminal/:id', {
+        url: '/putTerminal/:id', 
         templateUrl: 'views/putterminal.html',
         controller: 'PutterminalCtrl',
         resolve: {method: function(){return 'PUT';}}
       })
-      .when('/services', {
+      .state('services', {
+        url: '/services', 
         templateUrl: 'views/services.html',
         controller: 'ServicesCtrl'
       })
-      .when('/postService', {
+      .state('postService', {
+        url: '/postService', 
         templateUrl: 'views/putservice.html',
         controller: 'PutserviceCtrl',
         resolve: {method: function(){return 'POST';}}
       })
-      .when('/putService/:id', {
+      .state('putService/:id', {
+        url: '/putService/:id', 
         templateUrl: 'views/putservice.html',
         controller: 'PutserviceCtrl',
         resolve: {method: function(){return 'PUT';}}
       })
-      .when('/trips', {
+      .state('trips', {
+        url: '/trips', 
         templateUrl: 'views/trips.html',
         controller: 'TripsCtrl'
       })
-      .when('/postTrip', {
+      .state('postTrip', {
+        url: '/postTrip', 
         templateUrl: 'views/puttrip.html',
         controller: 'PuttripCtrl',
         resolve: {method: function(){return 'POST';}}
       })
-      .when('/putTrip/:id', {
+      .state('putTrip/:id', {
+        url: '/putTrip/:id', 
         templateUrl: 'views/puttrip.html',
         controller: 'PuttripCtrl',
         resolve: {method: function(){return 'PUT';}}
       })
-      .when('/login', {
+      .state('login', {
+        url: '/login', 
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
-      })
+      });
+      /*
       .otherwise({
         redirectTo: '/'
       });
+      */
   });
 
 // for mock

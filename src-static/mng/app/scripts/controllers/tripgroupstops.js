@@ -8,16 +8,16 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('TripgroupstopsCtrl', function ($scope, $routeParams, $http, Tripgroups) {//Stations
+  .controller('TripgroupstopsCtrl', function ($scope, $stateParams, $http, Tripgroups) {//Stations
     $scope.charLimit = 15;
-    $scope.agencyId = $routeParams.agencyId;
-    $scope.routeId = $routeParams.routeId;
-    $scope.tripgroupId = $routeParams.tripgroupId;
+    $scope.agencyId = $stateParams.agencyId;
+    $scope.routeId = $stateParams.routeId;
+    $scope.tripgroupId = $stateParams.tripgroupId;
 
     $scope.tg = Tripgroups.get({
-      agencyId : $routeParams.agencyId,
-      routeId : $routeParams.routeId,
-      id : $routeParams.tripgroupId
+      agencyId : $stateParams.agencyId,
+      routeId : $stateParams.routeId,
+      id : $stateParams.tripgroupId
     });
 
     $scope.stops = [];

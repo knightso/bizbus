@@ -8,7 +8,7 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('PuttripgroupCtrl', function ($scope, $routeParams, $timeout, $location, method, Tripgroups, Enums) {
+  .controller('PuttripgroupCtrl', function ($scope, $stateParams, $timeout, $location, method, Tripgroups, Enums) {
     
     $scope.method = method;
     $scope.tg = {};
@@ -18,19 +18,19 @@ angular.module('mngApp')
     $scope.detailMode = false;  
     if (method === 'PUT') {
       $scope.tg = Tripgroups.get({
-        agencyId : $routeParams.agencyId,
-        routeId : $routeParams.routeId,
-        id : $routeParams.tripgroupId
+        agencyId : $stateParams.agencyId,
+        routeId : $stateParams.routeId,
+        id : $stateParams.tripgroupId
       });
       $scope.tg.$promise.then(function() {
-        $scope.tg.agencyId = $routeParams.agencyId;
-        $scope.tg.routeId = $routeParams.routeId;
+        $scope.tg.agencyId = $stateParams.agencyId;
+        $scope.tg.routeId = $stateParams.routeId;
       });
       $scope.regMode = false;
       $scope.detailMode = true;
     } else {
-      $scope.tg.agencyId = $routeParams.agencyId;
-      $scope.tg.routeId = $routeParams.routeId;
+      $scope.tg.agencyId = $stateParams.agencyId;
+      $scope.tg.routeId = $stateParams.routeId;
     }
 
     $scope.submit = function() {
@@ -52,7 +52,7 @@ angular.module('mngApp')
                 if ($scope.regMode === false) {
                   $scope.detailMode = true;
                 } else {
-                  $location.path('tripgroups/' + $routeParams.agencyId + '/' + $routeParams.routeId);
+                  $location.path('tripgroups/' + $stateParams.agencyId + '/' + $stateParams.routeId);
                 }
               }, (tat >= tout ? 0 : tout - tat));
             },

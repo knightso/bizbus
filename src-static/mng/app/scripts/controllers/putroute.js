@@ -8,26 +8,26 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('PutrouteCtrl', function ($scope, $routeParams, $timeout, $location, method, Agencies, Routes) {
+  .controller('PutrouteCtrl', function ($scope, $stateParams, $timeout, $location, method, Agencies, Routes) {
     
     $scope.method = method;
     $scope.route = {};
 
     $scope.agency = Agencies.get({
-      id : $routeParams.agencyId
+      id : $stateParams.agencyId
     });
 
     $scope.regMode = true;
     $scope.detailMode = false; 
     if (method === 'PUT') {
       $scope.route = Routes.get({
-        agencyId : $routeParams.agencyId,
-        id : $routeParams.routeId
+        agencyId : $stateParams.agencyId,
+        id : $stateParams.routeId
       });
       $scope.regMode = false;
       $scope.detailMode = true;
     } else {
-      $scope.route.agencyId = $routeParams.agencyId;
+      $scope.route.agencyId = $stateParams.agencyId;
     }
 
     $scope.submit = function() {
@@ -49,7 +49,7 @@ angular.module('mngApp')
                 if ($scope.regMode === false) {
                   $scope.detailMode = true;
                 } else {
-                  $location.path('routes/' + $routeParams.agencyId);
+                  $location.path('routes/' + $stateParams.agencyId);
                 }
               }, (tat >= tout ? 0 : tout - tat));
             },

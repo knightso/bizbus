@@ -8,7 +8,7 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('PutserviceCtrl', function ($scope, $routeParams, $timeout, $location, method, Agencies, Services, Calendars, Calendardates, Enums) {
+  .controller('PutserviceCtrl', function ($scope, $stateParams, $timeout, $location, method, Agencies, Services, Calendars, Calendardates, Enums) {
     
     $scope.method = method;
     $scope.agencies = Agencies.query();
@@ -35,13 +35,13 @@ angular.module('mngApp')
     $scope.detailMode = false;
     if (method === 'PUT') {
       $scope.service = Services.get({
-        id : $routeParams.id
+        id : $stateParams.id
       });
       $scope.regMode = false;
       $scope.detailMode = true;
 
       $scope.calendars = Calendars.queryByService({
-        serviceId : $routeParams.id
+        serviceId : $stateParams.id
       });
       $scope.calendars.$promise.then(function(calendars) {
         if (calendars.length === 0) {
@@ -60,7 +60,7 @@ angular.module('mngApp')
       });
 
       $scope.calendarDates = Calendardates.queryByService({
-        serviceId : $routeParams.id
+        serviceId : $stateParams.id
       });
       $scope.calendarDates.$promise.then(function(calendarDates) {
         if (calendarDates.length === 0) {
