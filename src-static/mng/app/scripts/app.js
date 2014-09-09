@@ -96,7 +96,7 @@ angular
           }
         },
         data: {
-          ncyBreadcrumbLabel: '{{route.id}}'
+          ncyBreadcrumbLabel: '{{route.longName}}'
         }
       })
       .state('agencies.detail.routes.detail.tripgroups', {

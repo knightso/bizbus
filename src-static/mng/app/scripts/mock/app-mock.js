@@ -8,13 +8,8 @@
     var agencies = mockDB.select('agencies');
 
     $httpBackend.whenGET(/^\/api\/agencies\/[^\/]+$/).respond(function(method, url) {
-      var id = url.substring(url.lastIndexOf('/')+1);
-      var agency;
-      for (var i = 0; i < agencies.table.records.length; i++) {
-        if (agencies.table.records[i].id === id) {
-          agency = agencies.table.records[i];
-        }
-      }
+      var agencyId = url.substring(url.lastIndexOf('/')+1);
+      var agency = agencies.get(agencyId);
       return [200, agency];
     });
 
@@ -26,31 +21,16 @@
     var routes = mockDB.select('routes');
 
     $httpBackend.whenGET(/^\/api\/agencies\/[^\/]+\/routes$/).respond(function(method, url) {
-      var strings = url.split('/');
-      var agencyId;
-      for (var i = 0; i < strings.length; i++) {
-        if (i === 3) {
-          agencyId = strings[i];
-        }
-      }
-      var routeList = new Array();
-      for (var i = 0; i < routes.table.records.length; i++) {
-        if (routes.table.records[i].agencyId === agencyId) {
-          routeList.push(routes.table.records[i]);
-        }
-      }
-     return [200, routeList];
+      var agencyId = url.split('/')[3];
+      var filtered = _.filter(routes.table.records, function(route) {
+        return route.agencyId === agencyId;
+      });
+      return [200, filtered];
     });
  
     $httpBackend.whenGET(/^\/api\/agencies\/[^\/]+\/routes+\/[^\/]+$/).respond(function(method, url) {
       var routeId = url.substring(url.lastIndexOf('/')+1);
-      //var route = routes.get(routeId); // did not get it?
-      var route;
-      for (var i = 0; i < routes.table.records.length; i++) {
-        if (routes.table.records[i].id === routeId) {
-          route = routes.table.records[i];
-        }
-      }
+      var route = routes.get(routeId);
       return [200, route];
     });
 
@@ -60,30 +40,17 @@
     var tripgroups = mockDB.select('tripgroups');
 
     $httpBackend.whenGET(/^\/api\/agencies\/[^\/]+\/routes+\/[^\/]+\/tripgroups$/).respond(function(method, url) {
-      var strings = url.split('/');
-      var routeId;
-      for (var i = 0; i < strings.length; i++) {
-        if (i === 5) {
-          routeId = strings[i];
-        }
-      }
-      var tgList = new Array();
-      for (var i = 0; i < tripgroups.table.records.length; i++) {
-        if (tripgroups.table.records[i].routeId === routeId) {
-          tgList.push(tripgroups.table.records[i]);
-        }
-      }
-     return [200, tgList];
+      var routeId = url.split('/')[5];
+      var filtered = _.filter(tripgroups.table.records, function(tg) {
+        console.log('tg.routeId=' + tg.routeId + ', routeId=' + routeId);
+        return tg.routeId === routeId;
+      });
+     return [200, filtered];
     });
 
    $httpBackend.whenGET(/^\/api\/agencies\/[^\/]+\/routes+\/[^\/]+\/tripgroups+\/[^\/]+$/).respond(function(method, url) {
       var tgId = url.substring(url.lastIndexOf('/')+1);
-      var tg;
-      for (var i = 0; i < tripgroups.table.records.length; i++) {
-        if (tripgroups.table.records[i].id === tgId) {
-          tg = tripgroups.table.records[i];
-        }
-      }
+      var tg = tripgroups.get(tgId);
       return [200, tg];
     });
 

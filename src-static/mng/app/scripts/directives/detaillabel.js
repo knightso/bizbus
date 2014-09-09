@@ -11,7 +11,7 @@ angular.module('mngApp')
     return {
       template: '<span>{{!detailMode && (method=="POST" && "Add" || "Edit") || ""}}</span>',
       restrict: 'E',
-      link: function postLink(scope, element, attrs, $state) {
+      link: function postLink(/*scope, element, attrs, $state*/) {
       }
     };
   });
