@@ -149,6 +149,18 @@ angular
           ncyBreadcrumbLabel: 'TripgroupStops'
         }
       })
+      .state('agencies.detail.routes.detail.tripgroups.detail.timetable', {
+        url: '/timetable', 
+        views: {
+          '@': {
+            templateUrl: 'views/timetable.html',
+            controller: 'TimetableCtrl'
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Timetable'
+        }
+      })
       .state('stops', {
         url: '/stops', 
         templateUrl: 'views/stops.html',
