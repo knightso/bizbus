@@ -162,21 +162,28 @@
 
     var trips = mockDB.select('trips');
 
-    $httpBackend.whenGET(/^\/api\/trips+$/).respond(trips.table.records);
-
-    $httpBackend.whenGET(/^\/api\/trips\/[^\/]+$/).respond(function(method, url) {
-      var id = url.substring(url.lastIndexOf('/')+1);
-      var trip;
-      for (var i = 0; i < trips.table.records.length; i++) {
-        if (trips.table.records[i].id === id) {
-          trip = trips.table.records[i];
-        }
+    $httpBackend.whenGET(/^\/api\/agencies\/[^\/]+\/routes+\/[^\/]+\/tripgroups+\/[^\/]+\/trips+$/).respond(function(method, url) {
+      var tgIdString = url.split('/')[7];
+      var tripgroupId;
+      if (tgIdString === undefined || tgIdString === '') {
+        return [200, []];
+      } else {
+        tripgroupId = parseInt(tgIdString);
       }
+      var filtered = _.filter(trips.table.records, function(trip) {
+        return trip.tripGroupId === tripgroupId;
+      });
+      return [200, filtered];
+    });
+
+    $httpBackend.whenGET(/^\/api\/agencies\/[^\/]+\/routes+\/[^\/]+\/tripgroups+\/[^\/]+\/trips\/[^\/]+$/).respond(function(method, url) {
+      var tripId = url.substring(url.lastIndexOf('/')+1);
+      var trip = trips.get(tripId);
       return [200, trip];
     });
 
-    $httpBackend.whenPOST(/^\/api\/trips\/[^\/]+$/).respond({});
-    $httpBackend.whenPUT(/^\/api\/trips\/[^\/]+$/).respond({});
+    $httpBackend.whenPOST(/^\/api\/agencies\/[^\/]+\/routes+\/[^\/]+\/tripgroups+\/[^\/]+\/trips\/[^\/]+$/).respond({});
+    $httpBackend.whenPUT(/^\/api\/agencies\/[^\/]+\/routes+\/[^\/]+\/tripgroups+\/[^\/]+\/trips\/[^\/]+$/).respond({});
 
     // htmlファイルの取得等はそのままスルー
     $httpBackend.whenGET(/.*/).passThrough();

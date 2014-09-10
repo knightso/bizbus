@@ -162,6 +162,44 @@ angular
           ncyBreadcrumbLabel: 'Timetable'
         }
       })
+      .state('agencies.detail.routes.detail.tripgroups.detail.trips', {
+        url: '/trips', 
+        views: {
+          '@': {
+            templateUrl: 'views/trips.html',
+            controller: 'TripsCtrl'
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Trips'
+        }
+      })
+      .state('agencies.detail.routes.detail.tripgroups.detail.trips.post', {
+        url: '@post', 
+        views: {
+          '@': {
+            templateUrl: 'views/puttrip.html',
+            controller: 'PuttripCtrl',
+            resolve: {method: function(){return 'POST';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Add'
+        }
+      })
+      .state('agencies.detail.routes.detail.tripgroups.detail.trips.detail', {
+        url: '/:tripId', 
+        views: {
+          '@': {
+            templateUrl: 'views/puttrip.html',
+            controller: 'PuttripCtrl',
+            resolve: {method: function(){return 'PUT';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: '{{trip.headsign}}'
+        }
+      })
       .state('stops', {
         url: '/stops', 
         templateUrl: 'views/stops.html',
@@ -248,7 +286,7 @@ angular
         }
       })
       .state('agencies.detail.services.detail', {
-        url: ':serviceId', 
+        url: '/:serviceId', 
         views: {
           '@': {
             templateUrl: 'views/putservice.html',
@@ -259,23 +297,6 @@ angular
         data: {
           ncyBreadcrumbLabel: '{{service.name}}'
         }
-      })
-      .state('trips', {
-        url: '/trips', 
-        templateUrl: 'views/trips.html',
-        controller: 'TripsCtrl'
-      })
-      .state('postTrip', {
-        url: '/postTrip', 
-        templateUrl: 'views/puttrip.html',
-        controller: 'PuttripCtrl',
-        resolve: {method: function(){return 'POST';}}
-      })
-      .state('putTrip/:id', {
-        url: '/putTrip/:id', 
-        templateUrl: 'views/puttrip.html',
-        controller: 'PuttripCtrl',
-        resolve: {method: function(){return 'PUT';}}
       })
       .state('login', {
         url: '/login', 
