@@ -8,25 +8,51 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('PuttripCtrl', function ($scope, $stateParams, $timeout, $location, method, Trips, Services, Enums) {
+  .controller('PuttripCtrl', function ($scope, $stateParams, $timeout, $location, method, Agencies, Routes, Tripgroups, Trips, Services, Enums) {
     
     $scope.method = method;
     $scope.services = Services.query();
     $scope.trip = {};
     $scope.directionTypes = Enums.directionTypes;
+    $scope.agency = Agencies.get({
+      id : $stateParams.agencyId
+    });
+    $scope.route = Routes.get({
+      agencyId : $stateParams.agencyId,
+      id : $stateParams.routeId
+    });
+    $scope.tg = Tripgroups.get({
+        agencyId : $stateParams.agencyId,
+        routeId : $stateParams.routeId,
+        id : $stateParams.tripgroupId
+      });
 
+console.log($stateParams.routeId);
+console.log($stateParams.tripgroupId);
+console.log($stateParams.tripId);
     $scope.regMode = true;
     $scope.detailMode = false;
     if (method === 'PUT') {
       $scope.trip = Trips.get({
-        id : $stateParams.id
+        agencyId : $stateParams.agencyId,
+        routeId : $stateParams.routeId,
+        tripgroupId : $stateParams.tripgroupId,
+        id : $stateParams.tripId
+      });
+      $scope.trip.$promise.then(function() {
+        $scope.trip.agencyId = $stateParams.agencyId;
+        $scope.trip.routeId = $stateParams.routeId;
+        $scope.trip.tripgroupId = $stateParams.tripgroupId;
       });
       $scope.regMode = false;
       $scope.detailMode = true;
+    } else {
+      $scope.trip.agencyId = $stateParams.agencyId;
+      $scope.trip.routeId = $stateParams.routeId;
+      $scope.trip.tripgroupId = $stateParams.tripgroupId;
     }
 
     $scope.submit = function() {
-
       $scope.alerts = [];
       $scope.error = {};
       if (!$scope.tripForm.$valid) {
@@ -45,7 +71,7 @@ angular.module('mngApp')
                 if ($scope.regMode === false) {
                   $scope.detailMode = true;
                 } else {
-                  $location.path('trips');
+                  $location.path('agencies/' + $stateParams.agencyId + '/routes/' + $stateParams.routeId + '/tripgroups/' + $stateParams.tripgroupId + '/trips');
                 }
               }, (tat >= tout ? 0 : tout - tat));
             },

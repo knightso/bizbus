@@ -16,6 +16,7 @@
         </select>
       </th>
       <th><input type="text" size="20" ng-model="criteria.defaultHeadsign" class="form-control" placeholder="DefaultHeadsign"></th>
+      <th></th>
       <th><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-remove-sign" ng-click="criteria={}"></button></th>
     </thead>
     <thead style="background-color: #ddd">
@@ -25,6 +26,7 @@
       <th>Direction</th>
       <th>DefaultHeadsign</th>
       <th>Stops</th>
+      <th>Trips</th>
     </thead>
     <tbody>
       <tr ng-repeat="tg in tripgroups | filter:(filtering ? criteria : {})" ng-click="detail(agency.id, route.id, tg.id)" class="selectable" ng-class-even="'even'">
@@ -34,6 +36,7 @@
         <td>{{tg.directionId | directionType}}</td>
         <td>{{tg.defaultHeadsign}}</td>
         <td><a ui-sref="agencies.detail.routes.detail.tripgroups.detail.stops({agencyId: agency.id, routeId: route.id, tripgroupId: tg.id})"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-list">&nbsp;{{tg.stops.length}}</button></a></td>
+        <td><a ui-sref="agencies.detail.routes.detail.tripgroups.detail.trips({agencyId: agency.id, routeId: route.id, tripgroupId: tg.id})"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-list">&nbsp;9(Todo)<!--TODO--></button></a></td>
     </tr>
     </tbody>
   </table>
