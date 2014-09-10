@@ -8,7 +8,7 @@
  * Controller of the mngApp
  */
 angular.module('mngApp')
-  .controller('StopsCtrl', function ($scope, $location, Stations) {
+  .controller('StopsCtrl', function ($scope, $state, Stations) {
     $scope.criteria = {};
     $scope.stations = [];
 
@@ -17,10 +17,10 @@ angular.module('mngApp')
     };
 
     $scope.detail = function(stopId) {
-      $location.path('putStop/' + stopId);
+      $state.go('stops.detail', {stopId: stopId});
     };
 
     $scope.post = function(stopId) {
-      $location.path('postStop/' + stopId);
+      $state.go('stops.post2', {stopId: stopId});
     };
   });

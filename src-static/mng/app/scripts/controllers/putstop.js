@@ -18,7 +18,7 @@ angular.module('mngApp')
     $scope.detailMode = false;
     if (method === 'PUT') {
       $scope.stop = Stations.get({
-        id : $stateParams.id
+        id : $stateParams.stopId
       });
       $scope.stop.$promise.then(function(stop) {
         if (stop.locationType === undefined) {
@@ -34,11 +34,11 @@ angular.module('mngApp')
       $scope.regMode = false;
       $scope.detailMode = true;
     } else {
-      $scope.stop.parentStation = $stateParams.id;
+      $scope.stop.parentStation = $stateParams.stopId;
       if ($scope.stop.parentStation !== undefined) {
         $scope.ifTopStop = false;
         $scope.pStop = Stations.get({
-          id : $stateParams.id
+          id : $stateParams.stopId
         });
       }
       $scope.stop.locationType = 0;

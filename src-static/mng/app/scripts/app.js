@@ -201,30 +201,51 @@ angular
         }
       })
       .state('stops', {
-        url: '/stops', 
+        url: '/stops',
         templateUrl: 'views/stops.html',
         controller: 'StopsCtrl',
         data: {
           ncyBreadcrumbLabel: 'Stops'
         }
       })
-      .state('postStop', {
-        url: '/postStop', 
-        templateUrl: 'views/putstop.html',
-        controller: 'PutstopCtrl',
-        resolve: {method: function(){return 'POST';}}
+      .state('stops.post', {
+        url: '/@post', 
+        views: {
+          '@': { 
+            templateUrl: 'views/putstop.html',
+            controller: 'PutstopCtrl',
+            resolve: {method: function(){return 'POST';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Add'
+        }
       })
-      .state('postStop/:id', {
-        url: '/postStop/:id', 
-        templateUrl: 'views/putstop.html',
-        controller: 'PutstopCtrl',
-        resolve: {method: function(){return 'POST';}}
+      .state('stops.post2', {
+        url: '/@post/:stopId', 
+        views: {
+          '@': { 
+            templateUrl: 'views/putstop.html',
+            controller: 'PutstopCtrl',
+            resolve: {method: function(){return 'POST';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: 'Add Stop'
+        }
       })
-      .state('putStop/:id', {
-        url: '/putStop/:id', 
-        templateUrl: 'views/putstop.html',
-        controller: 'PutstopCtrl',
-        resolve: {method: function(){return 'PUT';}}
+      .state('stops.detail', {
+        url: '/:stopId',
+        views: {
+          '@': { 
+            templateUrl: 'views/putstop.html',
+            controller: 'PutstopCtrl',
+            resolve: {method: function(){return 'PUT';}}
+          }
+        },
+        data: {
+          ncyBreadcrumbLabel: '{{stop.name}}'
+        }
       })
       .state('terminals', {
         url: '/terminals',
