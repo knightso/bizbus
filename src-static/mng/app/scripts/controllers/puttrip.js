@@ -27,9 +27,6 @@ angular.module('mngApp')
         id : $stateParams.tripgroupId
       });
 
-console.log($stateParams.routeId);
-console.log($stateParams.tripgroupId);
-console.log($stateParams.tripId);
     $scope.regMode = true;
     $scope.detailMode = false;
     if (method === 'PUT') {
