@@ -1,64 +1,17 @@
 <h2><detail-label></detail-label> Timetable</h2>
 
 <div class="panel-body">
-   <a ui-sref="agencies.detail.routes.detail.tripgroups({agencyId: agency.id, routeId: route.id})"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left">戻る</button></a>
+   <a ui-sref="^"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left">戻る</button></a>
 </div>
-<form name="tgStopsForm" class="form-horizontal" role="form">
-  <div class="panel-body">
-    <table class="table">
-      <thead style="background-color: #ddd">
-        <th></th>
-        <th></th>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Desc</th>
-        <th>Lat</th>
-        <th>Lon</th>
-        <th ng-hide="detailMode">削除</th>
-      </thead>
-      <tbody ui-sortable="{disabled: detailMode}" ng-model="selectedStops">
-        <tr ng-repeat="stop in selectedStops" ng-class="selectable" ng-style="{cursor: detailMode ? '' : 'move'}">
-          <td></td>
-          <td><span class="glyphicon glyphicon-glass" ng-show="stop.locationType !== 1"></span></td>
-          <td>{{stop.id}}</td>
-          <td>{{stop.name}}</td>
-          <td>{{stop.desc | limitTo:20}} {{child.desc.length > 20 ? '...' : ''}}</td>
-          <td>{{stop.lat}}</td>
-          <td>{{stop.lon}}</td>
-          <td ng-hide="detailMode"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-remove" ng-click="removeStop(stop)">削除</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
-  <div ng-hide="detailMode">
-  <div class="form-group">
-    <label class="col-sm-2 control-label"></label>
-    <div class="col-sm-4">
-      <ui-select ng-model="selectedStop.selected"
-             theme="bootstrap"
-             ng-disabled="disabled"
-             reset-search-input="false"
-             style="width: 420px;">
-        <ui-select-match placeholder="Enter an stop...">{{$select.selected.name}}</ui-select-match>
-        <ui-select-choices repeat="stop in stops track by $index"
-             refresh="refreshStops($select.search)"
-             refresh-delay="0">
-          <div ng-bind-html="stop.name | highlight: $select.search"></div>
-        </ui-select-choices>
-      </ui-select>
-    </div>
-    <div class="col-sm-1">
-      <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left" ng-click="addStop(selectedStop.selected)">追加</button>
-    </div>
-  </div>
+<form name="timetableForm" class="form-horizontal" role="form">
+  <div class="panel-body" ng-if="gridOptions">
+    <div class="gridStyle" ng-grid="gridOptions"></div>
   </div>
 
-  <div class="form-group">
-    <div class="col-sm-offset-1 col-sm-10">
+<div class="panel-body">
+    <div classi="col-sm-offset-1 col-sm-10">
       <div ng-show="detailMode">
         <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-pencil" ng-click="detailMode=!detailMode">編集</button>
-        <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-remove" ng-click="">削除</button>
       </div>
       <div ng-show="detailMode == false">
         <button type="submit" class="btn btn-primary btn-sm glyphicon glyphicon-save" ng-click="submit()">保存</button>
@@ -71,5 +24,5 @@
   </div>
 </form>
 <div class="panel-body">
-   <a ui-sref="agencies.detail.routes.detail.tripgroups({agencyId: agency.id, routeId: route.id})"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left">戻る</button></a>
+   <a ui-sref="^"><button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-left">戻る</button></a>
 </div>

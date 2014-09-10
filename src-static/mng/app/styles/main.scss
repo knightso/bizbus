@@ -133,3 +133,13 @@ label.padright {
     background-color: $nav-link-hover-bg;
   }
 }
+
+.gridStyle {
+  border: 1px solid rgb(212,212,212);
+  width: 400px; 
+  height: 200px;
+}
+
+.grid-row-header {
+  background-color: #ddd;
+}

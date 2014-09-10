@@ -15,6 +15,7 @@ angular
     'ngResource',
     //'ngRoute',
     'ngSanitize',
+    'ngGrid',
     'ui.bootstrap',
     'ui.sortable',
     'ui.select',

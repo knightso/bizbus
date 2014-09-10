@@ -847,6 +847,10 @@
             "NANAA",
             "EMSI",
             "AMV"
+          ],
+          "trips": [
+            "AB1",
+            "AB2"
           ]
         },
         {
@@ -859,6 +863,9 @@
             "NANAA",
             "DADAN",
             "EMSI"
+          ],
+          "trips": [
+            "STBA"
           ]
         },
         {
@@ -870,6 +877,10 @@
           "stops": [
             "NADAV#INBOUND",
             "DADAN"
+          ],
+          "trips": [
+            "CITY1",
+            "CITY2"
           ]
         },
         {
@@ -882,6 +893,10 @@
             "FUR_CREEK_RES#INBOUND",
             "BEATTY_AIRPORT#INBOUND",
             "EMSI"
+          ],
+          "trips": [
+            "BFC1",
+            "BFC2"
           ]
         },
         {
@@ -894,6 +909,12 @@
             "NADAV#OUTBOUND",
             "BULLFROG#INBOUND",
             "AMV"
+          ],
+          "trips": [
+            "AAMV1",
+            "AAMV2",
+            "AAMV3",
+            "AAMV4"
           ]
         },
         {
@@ -907,6 +928,11 @@
             "STAGECOACH#OUTBOUND",
             "NANAA",
             "DADAN"
+          ],
+          "trips": [
+            "JRount1a",
+            "JRount1b",
+            "JRount1c"
           ]
         },
         {
@@ -918,6 +944,11 @@
           "stops": [
             "STAGECOACH#OUTBOUND",
             "BEATTY_AIRPORT#INBOUND"
+          ],
+          "trips": [
+            "JRount2a",
+            "JRount2b",
+            "JRount2c"
           ]
         },
         {
@@ -931,6 +962,11 @@
             "BEATTY_AIRPORT#OUTBOUND",
             "NADAV#INBOUND",
             "DADAN"
+          ],
+          "trips": [
+            "JRount3a",
+            "JRount3b",
+            "JRount3c"
           ]
         }
       ]
